@@ -17,7 +17,7 @@ the synth features:
 1. grain
 	- **durat.**: controls grain duration (*ms* or *samps*)
 	- **rate**: controls frequency at which grains are triggered (*ms*, *samps* o **sync**)
-		if **sync** is activated, grains will trigger only when the DAW or host is playing and the frequency/rythm will be determined by the ration between the numers to the right 
+	<br>if **sync** is activated, grains will trigger only when the DAW or host is playing and the frequency/rythm will be determined by the ration between the numers to the right 
     of *sync* in relation to the quarter note (example: 1/1 stands for a quarter note, 2/1 for a half note, 1/3 for an eighth note triplet) responding accurately to tempo 
     changes
     <br>
