@@ -50,7 +50,9 @@ the synth features:
 	- **precision**: defines the margin of possible outcomes (*0-100%*), the outcome could be any number (with equal probability) that lies between the current value + precision% of the **offset** value AND the current value + 100% of the **offset** value
 	example: if set to *100* the outcome will always be the current value + the **offset** value, if set to *50* the outcome could be any number between the current value + 50% of the offset value AND the current value + the **offset** value (all of them equally probable)
 
-WARNING: keep in mind that when **load**ing audio files the plugin will remember the path for said files and it is there that it will look for it the next time that te project/preset gets loaded
+WARNING:
+- keep in mind that when **load**ing audio files the plugin will remember the path for said files and it is there that it will look for it the next time that te project/preset gets loaded
+- when in polyphonic mode and especially if using very small **rate** values cpu usage may increase quite a bit with each voice, technically it allows up to 16 voices but in the pc i develop with (i5-4440) the buffer overflows before using them all
 
 ## credits
 - [pure data](https://github.com/pure-data/pure-data) by miller puckette y many others
