@@ -17,7 +17,7 @@ el sintetizador cuenta con:
 		si se activa **sync**, los granos se encenderán sólo cuando el DAW o host esté reproduciendo y su frecuencia/ritmo se determinará por la razón de los dos números a la derecha de *sync* en relación a la figura de negra (por ejemplo: 1/1 equivale a una negra, 2/1 a una blanca, 1/3 a un tresillo de corchea) respondiendo con buena precisión a cambios de tempo
 
 2. sample
-	  - **load**: se utiliza para buscar el archivo de audio (en formato .wav), tener en cuenta que el plugin recordará la ruta del archivo y allí lo buscará cada vez que se cargue el proyecto/preset
+	  - **load**: se utiliza para buscar el archivo de audio (en formato .wav)
 	- **posición del cabezal**
 	- **play**: si está encendido, desplaza el cabezal a través del sample a la velocidad indicada (en otras palabras, resume o pausa la reproducción del sample)
 	- **reset_on_noteon**: al estar **play** encendido, determina si el cabezal será uno solo para todas las voces (apagado) o si cada vez que ataque una nueva nota esta comenzará a reproducir el sample a partir de la **posición del cabezal** de manera independiente a las demás voces (encendido)
@@ -42,8 +42,10 @@ el sintetizador cuenta con:
 	el sintetizador cuenta con tres paneles que permiten cambiar los valores de tres parámetros: posición de cabezal (*ms* o *samp*), altura (*midi* o *cents* y duración (*ms* o *samp*) de izquierda a derecha
 	- **offset**: cuánto se le suma o resta al valor actual de cada parámetro
 	- **chance**: la probabilidad (*0-100%*) de que esta resta o suma se cumpla para cada nuevo grano
-	- **precision**: define el umbral de posibles resultados (*0-100%*), el resultado podrá ser cualquier número (con igual probabilidad) que se encuentre entre el valor actual + precision% del offset y el valor actual + 100% del offset
-	por ejemplo: si se lleva a 100 el resultado siempre será el valor actual + el valor de **offset**, si se lleva a 50 el resultado podrá ser cualquier número entre el valor actual + 50% del **offset** y el valor actual + el **offset** (todos con igual probabilidad)
+	- **precision**: define el margen de posibles resultados (*0-100%*), el resultado podrá ser cualquier número (con igual probabilidad) ubicado entre el valor actual + precision% del offset Y el valor actual + 100% del offset
+	por ejemplo: si se lleva a 100 el resultado siempre será el valor actual + el valor de **offset**, si se lleva a 50 el resultado podrá ser cualquier número entre el valor actual + 50% del **offset** Y el valor actual + el **offset** (todos con igual probabilidad)
+
+CUIDADO: tener en cuenta que al cargar archivos de audio el plugin recordará el directorio de dichos archivos y es allí que los buscará la próxima vez que el proyecto/preset sea cargado
 	
 
 ## créditos
