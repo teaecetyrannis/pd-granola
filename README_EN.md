@@ -2,7 +2,7 @@
 
 
 # granola
-[read in english](https://github.com/teaecetyrannis/granola/blob/main/README_EN.md)
+[leer en español](https://github.com/teaecetyrannis/granola/blob/main/README.md)
 <br><br>
 stochastic granular synth developed in [pure data](https://github.com/pure-data/pure-data) and [camomile](https://github.com/pierreguillot/Camomile)
 
