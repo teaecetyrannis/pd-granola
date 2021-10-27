@@ -26,7 +26,7 @@ the synth features:
 	- **playhead position**
 	- **play**: if turned on, moves the playhead through the sample at the indicated speed (in other words, it resumes or pauses sample playback)
 	- **reset_on_noteon**: when **play** is turned on, determines if the playhead will be one for all voices (off) or if each new note will begin to play the sample from **playhead position** independently (on)
-	keep in mind that when turned on moving the **playhead position** will have no effect since it's just determining at which point of the sample will the next note begin, whereas if it's turned off all voices will share the same playhead which can be altered by changing the **playhead position**
+	<br>keep in mind that when turned on moving the **playhead position** will have no effect since it's just determining at which point of the sample will the next note begin, whereas if it's turned off all voices will share the same playhead which can be altered by changing the **playhead position**
 	- **mono/stereo**: determines if the sample is mono or stereo
 	if it's stereo there's the freedom to choose *mono*, which will simply duplicate the sample's left channel
 	if it's mono, then *mono* option should be selected unlesss silence from the right channel is desired
@@ -48,7 +48,7 @@ the synth features:
 	- **offset**: how much is added or substracted from the current value of each parameter
 	- **chance**: the chance (*0-100%*) that said operation gets executed for each individual grain
 	- **precision**: defines the margin of possible outcomes (*0-100%*), the outcome could be any number (with equal probability) that lies between the current value + precision% of the **offset** value AND the current value + 100% of the **offset** value
-	example: if set to *100* the outcome will always be the current value + the **offset** value, if set to *50* the outcome could be any number between the current value + 50% of the offset value AND the current value + the **offset** value (all of them equally probable)
+	<br>example: if set to *100* the outcome will always be the current value + the **offset** value, if set to *50* the outcome could be any number between the current value + 50% of the offset value AND the current value + the **offset** value (all of them equally probable)
 
 WARNING:
 - keep in mind that when **load**ing audio files the plugin will remember the path for said files and it is there that it will look for it the next time that te project/preset gets loaded
