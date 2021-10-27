@@ -5,8 +5,7 @@ sintetizador granular estocástico desarrollado en [pure data](https://github.co
 
 
 ## instalación
-descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/granola/releases/tag/v1.0) y extraerlo en la carpeta donde se encuentren los plugins vst3
-para correrlo en pd basta con ejecutar el parche granola.pd
+descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/granola/releases/tag/v1.0) y extraerlo en la carpeta donde se encuentren los plugins vst3 (para correrlo en pd basta con descargar el source code ejecutar el parche granola.pd)
 
 ## funcionamiento
 el sintetizador cuenta con:
