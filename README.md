@@ -13,7 +13,7 @@ el sintetizador cuenta con:
 1. grain
 	- **durat.**: control de duración del grano (*ms* o *samps*)
 	- **rate**: control de la frecuencia a la que los granos se encienden (*ms*, *samps* o **sync**)
-		si se activa **sync**, los granos se encenderán sólo cuando el DAW o host esté reproduciendo y su frecuencia/ritmo se determinará por la razón de los dos números a la derecha de *sync* en relación a la figura de negra (por ejemplo: 1/1 equivale a una negra, 2/1 a una blanca, 1/3 a un tresillo de corchea) respondiendo con buena precisión a cambios de tempo
+	<br>si se activa **sync**, los granos se encenderán sólo cuando el DAW o host esté reproduciendo y su frecuencia/ritmo se determinará por la razón de los dos números a la derecha de *sync* en relación a la figura de negra (por ejemplo: 1/1 equivale a una negra, 2/1 a una blanca, 1/3 a un tresillo de corchea) respondiendo con buena precisión a cambios de tempo
 
 2. sample
 	  - **load**: se utiliza para buscar el archivo de audio (en formato .wav)
