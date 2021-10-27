@@ -9,7 +9,7 @@ stochastic granular synth developed in [pure data](https://github.com/pure-data/
 
 ## installation
 download granola.zip file from the [last release](https://github.com/teaecetyrannis/granola/releases/tag/v1.0) and extract on the folder where vst3 plugins are found (to run 
-with pd just run the granola.pd patch)
+with pd just download the source code run the granola.pd patch)
 
 ## operation
 the synth features:
