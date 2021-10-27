@@ -31,7 +31,7 @@ the synth features:
 	if it's stereo there's the freedom to choose *mono*, which will simply duplicate the sample's left channel
 	if it's mono, then *mono* option should be selected unlesss silence from the right channel is desired
 	- **speed**: determines the speed at which the playhead/s will move (*%*)
-	the slider found above can be used too, which goes from -300 to 300, for a more intuitive control if using a mouse
+	<br>the slider found above can be used too, which goes from -300 to 300, for a more intuitive control if using a mouse
 	- **origin_note**: allows to indicate which is the "note" (*midi*) of the sample so that it matches the notes that go into the synth, but also allows for more creative use cases that this one
 
 3. window
