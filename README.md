@@ -5,7 +5,7 @@ sintetizador granular estocástico desarrollado en [pure data](https://github.co
 
 
 ## instalación
-descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/granola/releases/tag/v1.0) y extraerlo en la carpeta donde se encuentren los plugins vst3 (para correrlo en pd basta con descargar el source code ejecutar el parche granola.pd)
+descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/granola/releases/tag/v1.0) y extraerlo en la carpeta donde se encuentren los plugins vst3 (para correrlo en pd basta con descargar el source code y ejecutar el parche granola.pd)
 
 ## funcionamiento
 el sintetizador cuenta con:
@@ -44,7 +44,9 @@ el sintetizador cuenta con:
 	- **precision**: define el margen de posibles resultados (*0-100%*), el resultado podrá ser cualquier número (con igual probabilidad) ubicado entre el valor actual + precision% del offset Y el valor actual + 100% del offset
 	por ejemplo: si se lleva a 100 el resultado siempre será el valor actual + el valor de **offset**, si se lleva a 50 el resultado podrá ser cualquier número entre el valor actual + 50% del **offset** Y el valor actual + el **offset** (todos con igual probabilidad)
 
-CUIDADO: tener en cuenta que al cargar archivos de audio el plugin recordará el directorio de dichos archivos y es allí que los buscará la próxima vez que el proyecto/preset sea cargado
+CUIDADO
+- tener en cuenta que al cargar archivos de audio el plugin recordará el directorio de dichos archivos y es allí que los buscará la próxima vez que el proyecto/preset sea cargado
+- al trabajar en modo polifónico y sobre todo usando valores muy pequeños de **rate** el uso del cpu puede incrementar bastante con cada voz, técnicamente logra hasta 16 voces pero en la computadora donde desarrollo (i5-4440) el buffer rebalsa antes de ocuparlas todas
 	
 
 ## créditos
