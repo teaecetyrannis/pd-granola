@@ -1,0 +1,45 @@
+type instrument;
+code dMab;
+compatibility 1.0.7;
+midiin true;
+playhead true;
+bus 0 2;
+description info.txt;
+param -name out -label % -min 0 -max 100 -default 90
+param -name bend_mode -list global/last_note
+param -name legato -list off/on
+param -name steal -list off/on
+param -name voices -list monophonic/polyphonic
+param -name channels -list mono/stereo
+param -name grain_duration_unit -list ms/samp
+param -name grain_duration -min 1 -max 9999 -default 300
+param -name grain_rate_unit -list ms/samp
+param -name grain_rate -min 1 -max 9999 -default 100
+param -name grain_rate_num -min 1 -max 99 -nsteps 99
+param -name grain_rate_den -min 1 -max 99 -nsteps 99
+param -name grain_rate_sync -list off/on
+param -name window -list straight/cos/tri/tridown/triup/custom
+param -name smooth -list off/on
+param -name attack -label ms -min 0 -max 9999
+param -name decay -label ms -min 0 -max 9999
+param -name sustain -label % -min 0 -max 100
+param -name release -label ms -min 0 -max 9999
+param -name offset_time_unit  -list ms/samp
+param -name offset_time -min -9999 -max 9999 -default 0
+param -name offset_time_amount -label % -min 0 -max 100
+param -name offset_time_precis -label % -min 0 -max 100
+param -name offset_pitch_unit -list mid/cent
+param -name offset_pitch -min -999 -max 999 -default 0
+param -name offset_pitch_amount -label % -min 0 -max 100
+param -name offset_pitch_precis -label % -min 0 -max 100
+param -name offset_duration_unit -list ms/samp
+param -name offset_duration -min -9999 -max 9999 -default 0
+param -name offset_duration_amount -label % -min 0 -max 100
+param -name offset_duration_precis -label % -min 0 -max 100
+param -name playhead -min 0 -max 1
+param -name origin_note -min 0 -max 127 -default 48
+param -name speed -label % -min -999 -max 999 -default 100
+param -name reset -list off/on
+param -name play -list off/on
+
+manufacturer Dylan Martin;
