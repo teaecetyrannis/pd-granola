@@ -20,12 +20,12 @@ el sintetizador cuenta con:
 	- **posición del cabezal**
 	- **play**: si está encendido, desplaza el cabezal a través del sample a la velocidad indicada (en otras palabras, resume o pausa la reproducción del sample)
 	- **reset_on_noteon**: al estar **play** encendido, determina si el cabezal será uno solo para todas las voces (apagado) o si cada vez que ataque una nueva nota esta comenzará a reproducir el sample a partir de la **posición del cabezal** de manera independiente a las demás voces (encendido)
-	nótese que al estar encendido mover la **posición del cabezal** no tendrá ningún efecto ya que sólo se está determinando en qué punto del sample iniciará la próxima nota, mientras que si está apagado todas las voces comparten un único cabezal que puede ser alterado moviendo la **posición del cabezal**
+	<br>nótese que al estar encendido mover la **posición del cabezal** no tendrá ningún efecto ya que sólo se está determinando en qué punto del sample iniciará la próxima nota, mientras que si está apagado todas las voces comparten un único cabezal que puede ser alterado moviendo la **posición del cabezal**
 	- **mono/stereo**: determina la cantidad de canales del sample
 	si el sample es stereo existe la libertad de elegir mono, lo que duplica el canal izquierdo del sample
 	si el sample es mono, se debe elegir la opción mono a menos que se quiera silencio en el canal derecho
 	- **speed**: determina la velocidad a la que se moverá/n el/los cabezal/es (*%*)
-	se puede utilizar el slider que se encuentra arriba, que va de -300 a 300, para un control más intuitivo en caso de estar usando mouse
+	<br>se puede utilizar el slider que se encuentra arriba, que va de -300 a 300, para un control más intuitivo en caso de estar usando mouse
 	- **origin_note**: permite indicar cuál es la "nota" (*midi*) del sample original para que coincida con las notas ingresadas al sintetizador, pero también permite usos más creativos que éste
 
 3. window
@@ -42,7 +42,7 @@ el sintetizador cuenta con:
 	- **offset**: cuánto se le suma o resta al valor actual de cada parámetro
 	- **chance**: la probabilidad (*0-100%*) de que esta resta o suma se cumpla para cada nuevo grano
 	- **precision**: define el margen de posibles resultados (*0-100%*), el resultado podrá ser cualquier número (con igual probabilidad) ubicado entre el valor actual + precision% del offset Y el valor actual + 100% del offset
-	por ejemplo: si se lleva a 100 el resultado siempre será el valor actual + el valor de **offset**, si se lleva a 50 el resultado podrá ser cualquier número entre el valor actual + 50% del **offset** Y el valor actual + el **offset** (todos con igual probabilidad)
+	<br>por ejemplo: si se lleva a 100 el resultado siempre será el valor actual + el valor de **offset**, si se lleva a 50 el resultado podrá ser cualquier número entre el valor actual + 50% del **offset** Y el valor actual + el **offset** (todos con igual probabilidad)
 
 CUIDADO
 - tener en cuenta que al cargar archivos de audio el plugin recordará el directorio de dichos archivos y es allí que los buscará la próxima vez que el proyecto/preset sea cargado
