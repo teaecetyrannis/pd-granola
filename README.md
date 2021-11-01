@@ -47,6 +47,7 @@ el sintetizador cuenta con:
 CUIDADO
 - tener en cuenta que al cargar archivos de audio el plugin recordará el directorio de dichos archivos y es allí que los buscará la próxima vez que el proyecto/preset sea cargado
 - al trabajar en modo polifónico y sobre todo usando valores muy pequeños de **rate** el uso del cpu puede incrementar bastante con cada voz, técnicamente logra hasta 16 voces pero en la computadora donde desarrollo (i5-4440) el buffer rebalsa antes de ocuparlas todas
+- tener en cuenta que hay una serie de objetos [send] que no llevan la variable $0 al comienzo de su nombre, de cualquier manera difícilmente sea una complicación ya que para evitar posibles cruzamientos con otros parches estos objetos llevan 'dMab-' al comienzo de su nombre
 	
 
 ## créditos
