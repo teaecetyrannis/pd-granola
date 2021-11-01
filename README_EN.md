@@ -53,6 +53,7 @@ the synth features:
 WARNING:
 - keep in mind that when **load**ing audio files the plugin will remember the path for said files and it is there that it will look for it the next time that te project/preset gets loaded
 - when in polyphonic mode and especially if using very small **rate** values cpu usage may increase quite a bit with each voice, technically it allows up to 16 voices but in the pc i develop with (i5-4440) the buffer overflows before using them all
+- keep in mind that there are a couple of [send] objects that do not begin with the $0 variable, still this will hardly render any complications since to avoid possible crosses with other patches these objects begin with 'dMab-'
 
 ## credits
 - [pure data](https://github.com/pure-data/pure-data) by miller puckette y many others
