@@ -1,12 +1,12 @@
 # granola
-[read in english](https://github.com/teaecetyrannis/granola/blob/main/README_EN.md)
+[read in english](https://github.com/teaecetyrannis/pd-granola/blob/main/README_EN.md)
 <br><br>
 sintetizador granular estocástico desarrollado en [pure data](https://github.com/pure-data/pure-data)
 
 
 ## instalación
-descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/granola/releases/tag/v2.0), extraer y agregar la carpeta contenedora al path de pure data, luego se puede iniciar desde cualquier parche creando el objeto `[granola~]`
-<br><br>también depende de la abstracción [adsr](https://github.com/teaecetyrannis/adsr) y el objeto `[selector~]` de la librería [cyclone](https://github.com/porres/pd-cyclone), por lo que necesariamente deberán instalarse también
+descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/pd-granola/releases/tag/v2.0), extraer y agregar la carpeta contenedora al path de pure data, luego se puede iniciar desde cualquier parche creando el objeto `[granola~]`
+<br><br>también depende de la abstracción [adsr](https://github.com/teaecetyrannis/pd-adsr) y el objeto `[selector~]` de la librería [cyclone](https://github.com/porres/pd-cyclone), por lo que necesariamente deberán instalarse también
 
 
 ## funcionamiento
