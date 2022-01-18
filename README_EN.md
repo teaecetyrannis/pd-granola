@@ -2,14 +2,14 @@
 
 
 # granola
-[leer en español](https://github.com/teaecetyrannis/granola/blob/main/README.md)
+[leer en español](https://github.com/teaecetyrannis/pd-granola/blob/main/README.md)
 <br><br>
 stochastic granular synth developed in [pure data](https://github.com/pure-data/pure-data)
 
 
 ## installation
-download granola.zip file from the [last release](https://github.com/teaecetyrannis/granola/releases/tag/v2.0), extract and add the containing folder to pure data path, then it can be started in any patch by creating the `[granola~]` object
-<br><br>it also depends on the [adsr](https://github.com/teaecetyrannis/adsr) abstraction and the `[selector~]` object from the [cyclone](https://github.com/porres/pd-cyclone) library, so these should necessarily be installed as well
+download granola.zip file from the [last release](https://github.com/teaecetyrannis/pd-granola/releases/tag/v2.0), extract and add the containing folder to pure data path, then it can be started in any patch by creating the `[granola~]` object
+<br><br>it also depends on the [adsr](https://github.com/teaecetyrannis/pd-adsr) abstraction and the `[selector~]` object from the [cyclone](https://github.com/porres/pd-cyclone) library, so these should necessarily be installed as well
 
 ## operation
 the synth features:
