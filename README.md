@@ -50,7 +50,7 @@ CUIDADO
 
 ## documentación, cambiar los parámetros dinámicamente y guardar el estado actual del sintetizador
 en el subparche `[pd help]` dentro de granola~.pd se encuentra (en inglés) toda esta misma información y además se detallan sus inlets y outlets y cómo setear todos los parámetros desde fuera mediante mensajes, permitiendo un control completamente dinámico del sintetizador sin hacer uso de la interfaz
-<br>gracias a esto también es posible recordar enteramente el estado del sintetizador: sólo es necesario un muy extenso mensaje que incluya todos los valores actuales para caeda parámetro... por suerte esta función ya está incorporada y basta con conectar un mensaje (no es necesario que esté vacío, ya que su contenido será reemplazado) a la tercera outlet y luego enviar un mensaje `[state(` a la segunda inlet, esto escribirá en el mensaje todos los parámetros y rutas de archivos
+<br>gracias a esto también es posible recordar enteramente el estado del sintetizador: sólo es necesario un muy extenso mensaje que incluya todos los valores actuales para cada parámetro... por suerte esta función ya está incorporada y basta con conectar un mensaje (no es necesario que esté vacío, ya que su contenido será reemplazado) a la tercera outlet y luego enviar un mensaje `[state(` a la segunda inlet, esto escribirá en el mensaje todos los parámetros y rutas de archivos
 	
 
 ## créditos
