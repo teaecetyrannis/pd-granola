@@ -1230,7 +1230,7 @@ it allows for it to be turned on again when necessary;
 #X obj 240 83 r \$0-grain-arbit;
 #X msg 54 199 add2 grain duration unit \$1 \, addcomma \, add2 grain
 duration \$2 \, addcomma \, add2 grain rate unit \$3 \, addcomma \,
-add2 grain rate \$4 \, addcomma \, add2 grain arbitrary \$5 \, addcomma
+add2 grain rate \$4 \, addcomma \, add2 grain auto \$5 \, addcomma
 ;
 #X connect 0 0 7 0;
 #X connect 1 0 0 0;
