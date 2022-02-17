@@ -30,14 +30,12 @@ el sintetizador cuenta con:
 3. window
 	- **shape**: determina la forma de la ventana que es aplicada a cada grano (*straight, cos, tri, tridown, triup, custom*)
 	- **load**: se utiliza para buscar el archivo de audio (en formato .wav) que será utilizado en la forma *custom*, la ventana es siempre de 2048 samples de duración y si el sample cargado es mayor se utilizarán sólo los primeros 2048 samples del mismo
-	- **smooth**: si se enciende, una segunda ventana es aplicada a cada grano con breves rampas desde y hacia cero al comienzo y al final, esto sirve para evitar los impulsos generados por las formas de ventana que no empiezan y terminan en un mismo valor
-
+	- **smooth**: si se enciende, se usará una segunda ventana aplicando breves rampas desde y hacia cero al comienzo y al final de cada grano, esto es para evitar los impulsos generados por las formas de ventana que no empiezan o terminan en 0
 4. envelope
 	- ataque (*ms*), decay (*ms*), sustain (*%*) y release (*ms*)
 	- controles para cambiar entre monofónico y polifónico, voice-**stealing**, **legato** y comportamiento del pitch **bend** (_global_ aplica el bend a todas las voces de la polifonía y _last_ aplica el bend sólo a la última voz activada)
 
-5. offsets
-	el sintetizador cuenta con tres paneles que permiten cambiar los valores de tres parámetros: posición de cabezal (*ms* o *samp*), altura (*midi* o *cents* y duración (*ms* o *samp*) de izquierda a derecha
+5. offsets: el sintetizador cuenta con tres paneles que permiten cambiar los valores de tres parámetros: posición de cabezal (*ms* o *samp*), altura (*midi* o *cents* y duración (*ms* o *samp*) de izquierda a derecha
 	- **offset**: cuánto se le suma o resta al valor actual de cada parámetro
 	- **chance**: la probabilidad (*0-100%*) de que esta resta o suma se cumpla para cada nuevo grano
 	- **precision**: define el margen de posibles resultados (*0-100%*), el resultado podrá ser cualquier número (con igual probabilidad) ubicado entre el valor actual + precision% del offset Y el valor actual + 100% del offset
