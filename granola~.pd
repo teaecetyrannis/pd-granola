@@ -1,6 +1,4 @@
 #N canvas -8 -8 1366 685 12;
-#X obj 451 147 cnv 15 392 248 empty \$0-text empty 20 12 0 14 -262144
--183085 0;
 #N canvas 676 0 681 676 adsr 0;
 #X msg 292 119 legato \$1;
 #X msg 222 119 rel \$1;
@@ -13,47 +11,47 @@
 #X obj 152 12 r \$0-sus;
 #X obj 82 12 r \$0-dec;
 #X obj 12 12 r \$0-att;
-#X msg 369 90 1;
-#X obj 369 61 loadbang;
-#X msg 369 119 anticlick \$1;
 #X obj 12 178 list prepend adsr;
 #X obj 12 207 s \$0-params;
-#X connect 0 0 14 0;
-#X connect 1 0 14 0;
-#X connect 2 0 14 0;
+#X msg 383 119 anticlick \$1;
+#X obj 383 12 r \$0-anticlick;
+#X text 30 239 se reciben los parámetros de envolvente \, legato y
+anticlick \, y se envían a todas las voces instanciadas por [clone]
+;
+#X connect 0 0 11 0;
+#X connect 1 0 11 0;
+#X connect 2 0 11 0;
 #X connect 3 0 2 0;
-#X connect 4 0 14 0;
-#X connect 5 0 14 0;
+#X connect 4 0 11 0;
+#X connect 5 0 11 0;
 #X connect 6 0 0 0;
 #X connect 7 0 1 0;
 #X connect 8 0 3 0;
 #X connect 9 0 4 0;
 #X connect 10 0 5 0;
-#X connect 11 0 13 0;
-#X connect 12 0 11 0;
-#X connect 13 0 14 0;
-#X connect 14 0 15 0;
+#X connect 11 0 12 0;
+#X connect 13 0 11 0;
+#X connect 14 0 13 0;
 #X restore 12 445 pd adsr;
 #N canvas -8 -8 1366 685 window 0;
-#X obj 26 192 samplerate~;
-#X obj 12 138 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 104 206 0.5;
-#X obj 26 216 / 2048;
-#X obj 26 240 osc~;
-#X obj 26 264 *~ 0.5;
-#X obj 26 288 +~ 0.5;
-#X obj 93 235 phasor~;
-#X msg 139 206 0;
-#X obj 168 264 expr~ 1-$v1;
+#X obj 26 182 samplerate~;
+#X obj 12 128 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 104 196 0.5;
+#X obj 26 206 / 2048;
+#X obj 26 230 osc~;
+#X obj 26 254 *~ 0.5;
+#X obj 26 278 +~ 0.5;
+#X obj 93 225 phasor~;
+#X msg 139 196 0;
 #X obj 92 293 expr~ if($v1 > 0.5 \, 1-$v1 \, $v1)*2;
-#X obj 269 371 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 269 371 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
 #X msg 350 371 2048;
 #X obj 350 342 loadbang;
-#X obj 26 163 r pd-dsp-started;
-#X obj 12 80 sel 0;
-#X obj 44 109 t b f;
+#X obj 26 153 r pd-dsp-started;
+#X obj 12 70 sel 0;
+#X obj 44 99 t b f;
 #X obj 252 235 tabplay~ \$0-window-custom;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$0-window-custom 2048 float 2;
@@ -64,13 +62,13 @@
 #X obj 788 202 loadbang;
 #X obj 707 342 symbol;
 #X obj 707 366 route symbol;
-#X obj 707 395 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 707 322 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 707 395 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 707 322 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
 #X obj 707 250 list prepend;
 #X msg 707 274 read \$2 \$1-window-custom;
-#X obj 12 41 r \$0-window-sel;
+#X obj 12 31 r \$0-window-sel;
 #X obj 707 420 f;
 #X obj 707 444 sel 5;
 #X msg 707 468 5;
@@ -112,7 +110,7 @@
 #X connect 7 0 6 0;
 #X connect 8 0 7 0;
 #X connect 10 0 7 0;
-#X restore 71 80 pd display-name;
+#X restore 71 70 pd display-name;
 #X obj 17 337 selector~ 5;
 #X obj 707 197 openpanel;
 #X obj 707 173 r \$0-loadWindow;
@@ -126,73 +124,78 @@
 #X obj 370 400 s \$0-window-duration;
 #X obj 370 439 list prepend pass window duration;
 #X obj 370 463 s \$0-params;
+#X obj 174 206 loadbang;
+#X msg 174 230 1;
+#X obj 174 259 -~;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 1 0 8 0;
-#X connect 1 0 17 0;
-#X connect 1 0 52 0;
+#X connect 1 0 16 0;
+#X connect 1 0 51 0;
 #X connect 2 0 4 1;
 #X connect 3 0 4 0;
 #X connect 3 0 7 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
-#X connect 6 0 44 1;
+#X connect 6 0 43 1;
 #X connect 7 0 9 0;
-#X connect 7 0 10 0;
-#X connect 7 0 44 4;
+#X connect 7 0 43 4;
+#X connect 7 0 58 1;
 #X connect 8 0 7 1;
-#X connect 9 0 44 3;
-#X connect 10 0 44 2;
-#X connect 11 0 34 0;
-#X connect 12 0 40 1;
-#X connect 12 0 54 0;
-#X connect 12 0 55 0;
-#X connect 13 0 12 0;
-#X connect 14 0 0 0;
-#X connect 15 0 33 0;
-#X connect 15 1 16 0;
-#X connect 16 0 1 0;
-#X connect 16 1 44 0;
-#X connect 17 0 44 5;
-#X connect 19 0 25 0;
-#X connect 20 0 26 1;
-#X connect 21 0 20 0;
+#X connect 9 0 43 2;
+#X connect 10 0 33 0;
+#X connect 11 0 39 1;
+#X connect 11 0 53 0;
+#X connect 11 0 54 0;
+#X connect 12 0 11 0;
+#X connect 13 0 0 0;
+#X connect 14 0 32 0;
+#X connect 14 1 15 0;
+#X connect 15 0 1 0;
+#X connect 15 1 43 0;
+#X connect 16 0 43 5;
+#X connect 18 0 24 0;
+#X connect 19 0 25 1;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
 #X connect 22 0 23 0;
-#X connect 23 0 24 0;
-#X connect 24 0 29 0;
-#X connect 25 0 22 0;
-#X connect 26 0 27 0;
-#X connect 27 0 19 0;
-#X connect 28 0 15 0;
-#X connect 28 0 43 0;
+#X connect 23 0 28 0;
+#X connect 24 0 21 0;
+#X connect 25 0 26 0;
+#X connect 26 0 18 0;
+#X connect 27 0 14 0;
+#X connect 27 0 42 0;
+#X connect 28 0 29 0;
 #X connect 29 0 30 0;
-#X connect 30 0 31 0;
-#X connect 31 0 16 0;
-#X connect 32 0 29 1;
-#X connect 33 0 11 0;
-#X connect 34 0 35 0;
-#X connect 35 0 37 0;
-#X connect 36 0 35 1;
-#X connect 37 0 40 0;
-#X connect 37 1 36 0;
-#X connect 38 0 39 0;
-#X connect 38 1 34 1;
-#X connect 39 0 35 1;
-#X connect 40 0 38 0;
-#X connect 40 1 41 0;
-#X connect 41 0 42 0;
-#X connect 41 1 53 1;
-#X connect 42 0 53 0;
-#X connect 44 0 52 0;
-#X connect 45 0 26 0;
-#X connect 45 0 47 0;
-#X connect 46 0 45 0;
-#X connect 47 0 49 0;
-#X connect 48 0 26 0;
-#X connect 48 0 49 0;
-#X connect 50 0 51 0;
-#X connect 51 1 48 0;
-#X connect 55 0 56 0;
+#X connect 30 0 15 0;
+#X connect 31 0 28 1;
+#X connect 32 0 10 0;
+#X connect 33 0 34 0;
+#X connect 34 0 36 0;
+#X connect 35 0 34 1;
+#X connect 36 0 39 0;
+#X connect 36 1 35 0;
+#X connect 37 0 38 0;
+#X connect 37 1 33 1;
+#X connect 38 0 34 1;
+#X connect 39 0 37 0;
+#X connect 39 1 40 0;
+#X connect 40 0 41 0;
+#X connect 40 1 52 1;
+#X connect 41 0 52 0;
+#X connect 43 0 51 0;
+#X connect 44 0 25 0;
+#X connect 44 0 46 0;
+#X connect 45 0 44 0;
+#X connect 46 0 48 0;
+#X connect 47 0 25 0;
+#X connect 47 0 48 0;
+#X connect 49 0 50 0;
+#X connect 50 1 47 0;
+#X connect 54 0 55 0;
+#X connect 56 0 57 0;
+#X connect 57 0 58 0;
+#X connect 58 0 43 3;
 #X restore 12 589 pd window;
 #N canvas 674 0 683 676 smooth 0;
 #N canvas 0 50 450 250 (subpatch) 0;
@@ -317,74 +320,86 @@
 #X restore 12 565 pd smooth;
 #N canvas 681 321 450 300 grain 0;
 #N canvas 676 0 681 676 grain-duration 0;
-#X obj 194 157 symbol;
-#X msg 169 128 ms;
-#X msg 209 128 samp;
 #N canvas -8 -8 1366 685 unit-convert 0;
-#X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 96 182 spigot;
-#X obj 135 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 12 12 inlet;
-#X obj 12 128 f;
-#X obj 61 12 inlet;
-#X obj 61 70 list trim;
-#X msg 61 128 1;
-#X msg 222 128 1;
-#X obj 61 41 t a b, f 11;
-#X obj 61 99 route ms samp, f 26;
-#X msg 135 128 0;
-#X obj 22 240 expr $f1*$f2*0.001;
-#X obj 22 269 list prepend pass duration;
-#X obj 22 298 s \$0-params;
-#X obj 145 211 r \$0-sample-rate;
-#X connect 0 0 13 0;
+#X obj 62 182 spigot;
+#X obj 101 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 134 182 spigot;
+#X obj 173 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 52 12 inlet;
+#X obj 52 128 f;
+#X obj 101 12 inlet;
+#X msg 101 128 1;
+#X msg 173 128 1;
+#X msg 133 70 0;
+#X obj 62 240 expr $f1*$f2*0.001;
+#X obj 62 269 list prepend pass duration;
+#X obj 62 298 s \$0-params;
+#X obj 185 211 r \$0-sample-rate;
+#X obj 101 41 t f b;
+#X obj 10 41 r \$0-reload;
+#X obj 101 99 sel 0 1, f 21;
+#X text 59 339 en caso de estar usando la unidad de ms \, la duración
+de grano se convierte a samples y luego es enviada;
+#X text 257 257 comment;
+#X connect 0 0 10 0;
 #X connect 1 0 0 1;
-#X connect 2 0 14 0;
+#X connect 2 0 11 0;
 #X connect 3 0 2 1;
 #X connect 4 0 5 0;
 #X connect 5 0 0 0;
 #X connect 5 0 2 0;
-#X connect 6 0 10 0;
-#X connect 7 0 11 0;
-#X connect 8 0 1 0;
+#X connect 6 0 14 0;
+#X connect 7 0 1 0;
+#X connect 8 0 3 0;
 #X connect 9 0 3 0;
-#X connect 10 0 7 0;
-#X connect 10 1 12 0;
-#X connect 11 0 8 0;
-#X connect 11 1 9 0;
-#X connect 12 0 3 0;
-#X connect 12 0 1 0;
-#X connect 13 0 14 0;
-#X connect 14 0 15 0;
-#X connect 16 0 13 1;
-#X restore 12 254 pd unit-convert;
+#X connect 9 0 1 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 13 0 10 1;
+#X connect 14 0 16 0;
+#X connect 14 1 9 0;
+#X connect 15 0 5 0;
+#X connect 16 0 7 0;
+#X connect 16 1 8 0;
+#X restore 42 121 pd unit-convert;
 #N canvas 676 0 681 676 unit-display 0;
-#X obj 71 366 f;
-#X obj 71 240 spigot;
-#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 136 240 spigot;
-#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 229 167 0;
+#X obj 81 424 f;
+#X obj 81 298 spigot;
+#X obj 120 283 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 146 298 spigot;
+#X obj 185 283 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 239 225 0;
 #X obj 12 12 inlet;
-#X obj 71 167 f;
-#X obj 71 12 inlet;
-#X msg 110 167 1;
-#X msg 175 167 1;
-#X obj 71 424 s \$0-grain-duration-r;
-#X msg 71 395 set \$1;
-#X obj 71 298 expr $f1/($f2*0.001);
-#X obj 136 327 expr $f1*($f2*0.001);
-#X obj 71 196 change;
-#X obj 71 99 t b f b, f 23;
-#X obj 110 138 sel 1 2, f 19;
-#X obj 71 41 + 1;
-#X obj 71 70 change;
-#X obj 208 269 r \$0-sample-rate;
+#X obj 81 225 f;
+#X obj 81 41 inlet;
+#X msg 120 225 1;
+#X msg 185 225 1;
+#X obj 81 472 s \$0-grain-duration-r;
+#X msg 81 448 set \$1;
+#X obj 81 356 expr $f1/($f2*0.001);
+#X obj 146 385 expr $f1*($f2*0.001);
+#X obj 81 254 change;
+#X obj 81 157 t b f b, f 23;
+#X obj 120 186 sel 1 2, f 19;
+#X obj 81 99 + 1;
+#X obj 81 128 change;
+#X obj 218 327 r \$0-sample-rate;
+#X obj 81 70 spigot;
+#X text 59 12 duración de grano;
+#X text 128 41 unidad (0/1 = ms/samples);
+#X obj 349 254 symbol;
+#X msg 324 225 ms;
+#X msg 364 225 samp;
+#X msg 349 283 label \$1;
+#X obj 349 312 s \$0-grain-duration-unit-r;
+#X text 141 522 los efectos de este subparche son sólo gráficos \,
+se encarga de convertir el valor previo de la duración de grano al
+cambiar de unidad para actualizar el número en la interfaz \, y también
+cambia la label para que refleje el cambio de unidad;
 #X connect 0 0 12 0;
 #X connect 1 0 13 0;
 #X connect 2 0 1 1;
@@ -394,116 +409,121 @@
 #X connect 5 0 4 0;
 #X connect 6 0 7 1;
 #X connect 7 0 15 0;
-#X connect 8 0 18 0;
+#X connect 8 0 21 0;
 #X connect 9 0 2 0;
 #X connect 10 0 4 0;
 #X connect 12 0 11 0;
-#X connect 13 0 0 0;
 #X connect 13 0 7 1;
-#X connect 14 0 0 0;
+#X connect 13 0 0 0;
 #X connect 14 0 7 1;
+#X connect 14 0 0 0;
 #X connect 15 0 1 0;
 #X connect 15 0 3 0;
 #X connect 16 0 7 0;
 #X connect 16 1 17 0;
 #X connect 16 2 5 0;
 #X connect 17 0 9 0;
+#X connect 17 0 25 0;
 #X connect 17 1 10 0;
+#X connect 17 1 26 0;
 #X connect 18 0 19 0;
 #X connect 19 0 16 0;
 #X connect 20 0 13 1;
 #X connect 20 0 14 1;
-#X restore 22 186 pd unit-display;
-#X obj 12 147 r \$0-grain-duration;
-#X obj 169 70 r \$0-grain-duration-unit;
-#X obj 32 225 r \$0-reload;
-#X msg 194 186 label \$1;
-#X obj 169 99 sel 0 1, f 12;
-#X obj 194 215 s \$0-grain-duration-unit-r;
-#X connect 0 0 3 1;
-#X connect 0 0 8 0;
-#X connect 1 0 0 0;
+#X connect 20 0 21 1;
+#X connect 21 0 18 0;
+#X connect 24 0 27 0;
+#X connect 25 0 24 0;
+#X connect 26 0 24 0;
+#X connect 27 0 28 0;
+#X restore 42 72 pd unit-display;
+#X obj 12 33 r \$0-grain-duration;
+#X obj 174 33 r \$0-grain-duration-unit;
 #X connect 2 0 0 0;
-#X connect 5 0 3 0;
-#X connect 5 0 4 0;
-#X connect 6 0 9 0;
-#X connect 6 0 4 1;
-#X connect 7 0 3 0;
-#X connect 8 0 10 0;
-#X connect 9 0 1 0;
-#X connect 9 1 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 1;
+#X connect 3 0 0 1;
 #X restore 12 12 pd grain-duration;
 #N canvas -7 0 681 676 grain-rate 0;
-#X obj 168 177 symbol;
-#X msg 151 148 ms;
-#X msg 184 148 samp;
-#X obj 12 167 r \$0-grain-rate;
-#X obj 151 70 r \$0-grain-rate-unit;
-#X obj 32 245 r \$0-reload;
+#X obj 29 135 r \$0-grain-rate;
+#X obj 191 135 r \$0-grain-rate-unit;
 #N canvas -8 -8 1366 685 unit-convert 0;
-#X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 183 182 spigot;
-#X obj 222 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 12 12 inlet;
-#X obj 12 128 f;
-#X obj 61 12 inlet;
-#X obj 61 70 list trim;
-#X msg 61 128 1;
-#X msg 222 128 1;
-#X obj 61 41 t a b, f 11;
-#X obj 61 99 route ms samp, f 26;
-#X msg 135 128 0;
-#X obj 183 211 expr $f1/($f2*0.001);
-#X obj 22 250 list prepend rate;
-#X obj 22 274 s \$0-params;
-#X obj 320 182 r \$0-sample-rate;
-#X connect 0 0 14 0;
+#X obj 72 182 spigot;
+#X obj 111 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 161 182 spigot;
+#X obj 200 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 62 12 inlet;
+#X obj 62 128 f;
+#X obj 111 12 inlet;
+#X msg 111 128 1;
+#X msg 200 128 1;
+#X msg 143 70 0;
+#X obj 161 211 expr $f1/($f2*0.001);
+#X obj 72 250 list prepend rate;
+#X obj 72 274 s \$0-params;
+#X obj 298 182 r \$0-sample-rate;
+#X obj 111 99 sel 0 1, f 26;
+#X obj 111 41 t f b;
+#X obj 20 41 r \$0-reload;
+#X connect 0 0 11 0;
 #X connect 1 0 0 1;
-#X connect 2 0 13 0;
+#X connect 2 0 10 0;
 #X connect 3 0 2 1;
 #X connect 4 0 5 0;
 #X connect 5 0 0 0;
 #X connect 5 0 2 0;
-#X connect 6 0 10 0;
-#X connect 7 0 11 0;
-#X connect 8 0 1 0;
+#X connect 6 0 15 0;
+#X connect 7 0 1 0;
+#X connect 8 0 3 0;
 #X connect 9 0 3 0;
-#X connect 10 0 7 0;
-#X connect 10 1 12 0;
-#X connect 11 0 8 0;
-#X connect 11 1 9 0;
-#X connect 12 0 3 0;
-#X connect 12 0 1 0;
-#X connect 13 0 14 0;
-#X connect 14 0 15 0;
-#X connect 16 0 13 1;
-#X restore 12 274 pd unit-convert;
+#X connect 9 0 1 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 13 0 10 1;
+#X connect 14 0 7 0;
+#X connect 14 1 8 0;
+#X connect 15 0 14 0;
+#X connect 15 1 9 0;
+#X connect 16 0 5 0;
+#X restore 59 216 pd unit-convert;
 #N canvas -8 -8 1366 685 unit-display 0;
-#X obj 71 385 f;
-#X obj 71 259 spigot;
-#X obj 110 244 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 132 259 spigot;
-#X obj 171 244 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 229 186 0;
+#X obj 61 444 f;
+#X obj 61 318 spigot;
+#X obj 100 303 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 122 318 spigot;
+#X obj 161 303 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 212 245 0;
 #X obj 12 12 inlet;
-#X obj 71 186 f;
-#X obj 71 12 inlet;
-#X msg 110 186 1;
-#X msg 171 186 1;
-#X msg 71 414 set \$1;
-#X obj 71 317 expr $f1/($f2*0.001);
-#X obj 132 346 expr $f1*($f2*0.001);
-#X obj 71 443 s \$0-grain-rate-r;
-#X obj 71 99 t b f b, f 23;
-#X obj 71 41 + 1;
-#X obj 71 70 change;
-#X obj 110 157 sel 1 2, f 18;
-#X obj 208 288 r \$0-sample-rate;
+#X obj 61 245 f;
+#X obj 61 41 inlet;
+#X msg 100 245 1;
+#X msg 161 245 1;
+#X msg 61 473 set \$1;
+#X obj 61 376 expr $f1/($f2*0.001);
+#X obj 122 405 expr $f1*($f2*0.001);
+#X obj 61 502 s \$0-grain-rate-r;
+#X obj 61 157 t b f b, f 22;
+#X obj 61 99 + 1;
+#X obj 61 128 change;
+#X obj 100 186 sel 1 2, f 18;
+#X obj 198 346 r \$0-sample-rate;
+#X obj 61 70 spigot;
+#X text 67 550 los efectos de este subparche son sólo gráficos \,
+se encarga de convertir el valor previo de frecuencia de encendido
+automático de los granos al cambiar de unidad para actualizar el número
+en la interfaz \, y también cambia la label para que refleje el cambio
+de unidad;
+#X text 56 12 frecuencia de encendido;
+#X text 106 40 unidad de frecuencia (0/1 = ms/samples);
+#X obj 324 264 symbol;
+#X msg 307 235 ms;
+#X msg 340 235 samp;
+#X msg 324 293 label \$1;
+#X obj 324 322 s \$0-grain-rate-unit-r;
 #X connect 0 0 11 0;
 #X connect 1 0 12 0;
 #X connect 2 0 1 1;
@@ -514,7 +534,7 @@
 #X connect 6 0 7 1;
 #X connect 7 0 1 0;
 #X connect 7 0 3 0;
-#X connect 8 0 16 0;
+#X connect 8 0 20 0;
 #X connect 9 0 2 0;
 #X connect 10 0 4 0;
 #X connect 11 0 14 0;
@@ -528,63 +548,57 @@
 #X connect 16 0 17 0;
 #X connect 17 0 15 0;
 #X connect 18 0 9 0;
+#X connect 18 0 25 0;
 #X connect 18 1 10 0;
+#X connect 18 1 26 0;
 #X connect 19 0 12 1;
 #X connect 19 0 13 1;
-#X restore 22 206 pd unit-display;
-#X obj 465 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X msg 168 206 label \$1;
-#X obj 151 99 sel 0 1, f 10;
-#X obj 168 235 s \$0-grain-rate-unit-r;
-#X obj 465 138 r \$0-grain-arbit;
-#X obj 465 192 list prepend rate metro;
-#X obj 465 216 s \$0-params;
-#X connect 0 0 6 1;
-#X connect 0 0 9 0;
-#X connect 1 0 0 0;
-#X connect 2 0 0 0;
-#X connect 3 0 6 0;
-#X connect 3 0 7 0;
-#X connect 4 0 10 0;
-#X connect 4 0 7 1;
-#X connect 5 0 6 0;
-#X connect 8 0 13 0;
-#X connect 9 0 11 0;
-#X connect 10 0 1 0;
-#X connect 10 1 2 0;
-#X connect 12 0 8 0;
-#X connect 13 0 14 0;
+#X connect 19 0 20 1;
+#X connect 20 0 16 0;
+#X connect 24 0 27 0;
+#X connect 25 0 24 0;
+#X connect 26 0 24 0;
+#X connect 27 0 28 0;
+#X restore 59 167 pd unit-display;
+#X obj 465 186 list prepend rate metro;
+#X obj 465 210 s \$0-params;
+#X obj 465 162 r \$0-grain-auto;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 1 0 3 1;
+#X connect 1 0 2 1;
+#X connect 4 0 5 0;
+#X connect 6 0 4 0;
 #X restore 145 12 pd grain-rate;
 #X restore 12 469 pd grain;
 #X obj 566 216 hsl 199 10 0 100 0 0 \$0-playhead \$0-playhead-r empty
--2 -8 0 10 -260145 -262144 -183085 0 0;
-#X obj 456 225 nbx 5 15 1 1e+037 0 0 \$0-grain-rate \$0-grain-rate-r
-rate 0 -8 0 10 -260145 -262144 -133184 100 256;
-#X obj 563 301 nbx 5 15 -1e+037 1e+037 0 0 \$0-offset-playhead \$0-offset-playhead-r
-offset 0 -8 0 10 -260145 -262144 -133184 0 256;
+-2 -8 0 10 #fc80c0 #fcfcfc #b0b0b0 0 0;
+#X obj 456 225 nbx 5 15 1 1e+37 0 0 \$0-grain-rate \$0-grain-rate-r
+rate 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 563 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-playhead \$0-offset-playhead-r
+offset 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 563 333 nbx 3 15 0 100 0 0 \$0-offset-playhead-chance \$0-offset-playhead-chance-r
-chance 0 -8 0 10 -260145 -262144 -133184 0 256;
+chance 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 607 291 hradio 10 1 0 2 \$0-offset-playhead-unit \$0-offset-playhead-unit-r
-ms 13 18 0 10 -260145 -262144 -133184 0;
+ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X obj 500 215 hradio 10 1 0 2 \$0-grain-rate-unit \$0-grain-rate-unit-r
-ms 13 18 0 10 -260145 -262144 -133184 0;
-#X obj 477 254 cnv 15 30 6 empty \$0-text envelope: 1 2 0 10 -262144
--133184 0;
-#X obj 597 246 nbx 5 15 -1e+037 1e+037 0 0 \$0-speed \$0-speed-r %
-58 8 0 10 -260145 -262144 -133184 0 256;
-#X obj 477 265 nbx 5 15 0 1e+037 0 0 \$0-att \$0-att-r ms 58 8 0 10
--260145 -262144 -133184 0 256;
-#X obj 477 285 nbx 5 15 0 1e+037 0 0 \$0-dec \$0-dec-r ms 58 8 0 10
--260145 -262144 -133184 0 256;
-#X obj 477 305 nbx 5 15 0 100 0 0 \$0-sus \$0-sus-r % 58 8 0 10 -260145
--262144 -133184 100 256;
-#X obj 477 325 nbx 5 15 0 1e+037 0 0 \$0-rel \$0-rel-r ms 58 8 0 10
--260145 -262144 -133184 0 256;
-#X obj 456 265 cnv 15 15 15 empty \$0-text att 0 6 0 10 -262144 -133184
+ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
+#X obj 477 254 cnv 15 30 6 empty \$0-text envelope: 1 2 0 10 #fcfcfc
+#8080fc 0;
+#X obj 597 246 nbx 5 15 -1e+37 1e+37 0 0 \$0-speed \$0-speed-r % 58
+8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 477 265 nbx 5 15 0 1e+37 0 0 \$0-att \$0-att-r ms 58 8 0 10
+#fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 477 285 nbx 5 15 0 1e+37 0 0 \$0-dec \$0-dec-r ms 58 8 0 10
+#fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 477 305 nbx 5 15 0 100 0 0 \$0-sus \$0-sus-r % 58 8 0 10 #fc80c0
+#fcfcfc #8080fc 0 256;
+#X obj 477 325 nbx 5 15 0 1e+37 0 0 \$0-rel \$0-rel-r ms 58 8 0 10
+#fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 456 265 cnv 15 15 15 empty \$0-text att 0 6 0 10 #fcfcfc #8080fc
 0;
 #X obj 563 231 tgl 10 0 \$0-playhead-reset \$0-playhead-reset-r reset_on_noteon
-15 4 0 10 -260145 -262144 -133184 0 1;
+15 4 0 10 #fc80c0 #fcfcfc #8080fc 0 1;
 #N canvas -8 -8 1366 685 player 0;
 #X obj 12 196 list prepend;
 #X obj 12 225 list trim;
@@ -595,10 +609,6 @@ ms 13 18 0 10 -260145 -262144 -133184 0;
 #X msg 348 206 1;
 #X obj 309 322 spigot;
 #X obj 309 350 * 0.01;
-#X msg 429 294 set \$1;
-#X obj 429 322 s \$0-speed-slide-r;
-#X obj 569 263 r \$0-speed-slide-s;
-#X obj 569 322 s \$0-speed-r;
 #X obj 12 22 r \$0-playhead;
 #X obj 293 51 r \$0-play;
 #X obj 309 235 r \$0-speed;
@@ -614,49 +624,46 @@ ms 13 18 0 10 -260145 -262144 -133184 0;
 #X obj 12 254 list prepend pass playhead pos;
 #X obj 12 278 s \$0-params;
 #X connect 0 0 1 0;
-#X connect 1 0 25 0;
+#X connect 1 0 21 0;
 #X connect 2 0 0 1;
 #X connect 3 0 0 1;
-#X connect 4 0 17 0;
+#X connect 4 0 13 0;
 #X connect 4 1 6 0;
 #X connect 5 0 7 1;
-#X connect 5 0 23 0;
+#X connect 5 0 19 0;
 #X connect 6 0 7 1;
 #X connect 7 0 8 0;
-#X connect 8 0 23 0;
-#X connect 9 0 10 0;
-#X connect 11 0 12 0;
-#X connect 13 0 22 0;
-#X connect 14 0 20 0;
-#X connect 15 0 9 0;
-#X connect 15 0 17 0;
-#X connect 16 0 19 0;
-#X connect 17 0 7 0;
-#X connect 18 0 0 0;
-#X connect 19 0 18 0;
-#X connect 19 1 21 0;
-#X connect 20 0 5 0;
-#X connect 20 1 4 0;
-#X connect 21 0 2 0;
-#X connect 21 1 3 0;
-#X connect 22 0 18 0;
-#X connect 23 0 24 0;
-#X connect 25 0 26 0;
+#X connect 8 0 19 0;
+#X connect 9 0 18 0;
+#X connect 10 0 16 0;
+#X connect 11 0 13 0;
+#X connect 12 0 15 0;
+#X connect 13 0 7 0;
+#X connect 14 0 0 0;
+#X connect 15 0 14 0;
+#X connect 15 1 17 0;
+#X connect 16 0 5 0;
+#X connect 16 1 4 0;
+#X connect 17 0 2 0;
+#X connect 17 1 3 0;
+#X connect 18 0 14 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
 #X restore 12 517 pd player;
-#X obj 568 267 cnv 2 265 1 empty \$0-bar empty 20 12 0 14 -133184 -70738
+#X obj 568 267 cnv 2 265 1 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
 #X obj 779 222 cnv 15 58 28 empty \$0-waveformBg-r empty 20 12 0 14
--133184 -1 0;
+#8080fc #000000 0;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$0-win 2048 float 2;
 #X coords 0 1 2048 -1 60 30 1 0 0;
 #X restore 778 221 graph;
-#X obj 673 246 nbx 3 15 -1e+037 1e+037 0 0 \$0-sample-note \$0-sample-note-r
-note 41 7 0 10 -260145 -262144 -133184 48 256;
+#X obj 673 246 nbx 3 15 -1e+37 1e+37 0 0 \$0-sample-note \$0-sample-note-r
+note 41 7 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 566 365 hsl 62 10 0 100 0 0 \$0-offset-playhead-precision \$0-offset-playhead-precision-r
-precision -2 -8 0 10 -260145 -262144 -133184 0 0;
+precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X obj 727 152 bng 10 250 50 0 \$0-loadFile \$0-loadFile-r load 15
-4 0 10 -260145 -262144 -133184;
+4 0 10 #fc80c0 #fcfcfc #8080fc;
 #N canvas 0 50 450 300 offset 0;
 #N canvas -8 -8 1366 685 offset-pitch 0;
 #X obj 222 167 symbol;
@@ -665,11 +672,11 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X obj 222 70 r \$0-offset-pitch-unit;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 95 182 spigot;
-#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 22 12 inlet;
 #X obj 22 128 f;
 #X obj 71 12 inlet;
@@ -709,11 +716,11 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #N canvas 676 0 681 676 unit-display 0;
 #X obj 71 366 f;
 #X obj 71 240 spigot;
-#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 136 240 spigot;
-#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 229 167 0;
 #X obj 12 12 inlet;
 #X obj 71 167 f;
@@ -785,11 +792,11 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X obj 768 41 expr (100-$f1)*0.01;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 95 182 spigot;
-#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 22 12 inlet;
 #X obj 22 128 f;
 #X obj 71 12 inlet;
@@ -831,29 +838,30 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X obj 768 12 r \$0-offset-duration-precision;
 #X obj 464 12 r \$0-offset-duration-chance;
 #N canvas 676 0 681 676 unit-display 0;
-#X obj 71 366 f;
-#X obj 71 240 spigot;
-#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 136 240 spigot;
-#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 229 167 0;
+#X obj 71 395 f;
+#X obj 71 269 spigot;
+#X obj 110 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 136 269 spigot;
+#X obj 175 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 229 196 0;
 #X obj 12 12 inlet;
-#X obj 71 167 f;
+#X obj 71 196 f;
 #X obj 71 12 inlet;
-#X msg 110 167 1;
-#X msg 175 167 1;
-#X msg 71 395 set \$1;
-#X obj 71 298 expr $f1/($f2*0.001);
-#X obj 136 327 expr $f1*($f2*0.001);
-#X obj 71 196 change;
-#X obj 71 99 t b f b, f 23;
-#X obj 110 138 sel 1 2, f 19;
-#X obj 71 41 + 1;
-#X obj 71 70 change;
-#X obj 71 424 s \$0-offset-duration-r;
-#X obj 208 269 r \$0-sample-rate;
+#X msg 110 196 1;
+#X msg 175 196 1;
+#X msg 71 419 set \$1;
+#X obj 71 327 expr $f1/($f2*0.001);
+#X obj 136 356 expr $f1*($f2*0.001);
+#X obj 71 225 change;
+#X obj 71 128 t b f b, f 23;
+#X obj 110 167 sel 1 2, f 19;
+#X obj 71 70 + 1;
+#X obj 71 99 change;
+#X obj 71 443 s \$0-offset-duration-r;
+#X obj 208 298 r \$0-sample-rate;
+#X obj 71 41 spigot;
 #X connect 0 0 11 0;
 #X connect 1 0 12 0;
 #X connect 2 0 1 1;
@@ -863,14 +871,14 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X connect 5 0 4 0;
 #X connect 6 0 7 1;
 #X connect 7 0 14 0;
-#X connect 8 0 17 0;
+#X connect 8 0 21 0;
 #X connect 9 0 2 0;
 #X connect 10 0 4 0;
 #X connect 11 0 19 0;
-#X connect 12 0 0 0;
 #X connect 12 0 7 1;
-#X connect 13 0 0 0;
+#X connect 12 0 0 0;
 #X connect 13 0 7 1;
+#X connect 13 0 0 0;
 #X connect 14 0 1 0;
 #X connect 14 0 3 0;
 #X connect 15 0 7 0;
@@ -882,6 +890,8 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X connect 18 0 15 0;
 #X connect 20 0 12 1;
 #X connect 20 0 13 1;
+#X connect 20 0 21 1;
+#X connect 21 0 17 0;
 #X restore 32 157 pd unit-display;
 #X obj 243 215 s \$0-offset-duration-unit-r;
 #X msg 268 128 sp;
@@ -911,11 +921,11 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X obj 768 41 expr (100-$f1)*0.01;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 95 182 spigot;
-#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 22 12 inlet;
 #X obj 22 128 f;
 #X obj 71 12 inlet;
@@ -958,29 +968,30 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X obj 12 12 r \$0-offset-playhead;
 #X obj 215 215 s \$0-offset-playhead-unit-r;
 #N canvas 676 0 681 676 unit-display 0;
-#X obj 71 366 f;
-#X obj 71 240 spigot;
-#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 136 240 spigot;
-#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 229 167 0;
+#X obj 71 395 f;
+#X obj 71 269 spigot;
+#X obj 110 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 136 269 spigot;
+#X obj 175 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 229 196 0;
 #X obj 12 12 inlet;
-#X obj 71 167 f;
+#X obj 71 196 f;
 #X obj 71 12 inlet;
-#X msg 110 167 1;
-#X msg 175 167 1;
-#X msg 71 395 set \$1;
-#X obj 71 298 expr $f1/($f2*0.001);
-#X obj 136 327 expr $f1*($f2*0.001);
-#X obj 71 196 change;
-#X obj 71 99 t b f b, f 23;
-#X obj 110 138 sel 1 2, f 19;
-#X obj 71 41 + 1;
-#X obj 71 70 change;
-#X obj 71 424 s \$0-offset-playhead-r;
-#X obj 208 269 r \$0-sample-rate;
+#X msg 110 196 1;
+#X msg 175 196 1;
+#X msg 71 419 set \$1;
+#X obj 71 327 expr $f1/($f2*0.001);
+#X obj 136 356 expr $f1*($f2*0.001);
+#X obj 71 225 change;
+#X obj 71 128 t b f b, f 23;
+#X obj 110 167 sel 1 2, f 19;
+#X obj 71 70 + 1;
+#X obj 71 99 change;
+#X obj 71 443 s \$0-offset-playhead-r;
+#X obj 208 298 r \$0-sample-rate;
+#X obj 71 41 spigot;
 #X connect 0 0 11 0;
 #X connect 1 0 12 0;
 #X connect 2 0 1 1;
@@ -990,14 +1001,14 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X connect 5 0 4 0;
 #X connect 6 0 7 1;
 #X connect 7 0 14 0;
-#X connect 8 0 17 0;
+#X connect 8 0 21 0;
 #X connect 9 0 2 0;
 #X connect 10 0 4 0;
 #X connect 11 0 19 0;
-#X connect 12 0 0 0;
 #X connect 12 0 7 1;
-#X connect 13 0 0 0;
+#X connect 12 0 0 0;
 #X connect 13 0 7 1;
+#X connect 13 0 0 0;
 #X connect 14 0 1 0;
 #X connect 14 0 3 0;
 #X connect 15 0 7 0;
@@ -1009,6 +1020,8 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X connect 18 0 15 0;
 #X connect 20 0 12 1;
 #X connect 20 0 13 1;
+#X connect 20 0 21 1;
+#X connect 21 0 17 0;
 #X restore 32 186 pd unit-display;
 #X msg 240 128 sp;
 #X obj 768 70 list prepend pass offset playhead precis;
@@ -1033,8 +1046,8 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X restore 12 11 pd offset-playhead;
 #X restore 12 493 pd offset;
 #X obj 811 286 vsl 10 101 -100 0 0 0 \$0-out \$0-out-r out: -4 -9 0
-10 -260145 -262144 -133184 10000 1;
-#X obj 557 157 cnv 2 1 228 empty \$0-bar empty 20 12 0 14 -133184 -70738
+10 #fc80c0 #fcfcfc #8080fc 0 1;
+#X obj 557 157 cnv 2 1 228 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
 #X obj 12 252 *~;
 #N canvas 0 50 450 300 out 0;
@@ -1051,18 +1064,16 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X connect 5 0 2 0;
 #X restore 230 213 pd out gain;
 #X obj 212 252 *~;
-#X obj 456 365 tgl 10 0 \$0-legato \$0-legato-r legato 15 4 0 10 -260145
--262144 -133184 0 1;
-#X obj 508 350 tgl 10 0 \$0-steal \$0-steal-r steal 15 4 0 10 -260145
--262144 -133184 0 1;
+#X obj 456 365 tgl 10 0 \$0-legato \$0-legato-r legato 15 4 0 10 #fc80c0
+#fcfcfc #8080fc 0 1;
 #X obj 456 380 hradio 10 1 0 2 \$0-bendMode \$0-bendMode-r bend:_global
-25 4 0 10 -260145 -262144 -133184 0;
-#X obj 456 350 hradio 10 1 0 2 \$0-poly \$0-poly-r mono 25 4 0 10 -260145
--262144 -133184 0;
-#X obj 461 246 cnv 2 79 1 empty \$0-bar empty 20 12 0 14 -133184 -70738
+25 4 0 10 #fc80c0 #fcfcfc #8080fc 0;
+#X obj 456 350 hradio 10 1 0 2 \$0-poly \$0-poly-r mono 25 4 0 10 #fc80c0
+#fcfcfc #8080fc 0;
+#X obj 461 246 cnv 2 79 1 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
-#X obj 673 231 tgl 10 0 \$0-play \$0-play-r play 15 4 0 10 -260145
--262144 -133184 0 1;
+#X obj 673 231 tgl 10 0 \$0-play \$0-play-r play 15 4 0 10 #fc80c0
+#fcfcfc #8080fc 0 1;
 #N canvas -8 -8 1366 685 midi-input 0;
 #X obj 93 389 outlet;
 #X obj 93 129 - 1;
@@ -1079,11 +1090,11 @@ precision -2 -8 0 10 -260145 -262144 -133184 0 0;
 #X obj 12 129 - 1;
 #X obj 12 188 pack 0 0 0;
 #X obj 93 321 spigot;
-#X obj 132 306 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 132 306 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 12 321 spigot;
-#X obj 51 306 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 51 306 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 258 263 spigot;
 #X msg 297 244 1;
 #X msg 322 244 0;
@@ -1170,9 +1181,9 @@ global o last_note respectivamente;
 #X connect 37 0 9 0;
 #X restore 12 160 pd midi-input;
 #N canvas 676 0 681 676 voices 0;
-#X msg 32 164 1;
-#X msg 12 96 0;
-#X obj 32 125 delay 10;
+#X msg 12 135 1;
+#X msg 47 135 0;
+#X obj 12 106 delay 10;
 #X obj 112 106 symbol;
 #X msg 112 130 label \$1;
 #X obj 112 53 sel 0 1, f 12;
@@ -1180,39 +1191,34 @@ global o last_note respectivamente;
 #X msg 112 77 mono;
 #X msg 152 77 poly;
 #X obj 112 154 s \$0-poly-r;
-#X obj 12 222 targetall;
-#X obj 12 251 outlet;
+#X obj 12 275 outlet;
 #X obj 12 193 list prepend power;
-#X obj 12 61 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X text 14 298 forcefully turns off dsp of all voices \, 10 ms after
-it allows for it to be turned on again when necessary;
-#X connect 0 0 12 0;
-#X connect 1 0 12 0;
+#X obj 12 61 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X connect 0 0 11 0;
+#X connect 1 0 11 0;
 #X connect 2 0 0 0;
 #X connect 3 0 4 0;
 #X connect 4 0 9 0;
 #X connect 5 0 7 0;
 #X connect 5 1 8 0;
 #X connect 6 0 5 0;
-#X connect 6 0 13 0;
+#X connect 6 0 12 0;
 #X connect 7 0 3 0;
 #X connect 8 0 3 0;
-#X connect 10 0 11 0;
-#X connect 12 0 10 0;
-#X connect 13 0 1 0;
-#X connect 13 0 2 0;
-#X restore 121 150 pd voices;
+#X connect 11 0 10 0;
+#X connect 12 0 1 0;
+#X connect 12 0 2 0;
+#X restore 121 120 pd voices;
 #X f 11;
 #X obj 778 191 bng 10 250 50 0 \$0-loadWindow \$0-loadWindow-r load
-15 4 0 10 -260145 -262144 -133184;
-#X obj 456 200 tgl 10 0 \$0-grain-arbit \$0-grain-arbit-r autotrigger
-15 4 0 10 -260145 -262144 -133184 1 1;
+15 4 0 10 #fc80c0 #fcfcfc #8080fc;
+#X obj 456 200 tgl 10 0 \$0-grain-auto \$0-grain-auto-r autotrigger
+15 4 0 10 #fc80c0 #fcfcfc #8080fc 0 1;
 #X obj 12 131 inlet, f 7;
-#X obj 289 36 inlet;
+#X obj 310 36 inlet;
 #N canvas -8 -8 1366 685 route-inlet-messages 0;
 #X obj 12 12 inlet;
-#X msg 196 563 unrecognized message;
 #N canvas 676 0 681 676 state 0;
 #X obj 66 30 inlet;
 #X obj 66 59 t b b;
@@ -1227,20 +1233,20 @@ it allows for it to be turned on again when necessary;
 #X obj 147 112 r \$0-grain-rate-unit;
 #X obj 193 141 r \$0-grain-rate;
 #X obj 54 170 pack f f f f f, f 27;
-#X obj 240 83 r \$0-grain-arbit;
 #X msg 54 199 add2 grain duration unit \$1 \, addcomma \, add2 grain
 duration \$2 \, addcomma \, add2 grain rate unit \$3 \, addcomma \,
 add2 grain rate \$4 \, addcomma \, add2 grain auto \$5 \, addcomma
 ;
+#X obj 240 83 r \$0-grain-auto;
 #X connect 0 0 7 0;
 #X connect 1 0 0 0;
 #X connect 3 0 0 1;
 #X connect 4 0 7 1;
 #X connect 5 0 7 2;
 #X connect 6 0 7 3;
-#X connect 7 0 9 0;
-#X connect 8 0 7 4;
-#X connect 9 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X connect 9 0 7 4;
 #X restore 469 175 pd grain;
 #N canvas 581 299 669 300 sample 0;
 #X obj 54 60 f;
@@ -1385,27 +1391,25 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #N canvas 355 286 669 300 global 0;
 #X obj 54 60 f;
 #X obj 54 7 inlet;
-#X obj 54 252 outlet;
+#X obj 54 258 outlet;
 #X obj 72 36 r \$0-poly;
-#X obj 91 83 r \$0-legato;
-#X obj 128 112 r \$0-steal;
-#X obj 240 112 r \$0-out;
-#X obj 165 141 r \$0-bendMode;
-#X obj 54 170 pack f f f f f f, f 27;
-#X obj 202 83 r \$0-bendRange;
-#X msg 54 199 add2 poly \$1 \, addcomma \, add2 legato \$2 \, addcomma
-\, add2 steal \$3 \, addcomma \, add2 bendMode \$4 \, addcomma \, add2
-bendRange \$5 \, addcomma \, add2 out \$6;
+#X obj 90 89 r \$0-legato;
+#X obj 198 89 r \$0-out;
+#X obj 126 118 r \$0-bendMode;
+#X obj 162 147 r \$0-bendRange;
+#X obj 54 176 pack f f f f f, f 21;
+#X msg 54 205 add2 poly \$1 \, addcomma \, add2 legato \$2 \, addcomma
+\, add2 bendMode \$3 \, addcomma \, add2 bendRange \$4 \, addcomma
+\, add2 out \$5;
 #X connect 0 0 8 0;
 #X connect 1 0 0 0;
 #X connect 3 0 0 1;
 #X connect 4 0 8 1;
-#X connect 5 0 8 2;
-#X connect 6 0 8 5;
+#X connect 5 0 8 4;
+#X connect 6 0 8 2;
 #X connect 7 0 8 3;
-#X connect 8 0 10 0;
-#X connect 9 0 8 4;
-#X connect 10 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 2 0;
 #X restore 66 175 pd global;
 #X connect 0 0 1 0;
 #X connect 1 0 8 0;
@@ -1423,9 +1427,8 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X connect 8 5 4 0;
 #X connect 9 0 3 0;
 #X connect 10 0 3 0;
-#X restore 944 344 pd state;
+#X restore 962 354 pd state;
 #X obj 317 129 route att dec sus rel, f 45;
-#X obj 196 592 print granola INLET;
 #N canvas 162 243 847 300 grain 0;
 #X obj 12 12 inlet;
 #X obj 212 265 s \$0-error;
@@ -1440,41 +1443,41 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X msg 470 109 100;
 #X obj 228 109 route float unit;
 #X obj 470 51 loadbang;
-#X obj 145 230 s \$0-grain-arbit-r;
 #X obj 66 172 != 0;
 #X obj 145 172 != 0;
 #X obj 282 177 != 0;
 #X obj 12 70 route duration rate auto;
 #X msg 400 109 1;
-#X connect 0 0 17 0;
+#X obj 145 230 s \$0-grain-auto-r;
+#X connect 0 0 16 0;
 #X connect 2 0 3 0;
-#X connect 2 1 14 0;
+#X connect 2 1 13 0;
 #X connect 2 2 1 0;
 #X connect 7 0 10 0;
 #X connect 7 0 9 0;
-#X connect 7 0 18 0;
+#X connect 7 0 17 0;
 #X connect 7 1 8 0;
-#X connect 8 0 14 0;
-#X connect 8 0 16 0;
+#X connect 8 0 13 0;
+#X connect 8 0 15 0;
 #X connect 9 0 3 0;
 #X connect 10 0 5 0;
 #X connect 11 0 5 0;
-#X connect 11 1 16 0;
+#X connect 11 1 15 0;
 #X connect 11 2 1 0;
 #X connect 12 0 7 0;
-#X connect 14 0 4 0;
-#X connect 15 0 13 0;
-#X connect 16 0 6 0;
-#X connect 17 0 2 0;
-#X connect 17 1 11 0;
-#X connect 17 2 15 0;
-#X connect 17 3 1 0;
-#X connect 18 0 15 0;
+#X connect 13 0 4 0;
+#X connect 14 0 18 0;
+#X connect 15 0 6 0;
+#X connect 16 0 2 0;
+#X connect 16 1 11 0;
+#X connect 16 2 14 0;
+#X connect 16 3 1 0;
+#X connect 17 0 14 0;
 #X restore 12 100 pd grain;
-#X obj 196 519 r \$0-error;
-#X obj 196 543 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 997 373 s \$0-error;
+#X obj 30 572 r \$0-error;
+#X obj 30 596 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 1018 383 s \$0-error;
 #N canvas 12 71 847 300 sample 0;
 #X obj 12 12 inlet;
 #X obj 289 225 s \$0-error;
@@ -1609,9 +1612,8 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X obj 473 158 s \$0-sus-r;
 #X obj 551 158 s \$0-rel-r;
 #X obj 629 246 s \$0-poly-r;
-#X obj 681 275 s \$0-legato-r;
-#X obj 734 246 s \$0-steal-r;
-#X obj 905 275 s \$0-out-r;
+#X obj 684 275 s \$0-legato-r;
+#X obj 906 275 s \$0-out-r;
 #X obj 395 158 s \$0-dec-r;
 #X msg 760 93 0;
 #X msg 503 93 100;
@@ -1628,53 +1630,63 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X connect 1 2 4 0;
 #X restore 256 129 pd load;
 #X obj 760 64 loadbang;
-#X obj 629 187 route poly legato steal bendMode bendRange out state
-, f 53;
-#X obj 786 275 s \$0-bendMode-r;
-#X msg 859 93 2;
-#X obj 839 246 s \$0-bendRange;
+#X obj 795 275 s \$0-bendMode-r;
+#X msg 869 93 2;
+#X obj 851 246 s \$0-bendRange;
 #X obj 629 216 != 0;
-#X obj 681 216 != 0;
-#X obj 734 216 != 0;
-#X obj 786 216 != 0;
-#X connect 0 0 22 0;
-#X connect 1 0 4 0;
-#X connect 3 0 12 0;
-#X connect 3 1 19 0;
-#X connect 3 2 13 0;
-#X connect 3 3 14 0;
-#X connect 3 4 25 0;
-#X connect 6 0 7 0;
-#X connect 7 0 1 0;
-#X connect 20 0 29 0;
-#X connect 20 0 31 0;
-#X connect 20 0 32 0;
-#X connect 20 0 30 0;
-#X connect 20 0 18 0;
-#X connect 21 0 13 0;
-#X connect 22 0 5 0;
-#X connect 22 1 9 0;
-#X connect 22 2 10 0;
-#X connect 22 3 11 0;
-#X connect 22 4 23 0;
-#X connect 22 5 3 0;
-#X connect 24 0 20 0;
-#X connect 24 0 21 0;
-#X connect 24 0 27 0;
-#X connect 25 0 29 0;
-#X connect 25 1 30 0;
-#X connect 25 2 31 0;
-#X connect 25 3 32 0;
-#X connect 25 4 28 0;
-#X connect 25 5 18 0;
-#X connect 25 6 2 0;
-#X connect 25 7 8 0;
-#X connect 27 0 28 0;
-#X connect 29 0 15 0;
-#X connect 30 0 16 0;
-#X connect 31 0 17 0;
-#X connect 32 0 26 0;
-#X restore 356 94 pd route-inlet-messages;
+#X obj 684 216 != 0;
+#X obj 795 216 != 0;
+#X text 125 570 cuando la abstracción reciba un mensaje desconocido
+\, se imprimirá un mensaje haciéndolo saber;
+#X msg 30 616 se recibió un mensaje desconocido;
+#X obj 30 645 print granola~;
+#X text 630 495 acá se manipulan los mensajes de control de la abstracción
+\; se utiliza el objeto [route] para enviar el valor del mensaje a
+su respectivo [send] \, que enviará el valor a su correspondiente
+objeto de control en la interfaz (slider \, número \, etc... si lo
+hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
+\; acá se inicializan también los valores por defecto de dichos parámetros
+;
+#X obj 740 216 != 0;
+#X obj 740 246 s \$0-anticlick;
+#X obj 629 187 route poly legato anticlick bendMode bendRange out state
+;
+#X connect 0 0 19 0;
+#X connect 2 0 10 0;
+#X connect 2 1 16 0;
+#X connect 2 2 11 0;
+#X connect 2 3 12 0;
+#X connect 2 4 34 0;
+#X connect 4 0 5 0;
+#X connect 5 0 29 0;
+#X connect 17 0 25 0;
+#X connect 17 0 27 0;
+#X connect 17 0 15 0;
+#X connect 18 0 11 0;
+#X connect 19 0 3 0;
+#X connect 19 1 7 0;
+#X connect 19 2 8 0;
+#X connect 19 3 9 0;
+#X connect 19 4 20 0;
+#X connect 19 5 2 0;
+#X connect 21 0 17 0;
+#X connect 21 0 18 0;
+#X connect 21 0 23 0;
+#X connect 23 0 24 0;
+#X connect 25 0 13 0;
+#X connect 26 0 14 0;
+#X connect 27 0 22 0;
+#X connect 29 0 30 0;
+#X connect 32 0 33 0;
+#X connect 34 0 25 0;
+#X connect 34 1 26 0;
+#X connect 34 2 32 0;
+#X connect 34 3 27 0;
+#X connect 34 4 24 0;
+#X connect 34 5 15 0;
+#X connect 34 6 1 0;
+#X connect 34 7 6 0;
+#X restore 377 94 pd route-inlet-messages;
 #N canvas -8 -8 1366 685 sample 0;
 #X obj 476 181 soundfiler;
 #X obj 476 210 t b f;
@@ -1704,18 +1716,18 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X msg 476 152 read -resize \$1 \$2-sampleL \$2-sampleR;
 #X obj 106 147 r \$0-window-duration;
 #X obj 508 292 s \$0-sample-duration;
-#X obj 543 210 s \$0-sample-rate;
+#X obj 593 210 s \$0-sample-rate;
 #X obj 88 89 r \$0-sample-duration;
 #X obj 46 60 r \$0-sample-rate;
 #X obj 806 73 list prepend pass sample note;
 #X obj 528 321 list prepend pass sample duration;
-#X obj 573 239 list prepend pass sample rate;
-#X obj 573 263 s \$0-params;
+#X obj 623 239 list prepend pass sample rate;
+#X obj 623 263 s \$0-params;
 #X obj 528 345 s \$0-params;
 #X obj 806 102 s \$0-params;
+#X msg 543 210 \$1;
 #X connect 0 0 1 0;
-#X connect 0 1 28 0;
-#X connect 0 1 33 0;
+#X connect 0 1 37 0;
 #X connect 1 0 2 0;
 #X connect 1 0 6 0;
 #X connect 1 0 9 0;
@@ -1734,8 +1746,8 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X connect 13 0 24 0;
 #X connect 15 0 18 0;
 #X connect 16 0 14 0;
-#X connect 17 0 14 0;
 #X connect 17 0 24 0;
+#X connect 17 0 14 0;
 #X connect 18 1 17 0;
 #X connect 21 0 9 0;
 #X connect 22 0 24 1;
@@ -1744,277 +1756,345 @@ bendRange \$5 \, addcomma \, add2 out \$6;
 #X connect 25 0 0 0;
 #X connect 26 0 8 1;
 #X connect 29 0 4 1;
-#X connect 29 0 8 0;
 #X connect 29 0 10 1;
+#X connect 29 0 8 0;
 #X connect 30 0 3 0;
 #X connect 31 0 36 0;
 #X connect 32 0 35 0;
 #X connect 33 0 34 0;
+#X connect 37 0 28 0;
+#X connect 37 0 33 0;
 #X restore 12 541 pd sample;
-#X obj 289 65 route bang;
+#X obj 310 65 route bang;
 #X obj 12 310 outlet~;
 #X obj 212 310 outlet~;
 #X obj 305 281 r \$0-state;
 #X obj 305 310 outlet;
-#X obj 456 285 cnv 15 15 15 empty \$0-text dec 0 6 0 10 -262144 -133184
+#X obj 456 285 cnv 15 15 15 empty \$0-text dec 0 6 0 10 #fcfcfc #8080fc
 0;
-#X obj 456 305 cnv 15 15 15 empty \$0-text sus 0 6 0 10 -262144 -133184
+#X obj 456 305 cnv 15 15 15 empty \$0-text sus 0 6 0 10 #fcfcfc #8080fc
 0;
-#X obj 456 325 cnv 15 15 15 empty \$0-text rel 0 6 0 10 -262144 -133184
+#X obj 456 325 cnv 15 15 15 empty \$0-text rel 0 6 0 10 #fcfcfc #8080fc
 0;
-#X obj 478 154 cnv 15 30 6 empty \$0-text grain: 1 2 0 10 -262144 -133184
+#X obj 478 154 cnv 15 30 6 empty \$0-text grain: 1 2 0 10 #fcfcfc #8080fc
 0;
 #X obj 500 168 hradio 10 1 0 2 \$0-grain-duration-unit \$0-grain-duration-unit-r
-ms 13 18 0 10 -260145 -262144 -133184 0;
-#X obj 788 157 cnv 15 30 6 empty \$0-text window: 1 2 0 10 -262144
--133184 0;
-#X obj 563 246 cnv 15 15 15 empty \$0-text speed 0 6 0 10 -262144 -133184
+ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
+#X obj 788 157 cnv 15 30 6 empty \$0-text window: 1 2 0 10 #fcfcfc
+#8080fc 0;
+#X obj 563 246 cnv 15 15 15 empty \$0-text speed 0 6 0 10 #fcfcfc #8080fc
 0;
-#X obj 576 276 cnv 15 30 6 empty \$0-text playhead: 1 2 0 10 -262144
--133184 0;
-#X obj 604 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 -262144 -133184
+#X obj 576 276 cnv 15 30 6 empty \$0-text playhead: 1 2 0 10 #fcfcfc
+#8080fc 0;
+#X obj 604 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 #fcfcfc #8080fc
 0;
-#X obj 635 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 -133184 -70738
+#X obj 635 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
-#X obj 641 301 nbx 5 15 -1e+037 1e+037 0 0 \$0-offset-pitch \$0-offset-pitch-r
-offset 0 -8 0 10 -260145 -262144 -133184 0 256;
+#X obj 641 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-pitch \$0-offset-pitch-r
+offset 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 641 333 nbx 3 15 0 100 0 0 \$0-offset-pitch-chance \$0-offset-pitch-chance-r
-chance 0 -8 0 10 -260145 -262144 -133184 0 256;
+chance 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 685 291 hradio 10 1 0 2 \$0-offset-pitch-unit \$0-offset-pitch-unit-r
-m 13 18 0 10 -260145 -262144 -133184 0;
+m 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X obj 644 365 hsl 62 10 0 100 0 0 \$0-offset-pitch-precision \$0-offset-pitch-precision-r
-precision -2 -8 0 10 -260145 -262144 -133184 0 0;
-#X obj 654 276 cnv 15 30 6 empty \$0-text pitch: 1 2 0 10 -262144 -133184
+precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
+#X obj 654 276 cnv 15 30 6 empty \$0-text pitch: 1 2 0 10 #fcfcfc #8080fc
 0;
-#X obj 682 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 -262144 -133184
+#X obj 682 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 #fcfcfc #8080fc
 0;
-#X obj 714 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 -133184 -70738
+#X obj 714 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
-#X obj 721 301 nbx 5 15 -1e+037 1e+037 0 0 \$0-offset-duration \$0-offset-duration-r
-offset 0 -8 0 10 -260145 -262144 -133184 0 256;
+#X obj 721 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-duration \$0-offset-duration-r
+offset 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 721 333 nbx 3 15 0 100 0 0 \$0-offset-duration-chance \$0-offset-duration-chance-r
-chance 0 -8 0 10 -260145 -262144 -133184 0 256;
+chance 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 765 291 hradio 10 1 0 2 \$0-offset-duration-unit \$0-offset-duration-unit-r
-ms 13 18 0 10 -260145 -262144 -133184 0;
+ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X obj 724 365 hsl 62 10 0 100 0 0 \$0-offset-duration-precision \$0-offset-duration-precision-r
-precision -2 -8 0 10 -260145 -262144 -133184 0 0;
-#X obj 734 276 cnv 15 30 6 empty \$0-text duration: 1 2 0 10 -262144
--133184 0;
-#X obj 762 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 -262144 -133184
+precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
+#X obj 734 276 cnv 15 30 6 empty \$0-text duration: 1 2 0 10 #fcfcfc
+#8080fc 0;
+#X obj 762 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 #fcfcfc #8080fc
 0;
-#X obj 772 157 cnv 2 1 99 empty \$0-bar empty 20 12 0 14 -133184 -70738
+#X obj 772 157 cnv 2 1 99 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
-#X obj 778 205 cnv 15 55 11 empty empty empty 20 12 0 14 -262144 -66577
+#X obj 778 205 cnv 15 55 11 empty empty empty 20 12 0 14 #fcfcfc #404040
 0;
 #X obj 778 206 tgl 10 0 \$0-window-smooth \$0-window-smooth-r smooth
-15 4 0 10 -260145 -262144 -133184 0 1;
-#X obj 456 178 nbx 5 15 1 1e+037 0 0 \$0-grain-duration \$0-grain-duration-r
-durat. 0 -8 0 10 -260145 -262144 -133184 300 256;
+15 4 0 10 #fc80c0 #fcfcfc #8080fc 0 1;
+#X obj 456 178 nbx 5 15 1 1e+37 0 0 \$0-grain-duration \$0-grain-duration-r
+durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X obj 778 165 hradio 10 1 0 6 \$0-window-sel \$0-window-sel-r hann
-0 17 0 10 -260145 -262144 -133184 1;
+0 17 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X obj 566 166 cnv 15 198 48 empty \$0-waveformBg-r empty 20 12 0 14
--133184 -1 0;
+#8080fc #000000 0;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$0-sample-vis 2048 float 2;
 #X coords 0 1 2048 -1 200 50 1 0 0;
 #X restore 565 165 graph;
-#X obj 565 151 cnv 12 90 12 empty \$0-text sample: 1 5 0 10 -262144
--133184 0;
-#X obj 793 279 cnv 2 1 106 empty \$0-bar empty 20 12 0 14 -133184 -70738
+#X obj 565 151 cnv 12 90 12 empty \$0-text sample: 1 5 0 10 #fcfcfc
+#8080fc 0;
+#X obj 793 279 cnv 2 1 106 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
 #N canvas -8 -8 1366 685 help 0;
-#X obj 38 360 cnv 15 624 336 empty empty empty 20 12 0 14 -203904 -66577
+#X obj 38 371 cnv 15 624 386 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
-#X msg 48 376 sample play \$1;
-#X text 157 369 moves the playhead through the sample at the set speed
-or stops it (nonzero and 0 respectively);
-#X msg 48 410 sample playhead \$1;
-#X text 186 403 position of the playhead (0-100 as a percentage of
-the sample's length);
-#X msg 48 444 sample playhead reset \$1;
-#X text 228 437 when turned on (nonzero) it will start playing the
-sample from the set playhead position for each noteon \, resulting
-in independent playheads when in polyphonic mode \, and when turned
-off (0) every single voice will follow the same global playhead which
-can be moved while the voices are active and it will affect all of
-them (although they can achieve playhead independency via the offset
-feature);
-#X msg 48 549 sample speed \$1;
-#X text 165 542 speed at which the playhead will move through the sample
-(as a percentage \, where 100 corresponds to the sample's original
-speed);
-#X msg 48 599 sample note \$1;
-#X text 158 592 if the sample were tuned \, used to set the note (midi)
-so that the resulting sig~ matches the notes that are sent into it
-\, although it can be used for other perhaps more creative purposes
-;
-#X msg 48 666 load sample \$1;
-#X text 157 666 path to sample;
-#X obj 38 707 cnv 15 560 142 empty empty empty 20 12 0 14 -203904 -66577
+#X msg 48 387 sample play \$1;
+#X msg 48 423 sample playhead \$1;
+#X msg 48 459 sample playhead reset \$1;
+#X msg 48 607 sample speed \$1;
+#X msg 48 671 sample note \$1;
+#X msg 48 728 load sample \$1;
+#X obj 38 768 cnv 15 567 191 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
-#X msg 48 723 window shape \$1;
-#X text 165 716 window shape (0-5 \, straight|hann|tri|tridown|triup|custom
-respectively);
-#X msg 48 757 window smooth \$1;
-#X text 171 750 when turned on (nonzero) it will apply a second window
-with small ramps at the beggining and the end in order to smooth shapes
-such as straight or tridown \, when turned off (0) clicking may occur
-;
-#X msg 48 820 load window \$1;
-#X text 158 820 path to custom window shape;
-#X obj 38 860 cnv 15 596 193 empty empty empty 20 12 0 14 -203904 -66577
+#X msg 48 784 window shape \$1;
+#X msg 48 820 window smooth \$1;
+#X msg 48 905 load window \$1;
+#X obj 38 970 cnv 15 603 279 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
-#X msg 48 893 offset N \$1;
-#X text 137 893 offset value;
-#X msg 48 922 offset N unit \$1;
-#X text 171 915 read offset value as ms or samps/semitones or cents
-depending on the parameter(nonzero and 0 respectively);
-#X msg 48 956 offset N chance \$1;
-#X text 185 949 probability (as a percentage) that every new grain
-applies the set offset to its corresponding parameter before getting
-triggered;
-#X msg 48 1006 offset N precision \$1;
-#X text 207 999 the offset will be a random number between (the parameter's
-inaltered value + precision% of the offset value) AND (the parameter's
-inaltered value + the offset value);
-#X text 46 869 ***where N stands for playhead \, pitch or duration***
-;
-#X obj 38 1064 cnv 15 498 307 empty empty empty 20 12 0 14 -203904
--66577 0;
-#X msg 48 1074 att \$1;
-#X text 102 1074 attack time in ms;
-#X msg 48 1103 dec \$1;
-#X text 102 1103 decay time in ms;
-#X text 102 1161 release time in ms;
-#X msg 48 1161 rel \$1;
-#X msg 48 1132 sus \$1;
-#X msg 48 1190 poly \$1;
-#X text 109 1183 sets polyphonic (16 voices) or monophonic mode (nonzero
-and 0 respectively);
-#X msg 48 1224 legato \$1;
-#X text 123 1224 legato on and off (nonzero and 0 respectively);
-#X text 116 1253 legato on and off (nonzero and 0 respectively);
-#X msg 48 1253 steal \$1;
-#X msg 48 1282 bendMode \$1;
-#X text 137 1275 pitch bend mode global or last note (nonzero and 0
-respectively);
-#X msg 48 1316 bendRange \$1;
-#X text 143 1316 pitch bend range \, positive and negative \, in semitones
-;
-#X msg 48 1345 out \$1;
-#X text 102 1345 output gain in dB;
-#X obj 38 150 cnv 15 588 199 empty empty empty 20 12 0 14 -203904 -66577
+#X msg 48 1003 offset N \$1;
+#X msg 48 1032 offset N unit \$1;
+#X msg 48 1082 offset N chance \$1;
+#X msg 48 1132 offset N precision \$1;
+#X obj 38 1260 cnv 15 491 325 empty empty empty 20 12 0 14 #c4c4fc
+#404040 0;
+#X msg 48 1270 att \$1;
+#X msg 48 1299 dec \$1;
+#X msg 48 1357 rel \$1;
+#X msg 48 1328 sus \$1;
+#X msg 48 1386 poly \$1;
+#X msg 48 1420 legato \$1;
+#X msg 48 1454 steal \$1;
+#X msg 48 1488 bendMode \$1;
+#X msg 48 1522 bendRange \$1;
+#X msg 48 1556 out \$1;
+#X obj 38 150 cnv 15 609 210 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
 #X msg 48 160 grain duration \$1;
-#X text 179 160 length of each grain in ms/samps;
 #X msg 48 189 grain duration unit \$1;
-#X text 213 182 read grain duration value as ms or samples (nonzero
-and 0 respectively);
 #X msg 48 223 grain rate \$1;
-#X text 150 223 rate at which the grains will be triggered in ms/samps
-;
 #X msg 48 252 grain rate unit \$1;
-#X text 185 245 read grain rate value as ms or samples (nonzero and
-0 respectively);
 #X text 35 126 INLET 1:;
 #X text 35 23 INLET 0:;
-#X obj 38 47 cnv 15 281 63 empty empty empty 20 12 0 14 -203904 -66577
+#X obj 38 47 cnv 15 281 63 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
 #X msg 48 57 \$1 \$2;
 #X msg 48 81 bend \$1;
-#X text 109 81 pitch bend (from 0 to 16383);
-#X text 95 57 midi note and velocity pairs;
-#X obj 784 109 cnv 15 148 39 empty empty empty 20 12 0 14 -204800 -66577
+#X obj 723 47 cnv 15 169 39 empty empty empty 20 12 0 14 #c4fcfc #404040
 0;
-#X text 781 85 OUTLET 0:;
-#X obj 794 119 sig~;
-#X text 834 119 left channel;
-#X obj 953 109 cnv 15 154 39 empty empty empty 20 12 0 14 -204800 -66577
+#X text 720 23 OUTLET 0:;
+#X obj 733 57 sig~;
+#X obj 903 47 cnv 15 154 39 empty empty empty 20 12 0 14 #c4fcfc #404040
 0;
-#X obj 963 119 sig~;
-#X text 950 85 OUTLET 1:;
-#X text 1002 119 right channel;
-#X obj 784 188 cnv 15 491 105 empty empty empty 20 12 0 14 -204800
--66577 0;
-#X text 781 164 OUTLET 2:;
-#X msg 794 204 set foo;
-#X text 855 197 where foo stands for a list of every parameter properly
-formatted to be sent back into the abstraction \, in other words plug
-this outlet to a message and when the [state( mesage is received it
-will save to it the current state of the abstraction (keep in mind
-that the message box will be emptied before writing to it);
-#X obj 784 333 cnv 15 441 91 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 913 57 sig~;
+#X text 900 23 OUTLET 1:;
+#X obj 723 126 cnv 15 499 105 empty empty empty 20 12 0 14 #c4fcfc
+#404040 0;
+#X text 720 102 OUTLET 2:;
+#X msg 733 142 set foo;
+#X obj 723 484 cnv 15 441 105 empty empty empty 20 12 0 14 #fcc4c4
+#404040 0;
+#X obj 38 1596 cnv 15 497 39 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
-#X text 783 309 WARNING:;
-#X obj 38 1382 cnv 15 350 39 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 1392 state \$1;
-#X text 115 1392 save current state of the abstraction;
-#X obj 48 320 bang;
-#X text 87 320 triggers a single grain;
-#X text 150 279 turns the automatic triggering of grains based on the
-set rate off and on (nonzero and 0 respectively);
-#X msg 48 286 grain auto \$1;
-#X text 791 342 -when in polyphonic mode (especially if using very
-small rate values) cpu usage may increase quite a bit with each voice
-\, technically it allows up to 16 voices but in the pc i developed
-this with (i5-4440) the buffer tends to overflow before using them
-all;
-#X text 102 1132 sustain value (0-100 as a percentage);
-#X connect 1 0 3 0;
-#X connect 3 0 5 0;
-#X connect 5 0 7 0;
-#X connect 7 0 9 0;
-#X connect 9 0 11 0;
-#X connect 14 0 16 0;
-#X connect 16 0 18 0;
-#X connect 21 0 23 0;
-#X connect 23 0 25 0;
-#X connect 25 0 27 0;
-#X connect 31 0 33 0;
-#X connect 33 0 37 0;
-#X connect 36 0 38 0;
-#X connect 37 0 36 0;
-#X connect 38 0 40 0;
-#X connect 40 0 43 0;
-#X connect 43 0 44 0;
-#X connect 44 0 46 0;
-#X connect 46 0 48 0;
-#X connect 51 0 53 0;
-#X connect 53 0 55 0;
-#X connect 55 0 57 0;
-#X connect 57 0 86 0;
-#X connect 62 0 63 0;
-#X connect 86 0 83 0;
-#X restore 12 12 pd help;
-#X msg 289 150 all bang;
-#N canvas 0 50 450 300 params 0;
-#X obj 165 135 r \$0-params;
-#X obj 165 198 targetall;
-#X obj 165 237 outlet;
-#X obj 276 87 loadbang;
-#X obj 276 111 f \$0;
-#X obj 276 135 list prepend pass ind;
-#X connect 0 0 1 0;
+#X msg 48 1606 state \$1;
+#X obj 48 331 bang;
+#X msg 48 288 grain auto \$1;
+#X text 773 57 canal izquierdo;
+#X text 952 57 canal derecho;
+#X text 95 57 mensaje midi (nota y velocity);
+#X text 109 81 pitch bend (de 0 a 16383);
+#X text 115 1606 escribir un mensaje con el estado actual de la abstracción
+;
+#X text 794 135 donde foo representa una lista de todos los parámetros
+correctamente formateados para ser enviados de vuelta a la abstracción
+\, en otras palabras \, conectar esta salida a un mensaje y cuando
+la abstracción reciba el mensaje [state(] \, se guardará el estado
+actual de la abstracción (tener en cuenta que el mensaje se vaciará
+antes de escribir en él);
+#X text 213 182 usar como unidad para la duración de los granos ms
+o samples (distinto de cero y 0 respectivamente);
+#X text 179 160 duración de los granos;
+#X text 185 245 usar como unidad para la frecuencia de los granos ms
+o samples (distinto de cero y 0 respectivamente);
+#X text 150 223 frecuencia con la que se encenderán los granos;
+#X text 87 331 enciende un solo grano;
+#X text 150 281 activa o desactiva el encendido automático de los
+granos en base a la frecuencia dada (distinto de cero y 0 respectivamente)
+;
+#X text 102 1270 tiempo de ataque en ms;
+#X text 102 1299 tiempo de decaimiento en ms;
+#X text 102 1328 valor de sostenimiento (0-100 como porcentaje);
+#X text 102 1357 tiempo de relajamiento en ms;
+#X text 109 1379 elegir entre modo polifónico de 16 voces o monofónico
+(distinto de cero y 0 respectivamente) (por defecto 0);
+#X text 102 1556 ganancia de salida en dB (por defecto 0);
+#X text 143 1515 rango del pitch bend (hacia arriba o hacia abajo)
+en semitonos (por defecto 2);
+#X text 137 1481 pitch bend afecta a todas las notas o sólo a la última
+(distinto de cero y 0 respectivamente);
+#X text 123 1413 usar o no voice-stealing (distinto de cero y 0 respectivamente)
+;
+#X text 116 1447 usar o no voice-stealing (distinto de cero y 0 respectivamente)
+;
+#X text 157 380 mueve el cabezal a través del sample a la velocidad
+dada o lo detiene (distinto de cero y 0 respectivamente);
+#X text 186 416 posición del cabezal (0-100 como porcentaje de la
+duración total del sample);
+#X text 228 452 cuando esté activado (distinto de cero) cada noteon
+comenzará a reproducir el sample desde la posición del cabezal establecida
+(mover la posición del cabezal no cambiará la/s voz/es actualmente
+sonando \, sólo determinará de qué punto del sample partirá la
+siguiente nota) \, y cuando esté desactivado (0) la/s voz/es seguirá/n
+un mismo cabezal que puede moverse mientras las voces suenan y afectarlas
+(aunque dependan de un mismo cabezal aun pueden lograr la independencia
+del cabezal a través de la función de offset playhead);
+#X text 165 600 velocidad a la cual el cabezal se desplazará por el
+sample (como porcentaje \, donde 100 representa la velocidad original
+del sample) (acepta valores negativos \, reproduciendo el sample en
+orden contrario);
+#X text 158 664 si el sample estuviera afinado \, sirve para determinar
+su nota (midi) de modo que la altura del sonido resultante coincida
+con las notas que son recibidas \, aunque se puede usar para otros
+propósitos quizás más creativos;
+#X text 158 728 ruta del sample;
+#X text 165 777 forma de la ventana (de 0 a 5: straight \, hann \,
+tri \, tridown \, triup y custom respectivamente);
+#X text 158 905 ruta de la forma custom de la ventana (debe durar 2048
+samples \, si la duración excede sólo se tomarán los primeros 2048
+samples para conformar la ventana);
+#X text 46 979 ***donde N representa playhead \, pitch o duration***
+;
+#X text 137 1003 valor del offset;
+#X text 171 1025 usar comoo unuidad para el offset ms o samples/semitonos
+o cents dependiendo del parámetro (distinto de cero y 0 respectivamente)
+;
+#X text 186 1075 probabilidad (0-100 como porcentaje) de que a cada
+grano se le aplique el offset al parámetro correspondiente (cabezal
+\, altura o duración) antes de encenderse;
+#X text 722 460 CUIDADO:;
+#X text 207 1125 el offset a aplicar será un número random entre
+[valor original del parámetro + precision% del valor del offset] y
+[valor original del parámetro + valor del offset] \, por ejemplo si
+se da un pitch offset de 2 semitonos y una precisión de 100% el resultado
+será siempre de 2 semitonos por encima de la altura original \, si
+se baja la precisión a 50% el resultado será cualquier altura entre
+1 y 2 semitonos por encima de la original;
+#X text 171 813 cuando esté activado (distinto de cero) se aplicará
+una segunda ventana con pequeñas rampas desde y hacia 0 al comienzo
+y al final para suavizar formas de ventana que no terminen o empiecen
+en 0 \, cuando esté desactivado (0) pueden producirse clicks debido
+a saltos de ganancia producidos por la forma de ventana;
+#X text 730 493 -cuando se está en modo polifónico (especialmente
+usando valores pequeños en grain rate) el uso de la CPU puede aumentar
+notablemente con cada voz \, técnicamente permite hasta 16 voces pero
+en la PC con la que desarrollé la abstracción (i5-4440) el buffer
+tiende a desbordarse antes de usarlos todos;
+#X obj 723 311 cnv 15 441 119 empty empty empty 20 12 0 14 #fcc4c4
+#404040 0;
+#X text 722 287 DEPENDENCIAS:;
+#X text 730 320 -para que la abstracción funcione debe instalarse
+la abstracción [adsr~] (https://github.com/teaecetyrannis/pd-adsr)
+y también se requiere del objeto [selector~] que puede encontrarse
+en la librería cyclone (https://github.com/porres/pd-cyclone) que
+puede conseguirse fácilmente mediante deken (plugin incluído en pd
+para descargar externals);
 #X connect 1 0 2 0;
+#X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
-#X connect 5 0 1 0;
-#X restore 212 150 pd params;
+#X connect 5 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X connect 19 0 21 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 31 0 50 0;
+#X connect 35 0 36 0;
+#X connect 50 0 49 0;
+#X restore 1286 648 pd help;
+#X msg 310 160 all bang;
+#N canvas 0 50 936 300 params 0;
+#X obj 165 135 r \$0-params;
+#X obj 165 251 outlet;
+#X obj 276 87 loadbang;
+#X obj 276 111 f \$0;
+#X obj 276 135 list prepend pass id;
+#X text 468 40 las instancias de grano de cada voz necesitan acceso
+al sample \, a la ventana y a la segunda ventana de suavizado \, todas
+estas tablas utilizan la variable \$0 (número único que sirve para
+identificar este parche) en su nombre para evitar conflictos y poder
+\, por ejemplo \, correr dos instancias del sintetizador sin problemas
+\; esto trae otro problema ya que los granos son instancias generadas
+por un objeto [clone] cada una con su valor único de la variable \$0
+\, por lo que es necesario enviar el valor desde aquí a través de
+todas las instancias de voces para así llegar a todas las instancias
+de grano dentro de ellas \, donde se construyen dinámicamente los
+nombres de las tablas y asi los granos pueden leer de ellas;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X restore 212 120 pd params;
+#X text 925 473 sintetizador granular estocástico \, cuenta con: \;
+-polifonía de hasta 16 voces \, cada una con 16 granos independientes
+a disposición que pueden sonar en simultáneo \; -capacidad de encender
+automáticamente los granos a determinada frecuencia y/o encenderlos
+arbitrariamente mediante bangs externos \; -offsets para el cabezal
+de reproducción \, altura y duración de cada grano que pueden utilizarse
+en diversas combinaciones para generar comportamientos complejos en
+base a aleatoriedad controlada \; \; dylan martin;
+#X text 93 458 en los subparches de la izquierda \, entre otras cosas
+\, se reciben los parámetros de la interfaz \, se los opera matemáticamente
+de ser necesario \, y luego se envían a todas las instancias del [clone]
+de voces \; el prefijo pass indica que el parámetro no se utiliza
+en la abstracción de voz sino que pasa por ella sólo para llegar
+a la abstracción de grano;
+#X text 910 41 el sintetizador está estructurado de la siguiente manera:
+\; -este es el parche principal \, donde sucede todo lo relacionado
+a la interfaz y la operación de parámetros \, el ruteo de mensajes
+de entrada y la entrada de mensajes midi \; -los mensajes midi y ciertos
+parámetros (modo mono/polifónico y adsr) son enviados a un objeto
+[clone] que instancia 16 voces que a su vez cuentan con un objeto [clone]
+que instancia 16 granos que constituyen el sonido de la voz (para más
+información revisar [pd help] dentro de [granola-voice~]) \; -el resto
+de los parámetros atraviesan las instancias de las voces para llegar
+a las instancias de los granos;
+#N canvas 0 50 450 300 targetall 0;
+#X obj 12 185 outlet;
+#X obj 12 156 list trim;
+#X obj 12 132 list prepend all;
+#X obj 12 103 inlet;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X restore 212 150 pd targetall;
 #X obj 12 189 clone granola-voice~ 16, f 29;
-#X connect 29 0 47 0;
-#X connect 30 0 29 1;
-#X connect 30 0 31 1;
-#X connect 31 0 48 0;
-#X connect 38 0 86 0;
-#X connect 39 0 86 1;
-#X connect 42 0 38 0;
-#X connect 43 0 46 0;
-#X connect 46 0 84 0;
-#X connect 46 1 44 0;
-#X connect 49 0 50 0;
-#X connect 84 0 86 1;
-#X connect 85 0 86 1;
-#X connect 86 0 29 0;
-#X connect 86 1 31 0;
-#X coords 0 -1 1 1 394 256 1 450 143;
+#X connect 28 0 45 0;
+#X connect 29 0 28 1;
+#X connect 29 0 30 1;
+#X connect 30 0 46 0;
+#X connect 36 0 88 0;
+#X connect 37 0 87 0;
+#X connect 40 0 36 0;
+#X connect 41 0 44 0;
+#X connect 44 0 82 0;
+#X connect 44 1 42 0;
+#X connect 47 0 48 0;
+#X connect 82 0 88 1;
+#X connect 83 0 87 0;
+#X connect 87 0 88 1;
+#X connect 88 0 28 0;
+#X connect 88 1 30 0;
+#X coords 0 -1 1 1 394 256 2 450 143;

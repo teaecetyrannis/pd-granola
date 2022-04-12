@@ -1,82 +1,113 @@
-#N canvas 529 0 798 729 12;
+#N canvas -8 -8 1366 685 12;
 #X obj 27 285 - 1;
 #X obj 27 314 pack 0 0 0;
 #X obj 27 256 poly 16 1, f 10;
 #X obj 27 227 unpack;
 #X msg 27 198 1 1;
-#X obj 27 576 *~;
-#X obj 27 605 outlet~;
-#X obj 222 576 *~;
-#X obj 222 605 outlet~;
-#X obj 229 46 inlet;
-#X obj 240 343 adsr~, f 24;
+#X obj 27 611 *~;
+#X obj 27 640 outlet~;
+#X obj 222 611 *~;
+#X obj 222 640 outlet~;
+#X obj 175 6 inlet;
+#X obj 240 381 adsr~, f 31;
 #X obj 173 256 unpack f f;
-#X obj 240 285 / 127;
+#X obj 240 280 / 127;
 #X obj 173 285 spigot;
 #X obj 106 372 targetall;
-#N canvas 676 0 681 676 switch 0;
-#X obj 82 12 inlet~;
-#X obj 82 99 snapshot~;
-#X obj 205 16 loadbang;
-#X obj 205 45 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 12 12 r \$0-vel;
-#X floatatom 82 131 5 0 0 0 - - -;
-#X msg 12 188 1;
-#X msg 82 188 0;
-#X obj 82 159 sel 0;
-#X obj 12 227 outlet;
-#X obj 82 70 *~ 1;
-#X obj 138 12 inlet;
-#X obj 205 70 metro 1000;
-#X obj 138 41 t b f;
-#X text 26 284 inlet 0: envelope signal of this voice \, if it reaches
-0 dsp is turned off;
-#X connect 0 0 10 0;
+#N canvas -8 -8 1366 685 switch 0;
+#X obj 93 12 inlet~;
+#X obj 93 89 snapshot~;
+#X obj 170 40 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 12 162 1;
+#X msg 93 167 0;
+#X obj 93 143 sel 0;
+#X obj 170 60 metro 500;
+#X obj 12 225 change;
+#X obj 12 89 sel 0;
+#X obj 93 196 spigot, f 9;
+#X msg 178 167 1;
+#X msg 153 167 0;
+#X obj 178 138 delay 10;
+#X obj 12 249 outlet;
+#X text 16 342 este subparche recibe todas la envolvente \, si dicha
+señal es igual a 0 entonces el dsp de esta voz se apaga hasta recibir
+la próxima nota midi;
+#X obj 44 113 t b b;
+#X text 244 150 cuando se recibe un mensaje de noteon \, el dsp se
+enciende y luego de un delay de 10 ms se permite el apagado;
+#X obj 12 12 r \$0-dsp;
+#X msg 170 16 0;
+#X msg 195 16 1;
+#X connect 0 0 1 0;
 #X connect 1 0 5 0;
-#X connect 2 0 3 0;
-#X connect 3 0 12 0;
-#X connect 4 0 6 0;
-#X connect 5 0 8 0;
-#X connect 6 0 9 0;
-#X connect 7 0 9 0;
-#X connect 8 0 7 0;
-#X connect 10 0 1 0;
-#X connect 11 0 13 0;
-#X connect 12 0 1 0;
-#X connect 13 0 12 0;
-#X connect 13 1 10 1;
-#X restore 254 372 pd switch;
-#X obj 254 401 switch~;
-#X obj 260 309 s \$0-vel;
-#X obj 314 149 t f f;
+#X connect 2 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 9 0;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 7 0 13 0;
+#X connect 8 0 19 0;
+#X connect 8 1 15 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 1;
+#X connect 11 0 9 1;
+#X connect 12 0 10 0;
+#X connect 15 0 3 0;
+#X connect 15 1 12 0;
+#X connect 15 1 11 0;
+#X connect 15 1 18 0;
+#X connect 17 0 8 0;
+#X connect 18 0 2 0;
+#X connect 19 0 2 0;
+#X restore 254 410 pd switch;
+#X obj 254 439 switch~;
+#X obj 260 157 t f f;
 #X obj 106 198 spigot;
 #X obj 106 227 route bend;
-#X obj 185 503 targetall;
-#X obj 185 431 change;
-#X obj 185 455 sel 1;
-#X obj 27 169 spigot;
+#X obj 346 533 targetall;
+#X obj 326 461 change;
+#X obj 326 485 sel 1;
 #X obj 106 314 f;
 #X obj 106 256 t b f;
 #X obj 106 343 +, f 5;
 #X obj 106 169 inlet;
-#X obj 229 120 route bang adsr power rate pass;
-#X msg 185 479 power bang;
+#X obj 175 31 route bang adsr power rate pass;
+#X msg 326 509 power bang;
 #X obj 27 130 metro;
-#X obj 27 101 route metro float;
-#N canvas 841 259 450 558 help 0;
-#X text 12 12 inlet 0: midi note on/off messages;
-#X text 14 55 inlet 1: receives multiple messages (bang to trigger
-a grain at will \, adsr messages \, power on/off to turn off dsp when
-changing polyphony settings [this is also done for all unused voices
-\, which also stops from triggering its respective grains to avoid
-all unnecessary calculations] \, rate at which the grains will be triggered
-or stop being triggered when arbitrary mode is on \, and all of the
-messages that are passed to the grains);
-#X restore 9 12 pd help;
-#X obj 27 527 clone granola-grain~ 16;
+#X obj 27 91 route metro float;
+#N canvas 638 86 450 555 help 0;
+#X text 12 12 inlet 0: mensajes midi (nota + velocity);
+#X text 12 39 inlet 1: recibe múltiples mensajes (bang enciende un
+grano \, adsr trae parámetros de envolvente \, power apaga todas las
+notas al cambiar entre mono y poly además de evitar que la inlet 0
+reciba notas [power 0] y vuelve a permitir que la inlet 0 reciba notas
+[power 1] \, rate activa o desactiva el encendido automático de los
+granos [rate metro 1/0] y a qué frecuencia [rate float] \, y todos
+los mensajes con el prefijo pass son enviados directamente a todas
+las instancias de granos del [clone]);
+#X text 12 189 la velocity de la nota midi se utiliza para disparar
+la envolvente de la voz \, mientras que la altura de la nota es enviada
+a todos los granos \; para encender los granos uso el falso mensaje
+de nota midi [1 1( en conjunción con el objeto [poly] para así poder
+iterar ordenadamente las instancias de granos del [clone] \, luego
+esa "entrada midi" se convierte en un simple bang que le indica al
+grano que debe encenderse;
+#X text 31 361 (para más información revisar [pd help] dentro de
+[granola-grain~]);
+#X restore 720 629 pd help;
+#X text 373 570 esta abstracción está pensada para ser instanciada
+por un objeto [clone] y representa una voz del sintetizador \, está
+constituida por una serie de granos producidos por otro [clone];
+#X obj 260 186 sel 0;
+#X msg 260 215 0;
+#X obj 240 328 s \$0-vel;
+#X obj 240 357 r \$0-vel;
+#X obj 240 304 t f f, f 10;
+#X obj 307 328 s \$0-dsp;
+#X obj 27 562 clone granola-grain~ 16;
 #X connect 0 0 1 0;
-#X connect 1 0 34 0;
+#X connect 1 0 39 0;
 #X connect 2 0 0 0;
 #X connect 2 1 1 1;
 #X connect 2 2 1 2;
@@ -85,42 +116,44 @@ messages that are passed to the grains);
 #X connect 4 0 3 0;
 #X connect 5 0 6 0;
 #X connect 7 0 8 0;
-#X connect 9 0 29 0;
+#X connect 9 0 27 0;
 #X connect 10 0 7 1;
 #X connect 10 0 5 1;
 #X connect 10 0 15 0;
 #X connect 11 0 13 0;
-#X connect 11 1 12 0;
 #X connect 11 1 13 1;
-#X connect 11 1 17 0;
-#X connect 12 0 10 0;
-#X connect 13 0 25 0;
-#X connect 14 0 34 1;
+#X connect 11 1 12 0;
+#X connect 12 0 37 0;
+#X connect 13 0 23 0;
+#X connect 14 0 39 1;
 #X connect 15 0 16 0;
-#X connect 15 0 22 0;
-#X connect 15 0 24 1;
-#X connect 18 0 15 1;
-#X connect 18 1 19 1;
-#X connect 19 0 20 0;
-#X connect 20 0 26 0;
-#X connect 20 1 11 0;
-#X connect 21 0 34 2;
-#X connect 22 0 23 0;
-#X connect 23 0 30 0;
-#X connect 24 0 4 0;
-#X connect 25 0 27 0;
-#X connect 26 0 25 0;
-#X connect 26 1 27 1;
-#X connect 27 0 14 0;
-#X connect 28 0 19 0;
-#X connect 29 0 24 0;
-#X connect 29 1 10 1;
-#X connect 29 2 18 0;
-#X connect 29 3 32 0;
-#X connect 29 4 21 0;
-#X connect 30 0 21 0;
-#X connect 31 0 24 0;
-#X connect 32 0 31 0;
-#X connect 32 1 31 1;
-#X connect 34 0 5 0;
-#X connect 34 1 7 0;
+#X connect 15 0 21 0;
+#X connect 17 0 33 0;
+#X connect 17 1 18 1;
+#X connect 18 0 19 0;
+#X connect 19 0 24 0;
+#X connect 19 1 11 0;
+#X connect 20 0 39 2;
+#X connect 21 0 22 0;
+#X connect 22 0 28 0;
+#X connect 23 0 25 0;
+#X connect 24 0 23 0;
+#X connect 24 1 25 1;
+#X connect 25 0 14 0;
+#X connect 26 0 18 0;
+#X connect 27 0 4 0;
+#X connect 27 1 10 1;
+#X connect 27 2 17 0;
+#X connect 27 3 30 0;
+#X connect 27 4 20 0;
+#X connect 28 0 20 0;
+#X connect 29 0 4 0;
+#X connect 30 0 29 0;
+#X connect 30 1 29 1;
+#X connect 33 0 34 0;
+#X connect 34 0 37 0;
+#X connect 36 0 10 0;
+#X connect 37 0 35 0;
+#X connect 37 1 38 0;
+#X connect 39 0 5 0;
+#X connect 39 1 7 0;
