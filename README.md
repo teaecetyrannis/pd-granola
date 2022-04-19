@@ -12,4 +12,4 @@ En el subparche `[pd help]` dentro de granola~.pd se encuentra toda la informaci
 	
 
 ## créditos
-[Pure Data](https://github.com/pure-data/pure-data) por Miller Puckette y muchxs más.
+- [Pure Data](https://github.com/pure-data/pure-data) por Miller Puckette y muchxs más.
