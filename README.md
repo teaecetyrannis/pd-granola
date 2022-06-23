@@ -1,4 +1,4 @@
-# granola
+# granola~
 Sintetizador granular estocástico, desarrollado en [Pure Data](https://github.com/pure-data/pure-data).
 
 
