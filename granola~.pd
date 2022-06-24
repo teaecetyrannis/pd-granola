@@ -33,7 +33,7 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X connect 13 0 11 0;
 #X connect 14 0 13 0;
 #X restore 12 445 pd adsr;
-#N canvas 418 6 1366 685 window 0;
+#N canvas 21 0 1366 685 window 0;
 #X obj 13 32 loadbang;
 #X obj 321 341 soundfiler;
 #X obj 402 269 f \$0;
@@ -54,8 +54,6 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X msg 549 249 straight;
 #X msg 566 273 hann;
 #X msg 583 297 tri;
-#X msg 600 321 tridown;
-#X msg 617 345 triup;
 #X msg 634 369 custom;
 #X msg 321 317 read \$2 \$1-custom;
 #X msg 13 61 512;
@@ -74,7 +72,6 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X obj 323 439 t b b;
 #X msg 355 468 0;
 #X obj 51 531 *~ 128;
-#X obj 323 594 tabwrite~ \$0-win-vis;
 #X obj 773 456 s \$0-window-sel-r;
 #X obj 773 408 list prepend label;
 #X obj 773 432 list trim;
@@ -221,7 +218,7 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X coords 0 1 514 0 60 30 1 0 0;
 #X restore 806 97 graph;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array \$0-tridown 515 float 1;
+#X array \$0-down 515 float 1;
 #A 0 0.00195312 1 0.998047 0.996094 0.994141 0.992188 0.990234 0.988281
 0.986328 0.984375 0.982422 0.980469 0.978516 0.976562 0.974609 0.972656
 0.970703 0.96875 0.966797 0.964844 0.962891 0.960938 0.958984 0.957031
@@ -291,7 +288,7 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X coords 0 1 514 0 60 30 1 0 0;
 #X restore 806 150 graph;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array \$0-triup 515 float 1;
+#X array \$0-up 515 float 1;
 #A 0 0.998047 0 0.00195312 0.00390625 0.00585938 0.0078125 0.00976562
 0.0117188 0.0136719 0.015625 0.0175781 0.0195312 0.0214844 0.0234375
 0.0253906 0.0273438 0.0292969 0.03125 0.0332031 0.0351562 0.0371094
@@ -384,11 +381,14 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X array \$0-custom 515 float 0;
 #X coords 0 1 514 0 60 30 1 0 0;
 #X restore 896 150 graph;
-#X connect 0 0 24 0;
+#X obj 323 594 tabwrite~ \$0-win;
+#X msg 600 321 down;
+#X msg 617 345 up;
+#X connect 0 0 22 0;
 #X connect 2 0 4 1;
-#X connect 2 0 29 1;
+#X connect 2 0 27 1;
 #X connect 3 0 2 0;
-#X connect 4 0 23 0;
+#X connect 4 0 21 0;
 #X connect 5 0 4 0;
 #X connect 5 0 7 0;
 #X connect 6 0 5 0;
@@ -398,56 +398,56 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X connect 10 0 11 0;
 #X connect 11 1 8 0;
 #X connect 13 0 14 0;
-#X connect 15 0 36 0;
+#X connect 15 0 34 0;
 #X connect 16 0 17 0;
 #X connect 16 1 18 0;
 #X connect 16 2 19 0;
-#X connect 16 3 20 0;
-#X connect 16 4 21 0;
-#X connect 16 5 22 0;
-#X connect 17 0 25 0;
-#X connect 17 0 29 0;
-#X connect 17 0 42 0;
-#X connect 18 0 25 0;
-#X connect 18 0 29 0;
-#X connect 18 0 42 0;
-#X connect 19 0 25 0;
-#X connect 19 0 29 0;
-#X connect 19 0 42 0;
-#X connect 20 0 25 0;
-#X connect 20 0 29 0;
-#X connect 20 0 42 0;
-#X connect 21 0 25 0;
-#X connect 21 0 29 0;
-#X connect 21 0 42 0;
-#X connect 22 0 25 0;
-#X connect 22 0 29 0;
-#X connect 22 0 42 0;
-#X connect 23 0 1 0;
-#X connect 24 0 12 0;
-#X connect 24 0 13 0;
-#X connect 25 0 26 0;
-#X connect 27 0 40 0;
-#X connect 28 0 27 0;
-#X connect 29 0 28 0;
-#X connect 30 0 34 0;
-#X connect 31 0 39 0;
-#X connect 32 0 34 1;
-#X connect 32 0 39 1;
-#X connect 32 0 45 0;
-#X connect 33 0 35 0;
-#X connect 34 0 44 0;
-#X connect 35 0 30 0;
-#X connect 36 0 37 0;
-#X connect 36 1 16 0;
-#X connect 37 0 40 0;
-#X connect 37 1 38 0;
-#X connect 38 0 31 1;
-#X connect 39 0 27 0;
-#X connect 42 0 43 0;
-#X connect 43 0 41 0;
-#X connect 44 0 31 0;
-#X connect 45 0 44 1;
+#X connect 16 3 50 0;
+#X connect 16 4 51 0;
+#X connect 16 5 20 0;
+#X connect 17 0 23 0;
+#X connect 17 0 27 0;
+#X connect 17 0 39 0;
+#X connect 18 0 23 0;
+#X connect 18 0 27 0;
+#X connect 18 0 39 0;
+#X connect 19 0 23 0;
+#X connect 19 0 27 0;
+#X connect 19 0 39 0;
+#X connect 20 0 23 0;
+#X connect 20 0 27 0;
+#X connect 20 0 39 0;
+#X connect 21 0 1 0;
+#X connect 22 0 12 0;
+#X connect 22 0 13 0;
+#X connect 23 0 24 0;
+#X connect 25 0 49 0;
+#X connect 26 0 25 0;
+#X connect 27 0 26 0;
+#X connect 28 0 32 0;
+#X connect 29 0 37 0;
+#X connect 30 0 32 1;
+#X connect 30 0 37 1;
+#X connect 30 0 42 0;
+#X connect 31 0 33 0;
+#X connect 32 0 41 0;
+#X connect 33 0 28 0;
+#X connect 34 0 35 0;
+#X connect 34 1 16 0;
+#X connect 35 0 49 0;
+#X connect 35 1 36 0;
+#X connect 36 0 29 1;
+#X connect 37 0 25 0;
+#X connect 39 0 40 0;
+#X connect 40 0 38 0;
+#X connect 41 0 29 0;
+#X connect 42 0 41 1;
+#X connect 50 0 23 0;
+#X connect 50 0 27 0;
+#X connect 50 0 39 0;
+#X connect 51 0 23 0;
+#X connect 51 0 27 0;
+#X connect 51 0 39 0;
 #X restore 12 589 pd window;
 #N canvas 674 0 683 676 smooth 0;
 #X obj 12 71 r \$0-window-smooth;
@@ -793,7 +793,7 @@ ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X obj 779 222 cnv 15 58 28 empty \$0-waveformBg-r empty 20 12 0 14
 #8080fc #000000 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array \$0-win-vis 128 float 4;
+#X array \$0-win 128 float 4;
 #X coords 0 1 127 0 60 30 1 0 0;
 #X restore 778 221 graph;
 #X obj 673 246 nbx 3 15 -1e+37 1e+37 0 0 \$0-sample-note \$0-sample-note-r
@@ -1206,7 +1206,7 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #fcfcfc #8080fc 0 1;
 #X obj 456 380 hradio 10 1 0 2 \$0-bendMode \$0-bendMode-r bend:_global
 25 4 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 456 350 hradio 10 1 0 2 \$0-poly \$0-poly-r poly 25 4 0 10 #fc80c0
+#X obj 456 350 hradio 10 1 0 2 \$0-poly \$0-poly-r mono 25 4 0 10 #fc80c0
 #fcfcfc #8080fc 0;
 #X obj 461 246 cnv 2 79 1 empty \$0-bar empty 20 12 0 14 #8080fc #444444
 0;
@@ -1959,7 +1959,7 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 0;
 #X obj 456 178 nbx 5 15 1 1e+37 0 0 \$0-grain-duration \$0-grain-duration-r
 durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 778 165 hradio 10 1 0 6 \$0-window-sel \$0-window-sel-r tridown
+#X obj 778 165 hradio 10 1 0 6 \$0-window-sel \$0-window-sel-r hann
 0 17 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X obj 566 166 cnv 15 198 48 empty \$0-waveformBg-r empty 20 12 0 14
 #8080fc #000000 0;
