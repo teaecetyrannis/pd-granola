@@ -3,8 +3,9 @@ Sintetizador granular estocástico, desarrollado en [Pure Data](https://github.c
 
 
 ## instalación
-Descargar el archivo granola.zip de la [última release](https://github.com/teaecetyrannis/pd-granola/releases), extraer y agregar la carpeta contenedora al path de pure data. Ya se puede iniciar desde cualquier parche creando el objeto `[granola~]`.
-<br><br>También depende de los objetos [`[adsr~]`](https://github.com/teaecetyrannis/pd-adsr) y del objeto `[selector~]` de la librería [cyclone](https://github.com/porres/pd-cyclone), por lo que necesariamente deberán instalarse también.
+Descargar el zip y extraer la carpeta (o clonar el repositorio) dentro de una ruta de búsqueda de pure data. Ya se puede iniciar desde cualquier parche creando el objeto `[pd-granola/granola~]`.  
+  
+Depende del objeto [`[adsr~]`](https://github.com/teaecetyrannis/pd-adsr), por lo que también deberá instalarse.
 
 
 ## documentación
