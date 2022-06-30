@@ -1978,29 +1978,29 @@ durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X msg 48 607 sample speed \$1;
 #X msg 48 671 sample note \$1;
 #X msg 48 728 load sample \$1;
-#X obj 38 768 cnv 15 567 191 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 768 cnv 15 567 184 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
 #X msg 48 784 window shape \$1;
 #X msg 48 820 window smooth \$1;
 #X msg 48 905 load window \$1;
-#X obj 38 970 cnv 15 603 279 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 963 cnv 15 603 279 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
-#X msg 48 1003 offset N \$1;
-#X msg 48 1032 offset N unit \$1;
-#X msg 48 1082 offset N chance \$1;
-#X msg 48 1132 offset N precision \$1;
-#X obj 38 1260 cnv 15 491 325 empty empty empty 20 12 0 14 #c4c4fc
+#X msg 48 996 offset N \$1;
+#X msg 48 1025 offset N unit \$1;
+#X msg 48 1075 offset N chance \$1;
+#X msg 48 1125 offset N precision \$1;
+#X obj 38 1253 cnv 15 491 325 empty empty empty 20 12 0 14 #c4c4fc
 #404040 0;
-#X msg 48 1270 att \$1;
-#X msg 48 1299 dec \$1;
-#X msg 48 1357 rel \$1;
-#X msg 48 1328 sus \$1;
-#X msg 48 1386 poly \$1;
-#X msg 48 1420 legato \$1;
-#X msg 48 1454 steal \$1;
-#X msg 48 1488 bendMode \$1;
-#X msg 48 1522 bendRange \$1;
-#X msg 48 1556 out \$1;
+#X msg 48 1263 att \$1;
+#X msg 48 1292 dec \$1;
+#X msg 48 1350 rel \$1;
+#X msg 48 1321 sus \$1;
+#X msg 48 1379 poly \$1;
+#X msg 48 1413 legato \$1;
+#X msg 48 1447 steal \$1;
+#X msg 48 1481 bendMode \$1;
+#X msg 48 1515 bendRange \$1;
+#X msg 48 1549 out \$1;
 #X obj 38 150 cnv 15 609 210 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
 #X msg 48 160 grain duration \$1;
@@ -2025,18 +2025,18 @@ durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #404040 0;
 #X text 720 102 OUTLET 2:;
 #X msg 733 142 set foo;
-#X obj 723 484 cnv 15 441 105 empty empty empty 20 12 0 14 #fcc4c4
+#X obj 723 424 cnv 15 441 105 empty empty empty 20 12 0 14 #fcc4c4
 #404040 0;
-#X obj 38 1596 cnv 15 497 39 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 1589 cnv 15 497 39 empty empty empty 20 12 0 14 #c4c4fc #404040
 0;
-#X msg 48 1606 state \$1;
+#X msg 48 1599 state \$1;
 #X obj 48 331 bang;
 #X msg 48 288 grain auto \$1;
 #X text 773 57 canal izquierdo;
 #X text 952 57 canal derecho;
 #X text 95 57 mensaje midi (nota y velocity);
 #X text 109 81 pitch bend (de 0 a 16383);
-#X text 115 1606 escribir un mensaje con el estado actual de la abstracción
+#X text 115 1599 escribir un mensaje con el estado actual de la abstracción
 ;
 #X text 794 135 donde foo representa una lista de todos los parámetros
 correctamente formateados para ser enviados de vuelta a la abstracción
@@ -2054,20 +2054,20 @@ o samples (distinto de cero y 0 respectivamente);
 #X text 150 281 activa o desactiva el encendido automático de los
 granos en base a la frecuencia dada (distinto de cero y 0 respectivamente)
 ;
-#X text 102 1270 tiempo de ataque en ms;
-#X text 102 1299 tiempo de decaimiento en ms;
-#X text 102 1328 valor de sostenimiento (0-100 como porcentaje);
-#X text 102 1357 tiempo de relajamiento en ms;
-#X text 109 1379 elegir entre modo polifónico de 16 voces o monofónico
+#X text 102 1263 tiempo de ataque en ms;
+#X text 102 1292 tiempo de decaimiento en ms;
+#X text 102 1321 valor de sostenimiento (0-100 como porcentaje);
+#X text 102 1350 tiempo de relajamiento en ms;
+#X text 109 1372 elegir entre modo polifónico de 16 voces o monofónico
 (distinto de cero y 0 respectivamente) (por defecto 0);
-#X text 102 1556 ganancia de salida en dB (por defecto 0);
-#X text 143 1515 rango del pitch bend (hacia arriba o hacia abajo)
+#X text 102 1549 ganancia de salida en dB (por defecto 0);
+#X text 143 1508 rango del pitch bend (hacia arriba o hacia abajo)
 en semitonos (por defecto 2);
-#X text 137 1481 pitch bend afecta a todas las notas o sólo a la última
+#X text 137 1474 pitch bend afecta a todas las notas o sólo a la última
 (distinto de cero y 0 respectivamente);
-#X text 123 1413 usar o no voice-stealing (distinto de cero y 0 respectivamente)
+#X text 123 1406 usar o no voice-stealing (distinto de cero y 0 respectivamente)
 ;
-#X text 116 1447 usar o no voice-stealing (distinto de cero y 0 respectivamente)
+#X text 116 1440 usar o no voice-stealing (distinto de cero y 0 respectivamente)
 ;
 #X text 157 380 mueve el cabezal a través del sample a la velocidad
 dada o lo detiene (distinto de cero y 0 respectivamente);
@@ -2092,45 +2092,42 @@ propósitos quizás más creativos;
 #X text 158 728 ruta del sample;
 #X text 165 777 forma de la ventana (de 0 a 5: straight \, hann \,
 tri \, tridown \, triup y custom respectivamente);
-#X text 158 905 ruta de la forma custom de la ventana (debe durar 2048
+#X text 158 898 ruta de la forma custom de la ventana (debe durar 2048
 samples \, si la duración excede sólo se tomarán los primeros 2048
 samples para conformar la ventana);
-#X text 46 979 ***donde N representa playhead \, pitch o duration***
+#X text 46 972 ***donde N representa playhead \, pitch o duration***
 ;
-#X text 137 1003 valor del offset;
-#X text 171 1025 usar comoo unuidad para el offset ms o samples/semitonos
+#X text 137 996 valor del offset;
+#X text 171 1018 usar comoo unuidad para el offset ms o samples/semitonos
 o cents dependiendo del parámetro (distinto de cero y 0 respectivamente)
 ;
-#X text 186 1075 probabilidad (0-100 como porcentaje) de que a cada
+#X text 186 1068 probabilidad (0-100 como porcentaje) de que a cada
 grano se le aplique el offset al parámetro correspondiente (cabezal
 \, altura o duración) antes de encenderse;
-#X text 722 460 CUIDADO:;
-#X text 207 1125 el offset a aplicar será un número random entre
+#X text 722 400 CUIDADO:;
+#X text 207 1118 el offset a aplicar será un número random entre
 [valor original del parámetro + precision% del valor del offset] y
 [valor original del parámetro + valor del offset] \, por ejemplo si
 se da un pitch offset de 2 semitonos y una precisión de 100% el resultado
 será siempre de 2 semitonos por encima de la altura original \, si
 se baja la precisión a 50% el resultado será cualquier altura entre
 1 y 2 semitonos por encima de la original;
-#X text 730 493 -cuando se está en modo polifónico (especialmente
+#X text 730 433 -cuando se está en modo polifónico (especialmente
 usando valores pequeños en grain rate) el uso de la CPU puede aumentar
 notablemente con cada voz \, técnicamente permite hasta 16 voces pero
 en la PC con la que desarrollé la abstracción (i5-4440) el buffer
 tiende a desbordarse antes de usarlos todos;
-#X obj 723 311 cnv 15 441 119 empty empty empty 20 12 0 14 #fcc4c4
-#404040 0;
+#X obj 723 311 cnv 15 385 63 empty empty empty 20 12 0 14 #fcc4c4 #404040
+0;
 #X text 722 287 DEPENDENCIAS:;
-#X text 730 320 -para que la abstracción funcione debe instalarse
-la abstracción [adsr~] (https://github.com/teaecetyrannis/pd-adsr)
-y también se requiere del objeto [selector~] que puede encontrarse
-en la librería cyclone (https://github.com/porres/pd-cyclone) que
-puede conseguirse fácilmente mediante deken (plugin incluído en pd
-para descargar externals);
 #X text 171 813 cuando esté activado (distinto de cero) se aplicarán
 a la ventana de 10 ms desde y hacia 0 al comienzo y al final para suavizar
 formas de ventana que no terminen o empiecen en 0 \, cuando esté desactivado
 (0) pueden producirse clicks debido a saltos de ganancia producidos
 por la forma de ventana;
+#X text 730 320 -para que la abstracción funcione debe instalarse
+la abstracción [adsr~] (https://github.com/teaecetyrannis/pd-adsr)
+;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
