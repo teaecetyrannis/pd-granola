@@ -1,4 +1,4 @@
-#N canvas -7 0 1366 685 12;
+#N canvas 1027 35 336 708 12;
 #N canvas 676 0 681 676 adsr 0;
 #X msg 292 119 legato \$1;
 #X msg 222 119 rel \$1;
@@ -460,11 +460,11 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #N canvas 676 0 681 676 grain-duration 0;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 62 182 spigot;
-#X obj 101 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 101 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 134 182 spigot;
-#X obj 173 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 173 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 52 12 inlet;
 #X obj 52 128 f;
 #X obj 101 12 inlet;
@@ -505,11 +505,11 @@ de grano se convierte a samples y luego es enviada;
 #N canvas 676 0 681 676 unit-display 0;
 #X obj 81 424 f;
 #X obj 81 298 spigot;
-#X obj 120 283 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 120 283 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 146 298 spigot;
-#X obj 185 283 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 185 283 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X msg 239 225 0;
 #X obj 12 12 inlet;
 #X obj 81 225 f;
@@ -587,11 +587,11 @@ cambia la label para que refleje el cambio de unidad;
 #X obj 191 135 r \$0-grain-rate-unit;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 72 182 spigot;
-#X obj 111 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 111 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 161 182 spigot;
-#X obj 200 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 200 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 62 12 inlet;
 #X obj 62 128 f;
 #X obj 111 12 inlet;
@@ -629,11 +629,11 @@ cambia la label para que refleje el cambio de unidad;
 #N canvas -8 -8 1366 685 unit-display 0;
 #X obj 61 444 f;
 #X obj 61 318 spigot;
-#X obj 100 303 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 100 303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 122 318 spigot;
-#X obj 161 303 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 161 303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X msg 212 245 0;
 #X obj 12 12 inlet;
 #X obj 61 245 f;
@@ -709,34 +709,6 @@ de unidad;
 #X connect 6 0 4 0;
 #X restore 145 12 pd grain-rate;
 #X restore 12 469 pd grain;
-#X obj 566 216 hsl 199 10 0 100 0 0 \$0-playhead \$0-playhead-r empty
--2 -8 0 10 #fc80c0 #fcfcfc #b0b0b0 0 0;
-#X obj 456 225 nbx 5 15 1 1e+37 0 0 \$0-grain-rate \$0-grain-rate-r
-rate 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 563 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-playhead \$0-offset-playhead-r
-offset 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 563 333 nbx 3 15 0 100 0 0 \$0-offset-playhead-chance \$0-offset-playhead-chance-r
-chance 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 607 291 hradio 10 1 0 2 \$0-offset-playhead-unit \$0-offset-playhead-unit-r
-ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 500 215 hradio 10 1 0 2 \$0-grain-rate-unit \$0-grain-rate-unit-r
-ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 477 254 cnv 15 30 6 empty \$0-text envelope: 1 2 0 10 #fcfcfc
-#8080fc 0;
-#X obj 597 246 nbx 5 15 -1e+37 1e+37 0 0 \$0-speed \$0-speed-r % 58
-8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 477 265 nbx 5 15 0 1e+37 0 0 \$0-att \$0-att-r ms 58 8 0 10
-#fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 477 285 nbx 5 15 0 1e+37 0 0 \$0-dec \$0-dec-r ms 58 8 0 10
-#fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 477 305 nbx 5 15 0 100 0 0 \$0-sus \$0-sus-r % 58 8 0 10 #fc80c0
-#fcfcfc #8080fc 0 256;
-#X obj 477 325 nbx 5 15 0 1e+37 0 0 \$0-rel \$0-rel-r ms 58 8 0 10
-#fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 456 265 cnv 15 15 15 empty \$0-text att 0 6 0 10 #fcfcfc #8080fc
-0;
-#X obj 563 231 tgl 10 0 \$0-playhead-reset \$0-playhead-reset-r reset_on_noteon
-15 4 0 10 #fc80c0 #fcfcfc #8080fc 0 1;
 #N canvas -8 -8 1366 685 player 0;
 #X obj 12 196 list prepend;
 #X obj 12 225 list trim;
@@ -788,20 +760,6 @@ ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
 #X connect 19 0 20 0;
 #X connect 21 0 22 0;
 #X restore 12 517 pd player;
-#X obj 568 267 cnv 2 265 1 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
-#X obj 779 222 cnv 15 58 28 empty \$0-waveformBg-r empty 20 12 0 14
-#8080fc #000000 0;
-#N canvas 0 50 450 250 (subpatch) 0;
-#X array \$0-win 128 float 4;
-#X coords 0 1 127 0 60 30 1 0 0;
-#X restore 778 221 graph;
-#X obj 673 246 nbx 3 15 -1e+37 1e+37 0 0 \$0-sample-note \$0-sample-note-r
-note 41 7 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 566 365 hsl 62 10 0 100 0 0 \$0-offset-playhead-precision \$0-offset-playhead-precision-r
-precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
-#X obj 727 152 bng 10 250 50 0 \$0-loadFile \$0-loadFile-r load 15
-4 0 10 #fc80c0 #fcfcfc #8080fc;
 #N canvas 0 50 450 300 offset 0;
 #N canvas -8 -8 1366 685 offset-pitch 0;
 #X obj 222 167 symbol;
@@ -810,11 +768,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X obj 222 70 r \$0-offset-pitch-unit;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 95 182 spigot;
-#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 22 12 inlet;
 #X obj 22 128 f;
 #X obj 71 12 inlet;
@@ -854,11 +812,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #N canvas 676 0 681 676 unit-display 0;
 #X obj 71 366 f;
 #X obj 71 240 spigot;
-#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 110 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 136 240 spigot;
-#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 175 225 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X msg 229 167 0;
 #X obj 12 12 inlet;
 #X obj 71 167 f;
@@ -930,11 +888,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X obj 768 41 expr (100-$f1)*0.01;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 95 182 spigot;
-#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 22 12 inlet;
 #X obj 22 128 f;
 #X obj 71 12 inlet;
@@ -978,11 +936,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #N canvas 676 0 681 676 unit-display 0;
 #X obj 71 395 f;
 #X obj 71 269 spigot;
-#X obj 110 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 110 254 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 136 269 spigot;
-#X obj 175 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 175 254 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X msg 229 196 0;
 #X obj 12 12 inlet;
 #X obj 71 196 f;
@@ -1059,11 +1017,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X obj 768 41 expr (100-$f1)*0.01;
 #N canvas -8 -8 1366 685 unit-convert 0;
 #X obj 22 182 spigot;
-#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 61 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 95 182 spigot;
-#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 134 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 22 12 inlet;
 #X obj 22 128 f;
 #X obj 71 12 inlet;
@@ -1108,11 +1066,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #N canvas 676 0 681 676 unit-display 0;
 #X obj 71 395 f;
 #X obj 71 269 spigot;
-#X obj 110 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 110 254 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 136 269 spigot;
-#X obj 175 254 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 175 254 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X msg 229 196 0;
 #X obj 12 12 inlet;
 #X obj 71 196 f;
@@ -1183,10 +1141,6 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X connect 15 0 14 0;
 #X restore 12 11 pd offset-playhead;
 #X restore 12 493 pd offset;
-#X obj 811 286 vsl 10 101 -100 0 0 0 \$0-out \$0-out-r out: -4 -9 0
-10 #fc80c0 #fcfcfc #8080fc 0 1;
-#X obj 557 157 cnv 2 1 228 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
 #X obj 12 252 *~;
 #N canvas 0 50 450 300 out 0;
 #X msg 12 114 \$1 1;
@@ -1202,16 +1156,6 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X connect 5 0 2 0;
 #X restore 230 213 pd out gain;
 #X obj 212 252 *~;
-#X obj 456 365 tgl 10 0 \$0-legato \$0-legato-r legato 15 4 0 10 #fc80c0
-#fcfcfc #8080fc 0 1;
-#X obj 456 380 hradio 10 1 0 2 \$0-bendMode \$0-bendMode-r bend:_global
-25 4 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 456 350 hradio 10 1 0 2 \$0-poly \$0-poly-r mono 25 4 0 10 #fc80c0
-#fcfcfc #8080fc 0;
-#X obj 461 246 cnv 2 79 1 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
-#X obj 673 231 tgl 10 0 \$0-play \$0-play-r play 15 4 0 10 #fc80c0
-#fcfcfc #8080fc 0 1;
 #N canvas -8 -8 1366 685 midi-input 0;
 #X obj 93 389 outlet;
 #X obj 93 129 - 1;
@@ -1228,11 +1172,11 @@ precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
 #X obj 12 129 - 1;
 #X obj 12 188 pack 0 0 0;
 #X obj 93 321 spigot;
-#X obj 132 306 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 132 306 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 12 321 spigot;
-#X obj 51 306 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 51 306 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 258 263 spigot;
 #X msg 297 244 1;
 #X msg 322 244 0;
@@ -1331,8 +1275,8 @@ global o last_note respectivamente;
 #X obj 112 154 s \$0-poly-r;
 #X obj 12 275 outlet;
 #X obj 12 193 list prepend power;
-#X obj 12 61 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 12 61 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X connect 0 0 11 0;
 #X connect 1 0 11 0;
 #X connect 2 0 0 0;
@@ -1349,10 +1293,6 @@ global o last_note respectivamente;
 #X connect 12 0 2 0;
 #X restore 121 120 pd voices;
 #X f 11;
-#X obj 778 191 bng 10 250 50 0 \$0-loadWindow \$0-loadWindow-r load
-15 4 0 10 #fc80c0 #fcfcfc #8080fc;
-#X obj 456 200 tgl 10 0 \$0-grain-auto \$0-grain-auto-r autotrigger
-15 4 0 10 #fc80c0 #fcfcfc #8080fc 0 1;
 #X obj 12 131 inlet, f 7;
 #X obj 310 36 inlet;
 #N canvas -8 -8 1366 685 route-inlet-messages 0;
@@ -1613,8 +1553,8 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X connect 17 0 14 0;
 #X restore 12 100 pd grain;
 #X obj 30 572 r \$0-error;
-#X obj 30 596 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 30 596 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X obj 1018 383 s \$0-error;
 #N canvas 12 71 847 300 sample 0;
 #X obj 12 12 inlet;
@@ -1909,68 +1849,8 @@ hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 #X obj 212 310 outlet~;
 #X obj 305 281 r \$0-state;
 #X obj 305 310 outlet;
-#X obj 456 285 cnv 15 15 15 empty \$0-text dec 0 6 0 10 #fcfcfc #8080fc
-0;
-#X obj 456 305 cnv 15 15 15 empty \$0-text sus 0 6 0 10 #fcfcfc #8080fc
-0;
-#X obj 456 325 cnv 15 15 15 empty \$0-text rel 0 6 0 10 #fcfcfc #8080fc
-0;
-#X obj 478 154 cnv 15 30 6 empty \$0-text grain: 1 2 0 10 #fcfcfc #8080fc
-0;
-#X obj 500 168 hradio 10 1 0 2 \$0-grain-duration-unit \$0-grain-duration-unit-r
-ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 788 157 cnv 15 30 6 empty \$0-text window: 1 2 0 10 #fcfcfc
-#8080fc 0;
-#X obj 563 246 cnv 15 15 15 empty \$0-text speed 0 6 0 10 #fcfcfc #8080fc
-0;
-#X obj 576 276 cnv 15 30 6 empty \$0-text playhead: 1 2 0 10 #fcfcfc
-#8080fc 0;
-#X obj 604 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 #fcfcfc #8080fc
-0;
-#X obj 635 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
-#X obj 641 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-pitch \$0-offset-pitch-r
-offset 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 641 333 nbx 3 15 0 100 0 0 \$0-offset-pitch-chance \$0-offset-pitch-chance-r
-chance 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 685 291 hradio 10 1 0 2 \$0-offset-pitch-unit \$0-offset-pitch-unit-r
-m 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 644 365 hsl 62 10 0 100 0 0 \$0-offset-pitch-precision \$0-offset-pitch-precision-r
-precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
-#X obj 654 276 cnv 15 30 6 empty \$0-text pitch: 1 2 0 10 #fcfcfc #8080fc
-0;
-#X obj 682 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 #fcfcfc #8080fc
-0;
-#X obj 714 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
-#X obj 721 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-duration \$0-offset-duration-r
-offset 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 721 333 nbx 3 15 0 100 0 0 \$0-offset-duration-chance \$0-offset-duration-chance-r
-chance 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 765 291 hradio 10 1 0 2 \$0-offset-duration-unit \$0-offset-duration-unit-r
-ms 13 18 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 724 365 hsl 62 10 0 100 0 0 \$0-offset-duration-precision \$0-offset-duration-precision-r
-precision -2 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 0;
-#X obj 734 276 cnv 15 30 6 empty \$0-text duration: 1 2 0 10 #fcfcfc
-#8080fc 0;
-#X obj 762 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 #fcfcfc #8080fc
-0;
-#X obj 772 157 cnv 2 1 99 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
-#X obj 456 178 nbx 5 15 1 1e+37 0 0 \$0-grain-duration \$0-grain-duration-r
-durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
-#X obj 778 165 hradio 10 1 0 6 \$0-window-sel \$0-window-sel-r hann
-0 17 0 10 #fc80c0 #fcfcfc #8080fc 0;
-#X obj 566 166 cnv 15 198 48 empty \$0-waveformBg-r empty 20 12 0 14
-#8080fc #000000 0;
-#N canvas 0 50 450 250 (subpatch) 0;
-#X array \$0-sample-vis 1024 float 2;
-#X coords 0 1 1024 -1 200 50 1 0 0;
-#X restore 565 165 graph;
-#X obj 793 279 cnv 2 1 106 empty \$0-bar empty 20 12 0 14 #8080fc #444444
-0;
 #N canvas -8 -8 1366 685 help 0;
-#X obj 38 371 cnv 15 624 386 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 371 cnv 15 624 386 empty empty empty 20 12 0 14 -203904 -66577
 0;
 #X msg 48 387 sample play \$1;
 #X msg 48 423 sample playhead \$1;
@@ -1978,19 +1858,19 @@ durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X msg 48 607 sample speed \$1;
 #X msg 48 671 sample note \$1;
 #X msg 48 728 load sample \$1;
-#X obj 38 768 cnv 15 567 184 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 768 cnv 15 567 184 empty empty empty 20 12 0 14 -203904 -66577
 0;
 #X msg 48 784 window shape \$1;
 #X msg 48 820 window smooth \$1;
 #X msg 48 905 load window \$1;
-#X obj 38 963 cnv 15 603 279 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 963 cnv 15 603 279 empty empty empty 20 12 0 14 -203904 -66577
 0;
 #X msg 48 996 offset N \$1;
 #X msg 48 1025 offset N unit \$1;
 #X msg 48 1075 offset N chance \$1;
 #X msg 48 1125 offset N precision \$1;
-#X obj 38 1253 cnv 15 491 325 empty empty empty 20 12 0 14 #c4c4fc
-#404040 0;
+#X obj 38 1253 cnv 15 491 325 empty empty empty 20 12 0 14 -203904
+-66577 0;
 #X msg 48 1263 att \$1;
 #X msg 48 1292 dec \$1;
 #X msg 48 1350 rel \$1;
@@ -2001,7 +1881,7 @@ durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X msg 48 1481 bendMode \$1;
 #X msg 48 1515 bendRange \$1;
 #X msg 48 1549 out \$1;
-#X obj 38 150 cnv 15 609 210 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 150 cnv 15 609 210 empty empty empty 20 12 0 14 -203904 -66577
 0;
 #X msg 48 160 grain duration \$1;
 #X msg 48 189 grain duration unit \$1;
@@ -2009,25 +1889,25 @@ durat. 0 -8 0 10 #fc80c0 #fcfcfc #8080fc 0 256;
 #X msg 48 252 grain rate unit \$1;
 #X text 35 126 INLET 1:;
 #X text 35 23 INLET 0:;
-#X obj 38 47 cnv 15 281 63 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 38 47 cnv 15 281 63 empty empty empty 20 12 0 14 -203904 -66577
 0;
 #X msg 48 57 \$1 \$2;
 #X msg 48 81 bend \$1;
-#X obj 723 47 cnv 15 169 39 empty empty empty 20 12 0 14 #c4fcfc #404040
+#X obj 723 47 cnv 15 169 39 empty empty empty 20 12 0 14 -204800 -66577
 0;
 #X text 720 23 OUTLET 0:;
 #X obj 733 57 sig~;
-#X obj 903 47 cnv 15 154 39 empty empty empty 20 12 0 14 #c4fcfc #404040
+#X obj 903 47 cnv 15 154 39 empty empty empty 20 12 0 14 -204800 -66577
 0;
 #X obj 913 57 sig~;
 #X text 900 23 OUTLET 1:;
-#X obj 723 126 cnv 15 499 105 empty empty empty 20 12 0 14 #c4fcfc
-#404040 0;
+#X obj 723 126 cnv 15 499 105 empty empty empty 20 12 0 14 -204800
+-66577 0;
 #X text 720 102 OUTLET 2:;
 #X msg 733 142 set foo;
-#X obj 723 424 cnv 15 441 105 empty empty empty 20 12 0 14 #fcc4c4
-#404040 0;
-#X obj 38 1589 cnv 15 497 39 empty empty empty 20 12 0 14 #c4c4fc #404040
+#X obj 723 424 cnv 15 441 105 empty empty empty 20 12 0 14 -261234
+-66577 0;
+#X obj 38 1589 cnv 15 497 39 empty empty empty 20 12 0 14 -203904 -66577
 0;
 #X msg 48 1599 state \$1;
 #X obj 48 331 bang;
@@ -2117,7 +1997,7 @@ usando valores pequeños en grain rate) el uso de la CPU puede aumentar
 notablemente con cada voz \, técnicamente permite hasta 16 voces pero
 en la PC con la que desarrollé la abstracción (i5-4440) el buffer
 tiende a desbordarse antes de usarlos todos;
-#X obj 723 311 cnv 15 385 63 empty empty empty 20 12 0 14 #fcc4c4 #404040
+#X obj 723 311 cnv 15 385 63 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text 722 287 DEPENDENCIAS:;
 #X text 171 813 cuando esté activado (distinto de cero) se aplicarán
@@ -2211,26 +2091,138 @@ a las instancias de los granos;
 #X connect 3 0 2 0;
 #X restore 212 150 pd targetall;
 #X obj 12 189 clone ./granola-voice~ 16, f 29;
-#X obj 565 151 cnv 12 90 12 empty \$0-text sample: 1 5 0 10 #fcfcfc
-#8080fc 0;
-#X obj 778 205 cnv 15 65 15 empty empty empty 20 12 0 14 #ffffff #404040
+#X obj 451 147 cnv 15 392 248 empty \$0-text empty 20 12 0 14 -262144
+-1 0;
+#X obj 566 216 hsl 199 10 0 100 0 0 \$0-playhead \$0-playhead-r empty
+-2 -8 0 10 -1 -262144 -1 0 0;
+#X obj 456 225 nbx 5 15 1 1e+37 0 0 \$0-grain-rate \$0-grain-rate-r
+rate 0 -8 0 10 -1 -262144 -1 150 256;
+#X obj 563 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-playhead \$0-offset-playhead-r
+offset 0 -8 0 10 -1 -262144 -1 1000 256;
+#X obj 563 333 nbx 3 15 0 100 0 0 \$0-offset-playhead-chance \$0-offset-playhead-chance-r
+chance 0 -8 0 10 -1 -262144 -1 100 256;
+#X obj 607 291 hradio 10 1 0 2 \$0-offset-playhead-unit \$0-offset-playhead-unit-r
+ms 13 18 0 10 -1 -262144 -1 0;
+#X obj 500 215 hradio 10 1 0 2 \$0-grain-rate-unit \$0-grain-rate-unit-r
+ms 13 18 0 10 -1 -262144 -1 0;
+#X obj 477 254 cnv 15 30 6 empty \$0-text envelope: 1 2 0 10 -262144
+-1 0;
+#X obj 597 246 nbx 5 15 -1e+37 1e+37 0 0 \$0-speed \$0-speed-r % 58
+8 0 10 -1 -262144 -1 100 256;
+#X obj 477 265 nbx 5 15 0 1e+37 0 0 \$0-att \$0-att-r ms 58 8 0 10
+-1 -262144 -1 0 256;
+#X obj 477 285 nbx 5 15 0 1e+37 0 0 \$0-dec \$0-dec-r ms 58 8 0 10
+-1 -262144 -1 0 256;
+#X obj 477 305 nbx 5 15 0 100 0 0 \$0-sus \$0-sus-r % 58 8 0 10 -1
+-262144 -1 100 256;
+#X obj 477 325 nbx 5 15 0 1e+37 0 0 \$0-rel \$0-rel-r ms 58 8 0 10
+-1 -262144 -1 0 256;
+#X obj 456 265 cnv 15 15 15 empty \$0-text att 0 6 0 10 -262144 -1
 0;
+#X obj 563 231 tgl 10 0 \$0-playhead-reset \$0-playhead-reset-r reset_on_noteon
+15 4 0 10 -1 -262144 -1 1 1;
+#X obj 568 267 cnv 2 265 1 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 779 222 cnv 15 58 28 empty \$0-text empty 20 12 0 14 -262144
+-1 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-win 128 float 4;
+#X coords 0 1 127 0 60 30 1 0 0;
+#X restore 778 221 graph;
+#X obj 673 246 nbx 3 15 -1e+37 1e+37 0 0 \$0-sample-note \$0-sample-note-r
+note 41 7 0 10 -1 -262144 -1 48 256;
+#X obj 566 365 hsl 62 10 0 100 0 0 \$0-offset-playhead-precision \$0-offset-playhead-precision-r
+precision -2 -8 0 10 -1 -262144 -1 0 0;
+#X obj 727 152 bng 10 250 50 0 \$0-loadFile \$0-loadFile-r load 15
+4 0 10 -1 -262144 -1;
+#X obj 811 286 vsl 10 101 -100 0 0 0 \$0-out \$0-out-r out: -4 -9 0
+10 -1 -262144 -1 10000 1;
+#X obj 557 157 cnv 2 1 228 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 456 365 tgl 10 0 \$0-legato \$0-legato-r legato 15 4 0 10 -1
+-262144 -1 0 1;
+#X obj 456 380 hradio 10 1 0 2 \$0-bendMode \$0-bendMode-r bend:_global
+25 4 0 10 -1 -262144 -1 0;
+#X obj 456 350 hradio 10 1 0 2 \$0-poly \$0-poly-r mono 25 4 0 10 -1
+-262144 -1 0;
+#X obj 461 246 cnv 2 79 1 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 673 231 tgl 10 0 \$0-play \$0-play-r play 15 4 0 10 -1 -262144
+-1 1 1;
+#X obj 778 191 bng 10 250 50 0 \$0-loadWindow \$0-loadWindow-r load
+15 4 0 10 -1 -262144 -1;
+#X obj 456 200 tgl 10 0 \$0-grain-auto \$0-grain-auto-r autotrigger
+15 4 0 10 -1 -262144 -1 1 1;
+#X obj 456 285 cnv 15 15 15 empty \$0-text dec 0 6 0 10 -262144 -1
+0;
+#X obj 456 305 cnv 15 15 15 empty \$0-text sus 0 6 0 10 -262144 -1
+0;
+#X obj 456 325 cnv 15 15 15 empty \$0-text rel 0 6 0 10 -262144 -1
+0;
+#X obj 478 154 cnv 15 30 6 empty \$0-text grain: 1 2 0 10 -262144 -1
+0;
+#X obj 500 168 hradio 10 1 0 2 \$0-grain-duration-unit \$0-grain-duration-unit-r
+ms 13 18 0 10 -1 -262144 -1 0;
+#X obj 788 157 cnv 15 30 6 empty \$0-text window: 1 2 0 10 -262144
+-1 0;
+#X obj 563 246 cnv 15 15 15 empty \$0-text speed 0 6 0 10 -262144 -1
+0;
+#X obj 576 276 cnv 15 30 6 empty \$0-text playhead: 1 2 0 10 -262144
+-1 0;
+#X obj 604 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 -262144 -1 0;
+#X obj 635 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 641 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-pitch \$0-offset-pitch-r
+offset 0 -8 0 10 -1 -262144 -1 -12 256;
+#X obj 641 333 nbx 3 15 0 100 0 0 \$0-offset-pitch-chance \$0-offset-pitch-chance-r
+chance 0 -8 0 10 -1 -262144 -1 25 256;
+#X obj 685 291 hradio 10 1 0 2 \$0-offset-pitch-unit \$0-offset-pitch-unit-r
+m 13 18 0 10 -1 -262144 -1 0;
+#X obj 644 365 hsl 62 10 0 100 0 0 \$0-offset-pitch-precision \$0-offset-pitch-precision-r
+precision -2 -8 0 10 -1 -262144 -1 6100 0;
+#X obj 654 276 cnv 15 30 6 empty \$0-text pitch: 1 2 0 10 -262144 -1
+0;
+#X obj 682 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 -262144 -1 0;
+#X obj 714 279 cnv 2 1 91 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 721 301 nbx 5 15 -1e+37 1e+37 0 0 \$0-offset-duration \$0-offset-duration-r
+offset 0 -8 0 10 -1 -262144 -1 0 256;
+#X obj 721 333 nbx 3 15 0 100 0 0 \$0-offset-duration-chance \$0-offset-duration-chance-r
+chance 0 -8 0 10 -1 -262144 -1 0 256;
+#X obj 765 291 hradio 10 1 0 2 \$0-offset-duration-unit \$0-offset-duration-unit-r
+ms 13 18 0 10 -1 -262144 -1 0;
+#X obj 724 365 hsl 62 10 0 100 0 0 \$0-offset-duration-precision \$0-offset-duration-precision-r
+precision -2 -8 0 10 -1 -262144 -1 0 0;
+#X obj 734 276 cnv 15 30 6 empty \$0-text duration: 1 2 0 10 -262144
+-1 0;
+#X obj 762 338 cnv 15 10 6 empty \$0-text % 1 2 0 10 -262144 -1 0;
+#X obj 772 157 cnv 2 1 99 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 456 178 nbx 5 15 1 1e+37 0 0 \$0-grain-duration \$0-grain-duration-r
+durat. 0 -8 0 10 -1 -262144 -1 400 256;
+#X obj 778 165 hradio 10 1 0 6 \$0-window-sel \$0-window-sel-r down
+0 17 0 10 -1 -262144 -1 3;
+#X obj 566 166 cnv 15 198 48 empty \$0-text empty 20 12 0 14 -262144
+-1 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-sample-vis 1024 float 2;
+#X coords 0 1 1024 -1 200 50 1 0 0;
+#X restore 565 165 graph;
+#X obj 793 279 cnv 2 1 106 empty \$0-bar empty 20 12 0 14 -1 -1 0;
+#X obj 778 205 cnv 15 65 15 empty \$0-text empty 20 12 0 14 -262144
+-1 0;
 #X obj 778 206 tgl 10 0 \$0-window-smooth \$0-window-smooth-r smooth
-15 4 0 10 #fc80c0 #fcfcfc #8080fc 0 1;
-#X connect 28 0 45 0;
-#X connect 29 0 28 1;
-#X connect 29 0 30 1;
-#X connect 30 0 46 0;
-#X connect 36 0 85 0;
-#X connect 37 0 84 0;
-#X connect 40 0 36 0;
-#X connect 41 0 44 0;
-#X connect 44 0 79 0;
-#X connect 44 1 42 0;
-#X connect 47 0 48 0;
-#X connect 79 0 85 1;
-#X connect 80 0 84 0;
-#X connect 84 0 85 1;
-#X connect 85 0 28 0;
-#X connect 85 1 30 0;
+15 4 0 10 -1 -262144 -1 0 1;
+#X obj 565 151 cnv 12 90 12 empty \$0-text sample: 1 5 0 10 -262144
+-1 0;
+#X connect 6 0 16 0;
+#X connect 7 0 6 1;
+#X connect 7 0 8 1;
+#X connect 8 0 17 0;
+#X connect 9 0 27 0;
+#X connect 10 0 26 0;
+#X connect 11 0 9 0;
+#X connect 12 0 15 0;
+#X connect 15 0 21 0;
+#X connect 15 1 13 0;
+#X connect 18 0 19 0;
+#X connect 21 0 27 1;
+#X connect 22 0 26 0;
+#X connect 26 0 27 1;
+#X connect 27 0 6 0;
+#X connect 27 1 8 0;
 #X coords 0 -1 1 1 394 256 2 450 143;
