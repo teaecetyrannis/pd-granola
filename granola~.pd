@@ -1,4 +1,4 @@
-#N canvas 686 35 677 708 12;
+#N canvas 3 35 1360 708 12;
 #N canvas 686 35 677 708 adsr 0;
 #X msg 292 72 legato \$1;
 #X msg 222 72 rel \$1;
@@ -13,11 +13,8 @@
 #X obj 12 12 r \$0-att;
 #X obj 152 132 list prepend adsr;
 #X obj 152 162 s \$0-params;
-#X msg 383 72 anticlick \$1;
-#X obj 383 12 r \$0-anticlick;
-#X text 30 201 se reciben los parámetros de envolvente \, legato y
-anticlick \, y se envían a todas las voces instanciadas por [clone]
-;
+#X text 30 201 se reciben los parámetros de envolvente y se envían
+a todas las voces instanciadas por [clone];
 #X connect 0 0 11 0;
 #X connect 1 0 11 0;
 #X connect 2 0 11 0;
@@ -30,8 +27,6 @@ anticlick \, y se envían a todas las voces instanciadas por [clone]
 #X connect 9 0 4 0;
 #X connect 10 0 5 0;
 #X connect 11 0 12 0;
-#X connect 13 0 11 0;
-#X connect 14 0 13 0;
 #X restore 12 460 pd adsr;
 #N canvas 459 35 449 708 window 0;
 #X obj 13 28 loadbang;
@@ -1382,7 +1377,7 @@ global o last_note respectivamente;
 #X obj 310 12 inlet;
 #N canvas 686 35 677 708 route-inlet-messages 0;
 #X obj 12 12 inlet;
-#N canvas 3 35 1360 708 state 0;
+#N canvas 914 35 449 708 state 0;
 #X obj 66 30 inlet;
 #X obj 66 60 t b b;
 #X msg 98 90 set;
@@ -1546,7 +1541,7 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X connect 4 0 1 0;
 #X connect 5 0 1 0;
 #X restore 267 180 pd offset;
-#N canvas 631 278 669 300 adsr 0;
+#N canvas 1027 35 336 708 adsr 0;
 #X obj 54 60 f;
 #X obj 54 7 inlet;
 #X obj 54 252 outlet;
@@ -1566,7 +1561,7 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X connect 7 0 8 0;
 #X connect 8 0 2 0;
 #X restore 133 180 pd adsr;
-#N canvas 355 286 669 300 global 0;
+#N canvas 1027 35 336 708 global 0;
 #X obj 54 60 f;
 #X obj 54 7 inlet;
 #X obj 54 258 outlet;
@@ -1624,9 +1619,9 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X connect 11 4 6 0;
 #X connect 11 5 5 0;
 #X connect 11 6 4 0;
-#X restore 962 432 pd state;
+#X restore 894 447 pd state;
 #X obj 317 199 route att dec sus rel, f 45;
-#N canvas 685 35 336 708 grain 0;
+#N canvas 686 35 677 708 grain 0;
 #X obj 12 30 inlet;
 #X obj 337 596 s \$0-error;
 #X obj 12 110 route float unit;
@@ -1703,8 +1698,8 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X obj 30 572 r \$0-error;
 #X obj 30 596 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 1018 462 s \$0-error;
-#N canvas 1027 35 336 708 sample 0;
+#X obj 948 472 s \$0-error;
+#N canvas 914 35 449 708 sample 0;
 #X obj 12 11 inlet;
 #X obj 317 496 s \$0-error;
 #X msg 328 70 0;
@@ -1968,8 +1963,8 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X obj 473 228 s \$0-sus-r;
 #X obj 551 228 s \$0-rel-r;
 #X obj 639 337 s \$0-poly-r;
-#X obj 694 442 s \$0-legato-r;
-#X obj 916 367 s \$0-out-r;
+#X obj 692 442 s \$0-legato-r;
+#X obj 851 372 s \$0-out-r;
 #X obj 395 228 s \$0-dec-r;
 #X msg 760 163 0;
 #X msg 503 163 100;
@@ -1985,12 +1980,12 @@ duration \$2 \, addcomma \, add2 offset duration chance \$3 \, addcomma
 #X connect 1 2 4 0;
 #X restore 215 129 pd load;
 #X obj 760 134 loadbang;
-#X obj 795 437 s \$0-bendMode-r;
+#X obj 735 317 s \$0-bendMode-r;
 #X msg 869 163 2;
-#X obj 851 312 s \$0-bendRange;
+#X obj 788 287 s \$0-bendRange;
 #X obj 629 287 != 0;
-#X obj 684 392 != 0;
-#X obj 795 407 != 0;
+#X obj 682 392 != 0;
+#X obj 735 287 != 0;
 #X text 125 570 cuando la abstracción reciba un mensaje desconocido
 \, se imprimirá un mensaje haciéndolo saber;
 #X msg 30 616 se recibió un mensaje desconocido;
@@ -2002,16 +1997,12 @@ objeto de control en la interfaz (slider \, número \, etc... si lo
 hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 \; acá se inicializan también los valores por defecto de dichos parámetros
 ;
-#X obj 740 287 != 0;
-#X obj 740 312 s \$0-anticlick;
-#X obj 629 257 route poly legato anticlick bendMode bendRange out state
-;
 #X msg 639 312 set \$1;
 #X obj 629 362 s \$0-poly;
-#X msg 694 417 set \$1;
-#X obj 684 467 s \$0-legato;
-#X msg 916 342 set \$1;
-#X obj 906 392 s \$0-out;
+#X msg 692 417 set \$1;
+#X obj 682 467 s \$0-legato;
+#X msg 851 347 set \$1;
+#X obj 841 397 s \$0-out;
 #X obj 12 71 route grain sample window offset load stereo;
 #N canvas 459 35 449 708 stereo 0;
 #X obj 12 11 inlet;
@@ -2037,12 +2028,13 @@ hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 #X connect 6 1 10 0;
 #X connect 6 2 1 0;
 #X restore 266 159 pd stereo;
-#X connect 0 0 40 0;
+#X obj 629 257 route poly legato bendMode bendRange out state;
+#X connect 0 0 37 0;
 #X connect 2 0 10 0;
 #X connect 2 1 16 0;
 #X connect 2 2 11 0;
 #X connect 2 3 12 0;
-#X connect 2 4 33 0;
+#X connect 2 4 39 0;
 #X connect 4 0 5 0;
 #X connect 5 0 28 0;
 #X connect 17 0 15 0;
@@ -2053,34 +2045,32 @@ hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 #X connect 20 0 18 0;
 #X connect 20 0 22 0;
 #X connect 22 0 23 0;
-#X connect 24 0 34 0;
-#X connect 24 0 35 0;
-#X connect 25 0 36 0;
-#X connect 25 0 37 0;
+#X connect 24 0 31 0;
+#X connect 24 0 32 0;
+#X connect 25 0 33 0;
+#X connect 25 0 34 0;
 #X connect 26 0 21 0;
 #X connect 28 0 29 0;
-#X connect 31 0 32 0;
-#X connect 33 0 24 0;
-#X connect 33 1 25 0;
-#X connect 33 2 31 0;
-#X connect 33 3 26 0;
-#X connect 33 4 23 0;
-#X connect 33 5 38 0;
-#X connect 33 5 39 0;
-#X connect 33 6 1 0;
-#X connect 33 7 6 0;
-#X connect 34 0 13 0;
-#X connect 36 0 14 0;
-#X connect 38 0 15 0;
-#X connect 40 0 3 0;
-#X connect 40 1 7 0;
-#X connect 40 2 8 0;
-#X connect 40 3 9 0;
-#X connect 40 4 19 0;
-#X connect 40 5 41 0;
-#X connect 40 6 2 0;
+#X connect 31 0 13 0;
+#X connect 33 0 14 0;
+#X connect 35 0 15 0;
+#X connect 37 0 3 0;
+#X connect 37 1 7 0;
+#X connect 37 2 8 0;
+#X connect 37 3 9 0;
+#X connect 37 4 19 0;
+#X connect 37 5 38 0;
+#X connect 37 6 2 0;
+#X connect 39 0 24 0;
+#X connect 39 1 25 0;
+#X connect 39 2 26 0;
+#X connect 39 3 23 0;
+#X connect 39 4 36 0;
+#X connect 39 4 35 0;
+#X connect 39 5 1 0;
+#X connect 39 6 6 0;
 #X restore 440 102 pd route-inlet-messages;
-#N canvas 914 35 449 708 sample 0;
+#N canvas 686 35 677 708 sample 0;
 #X obj 375 172 soundfiler;
 #X obj 375 202 t b f;
 #X obj 375 232 s \$0-reload;
@@ -2122,12 +2112,10 @@ hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 #X msg 703 202 \$3;
 #X obj 703 262 list prepend pass sample chan;
 #X obj 703 287 s \$0-params;
-#X obj 217 172 r \$0-rec;
-#X obj 720 394 loadbang;
-#X obj 720 419 samplerate~;
-#X obj 702 444 f;
-#X obj 240 444 timer;
-#X obj 217 232 sel 0 1;
+#X obj 690 102 r \$0-rec;
+#X obj 708 317 loadbang;
+#X obj 708 342 samplerate~;
+#X obj 690 367 f;
 #X msg 738 202 2;
 #X obj 404 467 * 0.001;
 #X obj 386 492 *;
@@ -2135,7 +2123,9 @@ hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 #X obj 386 542 s \$0-sampleL;
 #X obj 396 567 s \$0-sampleR;
 #X obj 386 437 r \$0-size;
-#X obj 217 202 change;
+#X obj 690 132 change;
+#X obj 193 307 r \$0-sample-update-vis;
+#X obj 690 162 sel 0;
 #X connect 0 0 1 0;
 #X connect 0 1 32 0;
 #X connect 0 1 38 0;
@@ -2178,215 +2168,30 @@ hubiera) y luego de ahí a donde se hará efectivo ese valor como parámetro
 #X connect 38 0 37 0;
 #X connect 38 0 39 0;
 #X connect 39 0 40 0;
-#X connect 41 0 54 0;
+#X connect 41 0 52 0;
 #X connect 42 0 43 0;
 #X connect 43 0 44 1;
-#X connect 43 0 48 0;
+#X connect 43 0 46 0;
 #X connect 44 0 32 0;
-#X connect 45 0 49 0;
-#X connect 46 0 45 1;
-#X connect 46 0 44 0;
-#X connect 46 0 47 0;
-#X connect 46 1 45 0;
-#X connect 47 0 37 0;
-#X connect 47 0 39 0;
-#X connect 48 0 49 1;
-#X connect 49 0 50 0;
-#X connect 49 0 1 0;
-#X connect 50 0 51 0;
-#X connect 50 0 52 0;
-#X connect 53 0 49 0;
-#X connect 54 0 46 0;
+#X connect 45 0 37 0;
+#X connect 45 0 39 0;
+#X connect 46 0 47 1;
+#X connect 47 0 48 0;
+#X connect 47 0 1 0;
+#X connect 47 0 22 0;
+#X connect 48 0 49 0;
+#X connect 48 0 50 0;
+#X connect 51 0 47 0;
+#X connect 52 0 54 0;
+#X connect 53 0 4 0;
+#X connect 53 0 5 0;
+#X connect 54 0 44 0;
+#X connect 54 0 45 0;
 #X restore 12 560 pd sample;
 #X obj 12 279 outlet~;
 #X obj 212 279 outlet~;
 #X obj 305 249 r \$0-state;
 #X obj 305 279 outlet;
-#N canvas -8 -8 1366 685 help 0;
-#X obj 38 371 cnv 15 624 386 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 387 sample play \$1;
-#X msg 48 423 sample playhead \$1;
-#X msg 48 459 sample playhead reset \$1;
-#X msg 48 607 sample speed \$1;
-#X msg 48 671 sample note \$1;
-#X msg 48 728 load sample \$1;
-#X obj 38 768 cnv 15 567 184 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 784 window shape \$1;
-#X msg 48 820 window smooth \$1;
-#X msg 48 905 load window \$1;
-#X obj 38 963 cnv 15 603 279 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 996 offset N \$1;
-#X msg 48 1025 offset N unit \$1;
-#X msg 48 1075 offset N chance \$1;
-#X msg 48 1125 offset N precision \$1;
-#X obj 38 1253 cnv 15 491 325 empty empty empty 20 12 0 14 -203904
--66577 0;
-#X msg 48 1263 att \$1;
-#X msg 48 1292 dec \$1;
-#X msg 48 1350 rel \$1;
-#X msg 48 1321 sus \$1;
-#X msg 48 1379 poly \$1;
-#X msg 48 1413 legato \$1;
-#X msg 48 1447 steal \$1;
-#X msg 48 1481 bendMode \$1;
-#X msg 48 1515 bendRange \$1;
-#X msg 48 1549 out \$1;
-#X obj 38 150 cnv 15 609 210 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 160 grain duration \$1;
-#X msg 48 189 grain duration unit \$1;
-#X msg 48 223 grain rate \$1;
-#X msg 48 252 grain rate unit \$1;
-#X text 35 126 INLET 1:;
-#X text 35 23 INLET 0:;
-#X obj 38 47 cnv 15 281 63 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 57 \$1 \$2;
-#X msg 48 81 bend \$1;
-#X obj 723 47 cnv 15 169 39 empty empty empty 20 12 0 14 -204800 -66577
-0;
-#X text 720 23 OUTLET 0:;
-#X obj 733 57 sig~;
-#X obj 903 47 cnv 15 154 39 empty empty empty 20 12 0 14 -204800 -66577
-0;
-#X obj 913 57 sig~;
-#X text 900 23 OUTLET 1:;
-#X obj 723 126 cnv 15 499 105 empty empty empty 20 12 0 14 -204800
--66577 0;
-#X text 720 102 OUTLET 2:;
-#X msg 733 142 set foo;
-#X obj 723 424 cnv 15 441 105 empty empty empty 20 12 0 14 -261234
--66577 0;
-#X obj 38 1589 cnv 15 497 39 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X msg 48 1599 state \$1;
-#X obj 48 331 bang;
-#X msg 48 288 grain auto \$1;
-#X text 773 57 canal izquierdo;
-#X text 952 57 canal derecho;
-#X text 95 57 mensaje midi (nota y velocity);
-#X text 109 81 pitch bend (de 0 a 16383);
-#X text 115 1599 escribir un mensaje con el estado actual de la abstracción
-;
-#X text 794 135 donde foo representa una lista de todos los parámetros
-correctamente formateados para ser enviados de vuelta a la abstracción
-\, en otras palabras \, conectar esta salida a un mensaje y cuando
-la abstracción reciba el mensaje [state(] \, se guardará el estado
-actual de la abstracción (tener en cuenta que el mensaje se vaciará
-antes de escribir en él);
-#X text 213 182 usar como unidad para la duración de los granos ms
-o samples (distinto de cero y 0 respectivamente);
-#X text 179 160 duración de los granos;
-#X text 185 245 usar como unidad para la frecuencia de los granos ms
-o samples (distinto de cero y 0 respectivamente);
-#X text 150 223 frecuencia con la que se encenderán los granos;
-#X text 87 331 enciende un solo grano;
-#X text 150 281 activa o desactiva el encendido automático de los
-granos en base a la frecuencia dada (distinto de cero y 0 respectivamente)
-;
-#X text 102 1263 tiempo de ataque en ms;
-#X text 102 1292 tiempo de decaimiento en ms;
-#X text 102 1321 valor de sostenimiento (0-100 como porcentaje);
-#X text 102 1350 tiempo de relajamiento en ms;
-#X text 109 1372 elegir entre modo polifónico de 16 voces o monofónico
-(distinto de cero y 0 respectivamente) (por defecto 0);
-#X text 102 1549 ganancia de salida en dB (por defecto 0);
-#X text 143 1508 rango del pitch bend (hacia arriba o hacia abajo)
-en semitonos (por defecto 2);
-#X text 137 1474 pitch bend afecta a todas las notas o sólo a la última
-(distinto de cero y 0 respectivamente);
-#X text 123 1406 usar o no voice-stealing (distinto de cero y 0 respectivamente)
-;
-#X text 116 1440 usar o no voice-stealing (distinto de cero y 0 respectivamente)
-;
-#X text 157 380 mueve el cabezal a través del sample a la velocidad
-dada o lo detiene (distinto de cero y 0 respectivamente);
-#X text 186 416 posición del cabezal (0-100 como porcentaje de la
-duración total del sample);
-#X text 228 452 cuando esté activado (distinto de cero) cada noteon
-comenzará a reproducir el sample desde la posición del cabezal establecida
-(mover la posición del cabezal no cambiará la/s voz/es actualmente
-sonando \, sólo determinará de qué punto del sample partirá la
-siguiente nota) \, y cuando esté desactivado (0) la/s voz/es seguirá/n
-un mismo cabezal que puede moverse mientras las voces suenan y afectarlas
-(aunque dependan de un mismo cabezal aun pueden lograr la independencia
-del cabezal a través de la función de offset playhead);
-#X text 165 600 velocidad a la cual el cabezal se desplazará por el
-sample (como porcentaje \, donde 100 representa la velocidad original
-del sample) (acepta valores negativos \, reproduciendo el sample en
-orden contrario);
-#X text 158 664 si el sample estuviera afinado \, sirve para determinar
-su nota (midi) de modo que la altura del sonido resultante coincida
-con las notas que son recibidas \, aunque se puede usar para otros
-propósitos quizás más creativos;
-#X text 158 728 ruta del sample;
-#X text 165 777 forma de la ventana (de 0 a 5: straight \, hann \,
-tri \, tridown \, triup y custom respectivamente);
-#X text 158 898 ruta de la forma custom de la ventana (debe durar 2048
-samples \, si la duración excede sólo se tomarán los primeros 2048
-samples para conformar la ventana);
-#X text 46 972 ***donde N representa playhead \, pitch o duration***
-;
-#X text 137 996 valor del offset;
-#X text 171 1018 usar comoo unuidad para el offset ms o samples/semitonos
-o cents dependiendo del parámetro (distinto de cero y 0 respectivamente)
-;
-#X text 186 1068 probabilidad (0-100 como porcentaje) de que a cada
-grano se le aplique el offset al parámetro correspondiente (cabezal
-\, altura o duración) antes de encenderse;
-#X text 722 400 CUIDADO:;
-#X text 207 1118 el offset a aplicar será un número random entre
-[valor original del parámetro + precision% del valor del offset] y
-[valor original del parámetro + valor del offset] \, por ejemplo si
-se da un pitch offset de 2 semitonos y una precisión de 100% el resultado
-será siempre de 2 semitonos por encima de la altura original \, si
-se baja la precisión a 50% el resultado será cualquier altura entre
-1 y 2 semitonos por encima de la original;
-#X text 730 433 -cuando se está en modo polifónico (especialmente
-usando valores pequeños en grain rate) el uso de la CPU puede aumentar
-notablemente con cada voz \, técnicamente permite hasta 16 voces pero
-en la PC con la que desarrollé la abstracción (i5-4440) el buffer
-tiende a desbordarse antes de usarlos todos;
-#X obj 723 311 cnv 15 385 63 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X text 722 287 DEPENDENCIAS:;
-#X text 171 813 cuando esté activado (distinto de cero) se aplicarán
-a la ventana de 10 ms desde y hacia 0 al comienzo y al final para suavizar
-formas de ventana que no terminen o empiecen en 0 \, cuando esté desactivado
-(0) pueden producirse clicks debido a saltos de ganancia producidos
-por la forma de ventana;
-#X text 730 320 -para que la abstracción funcione debe instalarse
-la abstracción [adsr~] (https://github.com/teaecetyrannis/pd-adsr)
-;
-#X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 4 0 5 0;
-#X connect 5 0 6 0;
-#X connect 8 0 9 0;
-#X connect 9 0 10 0;
-#X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 14 0 15 0;
-#X connect 17 0 18 0;
-#X connect 18 0 20 0;
-#X connect 19 0 21 0;
-#X connect 20 0 19 0;
-#X connect 21 0 22 0;
-#X connect 22 0 23 0;
-#X connect 23 0 24 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 28 0 29 0;
-#X connect 29 0 30 0;
-#X connect 30 0 31 0;
-#X connect 31 0 50 0;
-#X connect 35 0 36 0;
-#X connect 50 0 49 0;
-#X restore 1286 648 pd help;
 #X msg 310 159 all bang;
 #N canvas 685 35 336 708 params 0;
 #X obj 165 135 r \$0-params;
@@ -2410,16 +2215,6 @@ nombres de las tablas y asi los granos pueden leer de ellas;
 #X connect 3 0 4 0;
 #X connect 4 0 1 0;
 #X restore 212 119 pd params;
-#X text 910 41 el sintetizador está estructurado de la siguiente manera:
-\; -este es el parche principal \, donde sucede todo lo relacionado
-a la interfaz y la operación de parámetros \, el ruteo de mensajes
-de entrada y la entrada de mensajes midi \; -los mensajes midi y ciertos
-parámetros (modo mono/polifónico y adsr) son enviados a un objeto
-[clone] que instancia 16 voces que a su vez cuentan con un objeto [clone]
-que instancia 16 granos que constituyen el sonido de la voz (para más
-información revisar [pd help] dentro de [granola-voice~]) \; -el resto
-de los parámetros atraviesan las instancias de las voces para llegar
-a las instancias de los granos;
 #N canvas 104 104 450 300 targetall 0;
 #X obj 12 185 outlet;
 #X obj 12 156 list trim;
@@ -2461,7 +2256,7 @@ note 41 7 0 10 -1 -262144 -1 48 256;
 -1 -1 0;
 #X obj 461 274 cnv 2 85 1 empty \$0-bar empty 20 12 0 14 -1 -1 0;
 #X obj 661 256 tgl 10 0 \$0-play \$0-play-r play 15 4 0 10 -1 -262144
--1 1 1;
+-1 0 1;
 #X obj 778 191 bng 10 250 50 0 \$0-loadWindow \$0-loadWindow-r load
 15 4 0 10 -262144 -1 -1;
 #X obj 456 228 tgl 10 0 \$0-grain-auto \$0-grain-auto-r auto-trigger
@@ -2504,14 +2299,6 @@ durat. 0 -8 0 10 -1 -262144 -1 300 256;
 #X obj 12 189 clone ./granola-voice~ 6, f 29;
 #X obj 456 258 hradio 10 1 0 3 \$0-grain-dir \$0-grain-dir-r forward
 35 5 0 10 -262144 -1 -1 0;
-#X text 925 473 sintetizador granular estocástico \, cuenta con: \;
--polifonía de hasta 6 voces \, cada una con 10 granos independientes
-a disposición que pueden sonar en simultáneo \; -capacidad de encender
-automáticamente los granos a determinada frecuencia y/o encenderlos
-arbitrariamente mediante bangs externos \; -offsets para el cabezal
-de reproducción \, altura y duración de cada grano que pueden utilizarse
-en diversas combinaciones para generar comportamientos complejos en
-base a aleatoriedad controlada \; \; dylan martin;
 #X obj 705 256 tgl 10 0 \$0-pingpong \$0-pingpong-r pingpong 15 4 0
 10 -1 -262144 -1 0 1;
 #X obj 566 231 hsl 199 10 0 100 0 0 \$0-loop-start \$0-loop-start-r
@@ -2562,7 +2349,7 @@ precision -2 -8 0 10 -1 -262144 -1 0 0;
 #X obj 477 353 nbx 5 15 0 1e+37 0 0 \$0-rel \$0-rel-r ms 58 8 0 10
 -1 -262144 -1 0 256;
 #X obj 597 271 nbx 5 15 -1e+37 1e+37 0 0 \$0-speed \$0-speed-r % 58
-8 0 10 -1 -262144 -1 100 256;
+8 0 10 -1 -262144 -1 0 256;
 #X obj 563 415 cnv 15 15 15 empty \$0-text stereo 0 6 0 10 -262144
 -1 0;
 #X obj 603 413 nbx 3 15 0 100 0 0 \$0-stereo-amount \$0-stereo-amount-r
@@ -2592,63 +2379,100 @@ instancias del [clone] de grano;
 #X obj 30 49 inlet~;
 #X obj 86 49 inlet~;
 #X obj 152 49 inlet;
-#X obj 30 389 tabwrite~ \$0-sampleL;
-#X obj 86 414 tabwrite~ \$0-sampleR;
-#X obj 152 309 sel 0 1, f 10;
-#X msg 152 339 stop;
-#X msg 185 339 start;
-#X obj 152 79 != 0;
-#X msg 162 104 set \$1;
-#X obj 162 129 s \$0-rec-r;
-#X obj 152 154 s \$0-rec;
-#X obj 152 249 r \$0-rec;
-#X obj 338 314 r \$0-size;
-#X obj 306 344 delay;
+#X obj 30 449 tabwrite~ \$0-sampleL;
+#X obj 86 474 tabwrite~ \$0-sampleR;
+#X msg 152 399 stop;
+#X obj 152 129 != 0;
+#X msg 162 154 set \$1;
+#X obj 162 179 s \$0-rec-r;
+#X obj 152 204 s \$0-rec;
+#X obj 232 229 r \$0-rec;
+#X obj 423 309 r \$0-size;
+#X obj 373 359 delay;
 #X obj 152 279 change;
-#X msg 306 369 0;
+#X msg 201 49 0;
+#X obj 152 339 t b b;
+#X obj 152 364 s \$0-sample-update-vis;
+#X msg 185 399 start \$1;
+#X obj 312 189 f;
+#X obj 330 164 *;
+#X obj 348 139 r \$0-sample-duration;
+#X obj 152 74 unpack;
+#X obj 152 309 sel 0 1, f 10;
+#X obj 330 114 * 0.01;
+#X obj 405 204 loadbang;
+#X obj 405 284 -;
+#X obj 415 254 t b f;
+#X msg 405 229 1;
+#X obj 405 334 *;
 #X connect 0 0 3 0;
 #X connect 1 0 4 0;
-#X connect 2 0 8 0;
-#X connect 5 0 6 0;
-#X connect 5 1 7 0;
-#X connect 5 1 14 0;
-#X connect 6 0 4 0;
-#X connect 6 0 3 0;
-#X connect 7 0 4 0;
-#X connect 7 0 3 0;
-#X connect 8 0 9 0;
-#X connect 8 0 11 0;
-#X connect 9 0 10 0;
-#X connect 12 0 15 0;
-#X connect 13 0 14 1;
-#X connect 14 0 16 0;
-#X connect 15 0 5 0;
-#X connect 16 0 8 0;
+#X connect 2 0 21 0;
+#X connect 5 0 4 0;
+#X connect 5 0 3 0;
+#X connect 6 0 7 0;
+#X connect 6 0 9 0;
+#X connect 7 0 8 0;
+#X connect 10 0 13 0;
+#X connect 11 0 28 1;
+#X connect 12 0 14 0;
+#X connect 13 0 22 0;
+#X connect 14 0 6 0;
+#X connect 15 0 16 0;
+#X connect 15 1 5 0;
+#X connect 17 0 4 0;
+#X connect 17 0 3 0;
+#X connect 18 0 17 0;
+#X connect 19 0 18 1;
+#X connect 20 0 19 1;
+#X connect 21 0 6 0;
+#X connect 21 1 23 0;
+#X connect 22 0 15 0;
+#X connect 22 1 12 0;
+#X connect 22 1 18 0;
+#X connect 23 0 19 0;
+#X connect 23 0 26 0;
+#X connect 24 0 27 0;
+#X connect 25 0 28 0;
+#X connect 26 0 25 0;
+#X connect 26 1 25 1;
+#X connect 27 0 25 0;
+#X connect 28 0 12 1;
 #X restore 174 82 pd rec;
 #X f 16;
 #X obj 685 152 tgl 10 0 \$0-rec \$0-rec-r rec 15 4 0 10 -1 -262144
 -1 0 1;
 #X obj 310 42 route bang rec size;
 #X obj 396 72 s \$0-size;
+#X text 588 477 el sintetizador está estructurado de la siguiente
+manera: \; -este es el parche principal \, donde sucede todo lo relacionado
+a la interfaz y la operación de parámetros \, el ruteo de mensajes
+de entrada y la entrada de mensajes midi \; -los mensajes midi y ciertos
+parámetros (modo mono/polifónico y adsr) son enviados a un objeto
+[clone] que instancia 6 voces que a su vez cuentan con un objeto [clone]
+que instancia 10 granos que constituyen el sonido de la voz (para más
+información revisar [pd help] dentro de [granola-voice~]) \; -el resto
+de los parámetros atraviesan las instancias de las voces para llegar
+a las instancias de los granos;
 #X connect 5 0 14 0;
 #X connect 6 0 5 1;
 #X connect 6 0 7 1;
 #X connect 7 0 15 0;
-#X connect 8 0 60 0;
-#X connect 9 0 22 0;
+#X connect 8 0 58 0;
+#X connect 9 0 20 0;
 #X connect 10 0 8 0;
-#X connect 11 0 106 0;
+#X connect 11 0 103 0;
 #X connect 16 0 17 0;
-#X connect 19 0 60 1;
-#X connect 20 0 22 0;
-#X connect 22 0 60 1;
-#X connect 60 0 5 0;
-#X connect 60 1 7 0;
-#X connect 85 0 19 0;
-#X connect 102 0 104 0;
-#X connect 103 0 104 1;
-#X connect 106 0 84 0;
-#X connect 106 1 104 2;
-#X connect 106 2 107 0;
-#X connect 106 3 12 0;
+#X connect 18 0 58 1;
+#X connect 19 0 20 0;
+#X connect 20 0 58 1;
+#X connect 58 0 5 0;
+#X connect 58 1 7 0;
+#X connect 82 0 18 0;
+#X connect 99 0 101 0;
+#X connect 100 0 101 1;
+#X connect 103 0 81 0;
+#X connect 103 1 101 2;
+#X connect 103 2 104 0;
+#X connect 103 3 12 0;
 #X coords 0 -1 1 1 394 294 2 450 143;

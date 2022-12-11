@@ -1,0 +1,238 @@
+#N canvas 3 35 1360 708 12;
+#X obj 38 568 cnv 15 624 831 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X msg 48 584 sample play \$1;
+#X msg 48 629 sample playhead \$1;
+#X msg 48 674 sample playhead reset \$1;
+#X msg 48 839 sample speed \$1;
+#X msg 48 914 sample note \$1;
+#X obj 38 1410 cnv 15 567 280 empty empty empty 20 12 0 14 -203904
+-66577 0;
+#X msg 48 1430 window shape \$1;
+#X msg 48 1625 load window \$1;
+#X obj 38 1701 cnv 15 603 288 empty empty empty 20 12 0 14 -203904
+-66577 0;
+#X msg 48 1734 offset N \$1;
+#X msg 48 1763 offset N unit \$1;
+#X msg 48 1813 offset N chance \$1;
+#X msg 48 1863 offset N precision \$1;
+#X obj 38 2000 cnv 15 491 330 empty empty empty 20 12 0 14 -203904
+-66577 0;
+#X msg 48 2010 att \$1;
+#X msg 48 2040 dec \$1;
+#X msg 48 2100 rel \$1;
+#X msg 48 2070 sus \$1;
+#X msg 48 2137 poly \$1;
+#X msg 48 2182 legato \$1;
+#X msg 48 2217 bendMode \$1;
+#X msg 48 2262 bendRange \$1;
+#X msg 48 2300 out \$1;
+#X obj 38 249 cnv 15 609 308 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X msg 48 289 grain duration \$1;
+#X msg 48 326 grain duration unit \$1;
+#X msg 48 364 grain rate \$1;
+#X msg 48 401 grain rate unit \$1;
+#X text 35 23 INLET 0:;
+#X obj 38 51 cnv 15 281 63 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X msg 48 61 \$1 \$2;
+#X msg 48 85 bend \$1;
+#X obj 723 51 cnv 15 169 39 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X text 720 23 OUTLET 0:;
+#X obj 733 61 sig~;
+#X obj 903 51 cnv 15 154 39 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X obj 913 61 sig~;
+#X text 900 23 OUTLET 1:;
+#X obj 723 138 cnv 15 499 111 empty empty empty 20 12 0 14 -204800
+-66577 0;
+#X text 720 110 OUTLET 2:;
+#X msg 733 154 set foo;
+#X obj 723 451 cnv 15 427 111 empty empty empty 20 12 0 14 -261234
+-66577 0;
+#X obj 38 2341 cnv 15 497 39 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X msg 48 2351 state \$1;
+#X obj 48 259 bang;
+#X msg 48 446 grain auto \$1;
+#X text 773 61 canal izquierdo;
+#X text 952 61 canal derecho;
+#X text 95 61 mensaje midi (nota y velocity);
+#X text 109 85 pitch bend (de 0 a 16383);
+#X text 115 2351 escribir un mensaje con el estado actual de la abstracción
+;
+#X text 794 147 donde foo representa una lista de todos los parámetros
+correctamente formateados para ser enviados de vuelta a la abstracción
+\, en otras palabras \, conectar esta salida a un mensaje y cuando
+la abstracción reciba el mensaje [state(] \, se guardará el estado
+actual de la abstracción (tener en cuenta que el mensaje se vaciará
+antes de escribir en él);
+#X text 213 319 usar como unidad para la duración de los granos ms
+o samples (distinto de cero y 0 respectivamente);
+#X text 179 289 duración de los granos;
+#X text 185 394 usar como unidad para la frecuencia de los granos ms
+o samples (distinto de cero y 0 respectivamente);
+#X text 150 364 frecuencia con la que se encenderán los granos;
+#X text 87 259 enciende un solo grano;
+#X text 150 439 activa o desactiva el encendido automático de los
+granos en base a la frecuencia dada (distinto de cero y 0 respectivamente)
+;
+#X text 102 2010 tiempo de ataque en ms;
+#X text 102 2040 tiempo de decaimiento en ms;
+#X text 102 2070 valor de sostenimiento (0-100 como porcentaje);
+#X text 102 2100 tiempo de relajamiento en ms;
+#X text 109 2130 elegir entre modo polifónico de 16 voces o monofónico
+(distinto de cero y 0 respectivamente) (por defecto 0);
+#X text 102 2300 ganancia de salida en dB (por defecto 0);
+#X text 143 2255 rango del pitch bend (hacia arriba o hacia abajo)
+en semitonos (por defecto 2);
+#X text 137 2210 pitch bend afecta a todas las notas o sólo a la última
+(distinto de cero y 0 respectivamente);
+#X text 123 2175 usar o no voice-stealing (distinto de cero y 0 respectivamente)
+;
+#X text 157 577 mueve el cabezal a través del sample a la velocidad
+dada o lo detiene (distinto de cero y 0 respectivamente);
+#X text 186 622 posición del cabezal (0-100 como porcentaje de la
+duración total del sample);
+#X text 228 667 cuando esté activado (distinto de cero) cada noteon
+comenzará a reproducir el sample desde la posición del cabezal establecida
+(mover la posición del cabezal no cambiará la/s voz/es actualmente
+sonando \, sólo determinará de qué punto del sample partirá la
+siguiente nota) \, y cuando esté desactivado (0) la/s voz/es seguirá/n
+un mismo cabezal que puede moverse mientras las voces suenan y afectarlas
+(aunque dependan de un mismo cabezal aun pueden lograr la independencia
+del cabezal a través de la función de offset playhead);
+#X text 158 907 si el sample estuviera afinado \, sirve para determinar
+su nota (midi) de modo que la altura del sonido resultante coincida
+con las notas que son recibidas \, aunque se puede usar para otros
+propósitos quizás más creativos;
+#X text 165 1423 forma de la ventana (de 0 a 5: straight \, hann \,
+tri \, tridown \, triup y custom respectivamente);
+#X text 46 1710 ***donde N representa playhead \, pitch o duration***
+;
+#X text 137 1734 valor del offset;
+#X text 171 1756 usar comoo unuidad para el offset ms o samples/semitonos
+o cents dependiendo del parámetro (distinto de cero y 0 respectivamente)
+;
+#X text 186 1806 probabilidad (0-100 como porcentaje) de que a cada
+grano se le aplique el offset al parámetro correspondiente (cabezal
+\, altura o duración) antes de encenderse;
+#X text 722 423 CUIDADO:;
+#X text 207 1856 el offset a aplicar será un número random entre
+[valor original del parámetro + precision% del valor del offset] y
+[valor original del parámetro + valor del offset] \, por ejemplo si
+se da un pitch offset de 2 semitonos y una precisión de 100% el resultado
+será siempre de 2 semitonos por encima de la altura original \, si
+se baja la precisión a 50% el resultado será cualquier altura entre
+1 y 2 semitonos por encima de la original;
+#X text 730 460 -cuando se está en modo polifónico (especialmente
+usando valores pequeños en grain rate) el uso de la CPU puede aumentar
+notablemente con cada voz \, técnicamente permite hasta 16 voces pero
+en la PC con la que desarrollé la abstracción (i5-4440) el buffer
+tiende a desbordarse antes de usarlos todos;
+#X obj 723 337 cnv 15 385 66 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 722 309 DEPENDENCIAS:;
+#X text 730 346 -para que la abstracción funcione debe instalarse
+la abstracción [adsr~] (https://github.com/teaecetyrannis/pd-adsr)
+;
+#X text 35 221 INLET 3:;
+#X msg 48 1475 window fade in \$1;
+#X text 179 1468 cuando esté activado (distinto de cero) se aplicará
+a la ventana una segunda ventana que rampa de 0 a 1 en 10 ms \, cuando
+esté desactivado (0) pueden producirse clicks debido a saltos de ganancia
+producidos por formas de ventana que presenten valores distintos de
+0 al comienzo;
+#X text 179 1558 igual que fade in pero rampa de 1 a 0 hacia el final
+de la ventana \, útil para evitar clicks producidos por formas de
+ventana que presenten valores distintos de 0 al final;
+#X msg 48 1565 window fade out \$1;
+#X obj 38 162 cnv 15 317 39 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X obj 48 172 sig~;
+#X text 88 172 señal a grabar en el canal izquierdo;
+#X obj 366 162 cnv 15 303 39 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X obj 376 172 sig~;
+#X text 416 172 señal a grabar en el canal derecho;
+#X text 363 134 INLET 2:;
+#X text 35 134 INLET 1:;
+#X obj 723 650 cnv 15 442 201 empty empty empty 20 12 0 14 -204786
+-66577 0;
+#X text 722 622 ACERCA DE:;
+#X text 731 659 sintetizador granular estocástico \, cuenta con: \;
+-polifonía de hasta 6 voces \, cada una con 10 granos independientes
+que pueden sonar en simultáneo \; -capacidad de encender automáticamente
+los granos a determinada frecuencia y/o encenderlos arbitrariamente
+mediante bangs externos \; -offsets para el cabezal de reproducción
+\, altura y duración de cada grano que pueden utilizarse en diversas
+combinaciones para generar comportamientos complejos en base a aleatoriedad
+controlada \; \; dylan martin;
+#X msg 48 1369 load sample \$1;
+#X msg 48 1199 size \$1;
+#X text 109 1192 tamaño del sample en ms (por defecto es 0 por lo
+que antes de grabar se debe asignar un tamaño \, al cargar un archivo
+el tamaño se ajusta automáticamente);
+#X msg 48 1259 rec \$1 \$2;
+#X text 122 1252 inicia y detiene la grabaciòn de las señales entrantes
+en la tabla del sample (valor de \$1 distinto de 0 y cero respectivamente)
+a partir de un punto dado del sample (valor de \$2 0-100 como porcentaje
+de su duraciòn total);
+#X msg 48 506 grain dir \$1;
+#X text 143 499 determina si los granos leen de la tabla en el orden
+original \, en orden inverso o ambos escogiendo aleatoriamente para
+cada nuevo grano (0 \, 1 y 2 respectivamente);
+#X msg 48 989 sample pingpong \$1;
+#X text 185 982 si está encendido (distinto de 0) el cabezal cambiará
+de dirección al llegar a los extremos del sample ("rebota") \, si
+está apagado (cero) el cabezal mantendrá siempre una misma dirección
+y al llegar a un extremo simplemente aparecerá por el otro;
+#X msg 48 1079 sample loop start \$1;
+#X text 199 1072 determina el límite inferior del segmento del sample
+del cual leerá el cabezal (0-100 como porcentaje de la duración total
+del sample;
+#X text 199 1132 determina el límite inferior del segmento del sample
+del cual leerá el cabezal (0-100 como porcentaje de la duración total
+del sample;
+#X msg 48 1139 sample loop end \$1;
+#X text 158 1369 ruta del archivo a usar como sample;
+#X text 158 1618 ruta del archivo a usar como forma custom de la ventana
+(debe durar 2048 samples \, si la duración excede sólo se tomarán
+los primeros 2048 samples del archivo para conformar la ventana);
+#X text 165 832 velocidad a la cual el cabezal se desplazará por el
+sample (como porcentaje \, donde 100 representa la velocidad original
+del sample) (acepta valores negativos \, reproduciendo el sample en
+orden inverso);
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 106 0;
+#X connect 7 0 84 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 15 0 16 0;
+#X connect 16 0 18 0;
+#X connect 17 0 19 0;
+#X connect 18 0 17 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 28 0 46 0;
+#X connect 31 0 32 0;
+#X connect 45 0 25 0;
+#X connect 46 0 104 0;
+#X connect 84 0 87 0;
+#X connect 87 0 8 0;
+#X connect 100 0 102 0;
+#X connect 102 0 99 0;
+#X connect 106 0 108 0;
+#X connect 108 0 111 0;
+#X connect 111 0 100 0;
