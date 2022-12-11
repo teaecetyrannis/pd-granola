@@ -10,7 +10,7 @@ Depende del objeto [`[adsr~]`](https://github.com/teaecetyrannis/pd-adsr), por l
 
 
 ## documentación
-En el subparche `[pd help]` dentro de granola~.pd se encuentra toda la información sobre su funcionamiento.
+En la help-file de granola~.pd se encuentra toda la información sobre su funcionamiento.
 	
 
 ## créditos
