@@ -31,7 +31,7 @@ iterar ordenadamente las instancias de granos del [clone] \, luego
 esa "entrada midi" se convierte en un simple bang que le indica al
 grano que debe encenderse;
 #X text 31 361 (para más información revisar [pd help] dentro de
-[granola-grain~]);
+[grain~]);
 #X restore 1268 659 pd help;
 #X text 932 588 esta abstracción está pensada para ser instanciada
 por un objeto [clone] y representa una voz del sintetizador \, está
@@ -44,7 +44,7 @@ constituida por una serie de granos producidos por otro [clone];
 #X obj 353 509 list prepend all;
 #X obj 247 594 pd-adsr/adsr~;
 #X obj 27 202 poly 10 1, f 10;
-#X obj 27 564 clone ./granola-grain~ 10;
+#X obj 27 564 clone ./grain~ 10;
 #X msg 363 469 switch \$1;
 #X obj 556 323 *;
 #X obj 594 233 t b f;

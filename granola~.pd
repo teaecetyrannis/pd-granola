@@ -2344,7 +2344,7 @@ durat. 0 -8 0 10 -1 -262144 -1 300 256;
 -1 -262144 -1 0 1;
 #X obj 565 151 cnv 12 90 12 empty \$0-text sample: 1 5 0 10 -262144
 -1 0;
-#X obj 12 189 clone ./granola-voice~ 6, f 29;
+#X obj 12 189 clone ./voice~ 6, f 29;
 #X obj 456 258 hradio 10 1 0 3 \$0-grain-dir \$0-grain-dir-r forward
 35 5 0 10 -262144 -1 -1 0;
 #X obj 705 256 tgl 10 0 \$0-pingpong \$0-pingpong-r pingpong 15 4 0
@@ -2497,7 +2497,7 @@ de entrada y la entrada de mensajes midi \; -los mensajes midi y ciertos
 parámetros (modo mono/polifónico y adsr) son enviados a un objeto
 [clone] que instancia 6 voces que a su vez cuentan con un objeto [clone]
 que instancia 10 granos que constituyen el sonido de la voz (para más
-información revisar [pd help] dentro de [granola-voice~]) \; -el resto
+información revisar [pd help] dentro de [voice~]) \; -el resto
 de los parámetros atraviesan las instancias de las voces para llegar
 a las instancias de los granos;
 #X obj 310 102 s \$0-trigger;
